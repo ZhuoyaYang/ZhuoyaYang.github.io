@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="zh-Hansf">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="Yang Zhuoya" />
+
+
+
+<meta name="description" content="GitHub项目地址，https://github.com/endernewton/tf-faster-rcnnTensorflow Faster RCNN for Object Detection.">
+<meta name="keywords" content="Object Detection,TensorFlow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TensorFlow_Faster_RCNN中demo.py的运行(CPU Only)">
+<meta property="og:url" content="http://yoursite.com/2018/09/30/FasterRCNNdemo/index.html">
+<meta property="og:site_name" content="Blog of ZhuoyaYang">
+<meta property="og:description" content="GitHub项目地址，https://github.com/endernewton/tf-faster-rcnnTensorflow Faster RCNN for Object Detection.">
+<meta property="og:locale" content="zh-Hansf">
+<meta property="og:image" content="http://yoursite.com/2018/09/30/FasterRCNNdemo/1.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/30/FasterRCNNdemo/2.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/30/FasterRCNNdemo/3.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/30/FasterRCNNdemo/4.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/30/FasterRCNNdemo/5.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/30/FasterRCNNdemo/6.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/30/FasterRCNNdemo/7.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/30/FasterRCNNdemo/8.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/30/FasterRCNNdemo/9.png">
+<meta property="og:updated_time" content="2018-10-01T02:07:28.820Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="TensorFlow_Faster_RCNN中demo.py的运行(CPU Only)">
+<meta name="twitter:description" content="GitHub项目地址，https://github.com/endernewton/tf-faster-rcnnTensorflow Faster RCNN for Object Detection.">
+<meta name="twitter:image" content="http://yoursite.com/2018/09/30/FasterRCNNdemo/1.png">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Blog of ZhuoyaYang" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>TensorFlow_Faster_RCNN中demo.py的运行(CPU Only) | Blog of ZhuoyaYang</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Yang Zhuoya</a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:yzy970418@gmail.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/ZhuoyaYang" title="GitHub"></a>
+                            
+                                <a class="fa QQ" href="/386627058" title="QQ"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dynamic-Programming/">Dynamic Programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Faster-RCNN/">Faster RCNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mosaic拼图/">Mosaic拼图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Object-Detection/">Object Detection</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TensorFlow/">TensorFlow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VOC2007/">VOC2007</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web-Crawler/">Web Crawler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/retinal-image/">retinal image</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/保研机试/">保研机试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/闭包/">闭包</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://leohujx.github.io/">leohujx</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">北京林业大学，信息管理与信息系统专业，2015级学生。在这里，记录学习心得与成长。</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Yang Zhuoya</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Yang Zhuoya</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:yzy970418@gmail.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/ZhuoyaYang" title="GitHub"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="/386627058" title="QQ"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-FasterRCNNdemo" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/09/30/FasterRCNNdemo/" class="article-date">
+      <time datetime="2018-09-30T12:11:35.000Z" itemprop="datePublished">2018-09-30</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      TensorFlow_Faster_RCNN中demo.py的运行(CPU Only)
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/学习心得/">学习心得</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Object-Detection/">Object Detection</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TensorFlow/">TensorFlow</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><excerpt in="" index="" |="" 首页摘要=""><br>GitHub项目地址，<a href="https://github.com/endernewton/tf-faster-rcnn" target="_blank" rel="noopener">https://github.com/endernewton/tf-faster-rcnn</a><br>Tensorflow Faster RCNN for <code>Object Detection</code>.<br><a id="more"></a></excerpt></p>
+<the rest="" of="" contents="" |="" 余下全文="">
+
+<p>本机环境：</p>
+<ul>
+<li>Mac: 10.13.4 无GPU</li>
+<li>python: 3.5 </li>
+<li>tensorflow: 1.11.0</li>
+</ul>
+<h2 id="下载项目"><a href="#下载项目" class="headerlink" title="下载项目"></a>下载项目</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/endernewton/tf-faster-rcnn.git</span><br></pre></td></tr></table></figure>
+<h2 id="修改代码为CPU-Only"><a href="#修改代码为CPU-Only" class="headerlink" title="修改代码为CPU Only"></a>修改代码为CPU Only</h2><p>①修改./lib/setup.py<br>注释掉第55、87、120-136行与cuda、GPU相关的代码<br><img src="/2018/09/30/FasterRCNNdemo/1.png" alt=""><br><img src="/2018/09/30/FasterRCNNdemo/2.png" alt=""><br><img src="/2018/09/30/FasterRCNNdemo/3.png" alt=""><br>②./lib/model/nms_wrapper.py<br>注释掉第12、20-21行<br><img src="/2018/09/30/FasterRCNNdemo/4.png" alt=""></p>
+<h2 id="在-lib目录下建立Cython模块"><a href="#在-lib目录下建立Cython模块" class="headerlink" title="在./lib目录下建立Cython模块"></a>在./lib目录下建立Cython模块</h2><p>清除上一次编译产生的可执行文件（.pyc、.so）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make clean</span><br></pre></td></tr></table></figure><br><img src="/2018/09/30/FasterRCNNdemo/5.png" alt=""></p>
+<p>若不报错则编译成功。会生成.so文件、“<strong>pycache</strong>”下的.pyc文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make </span><br></pre></td></tr></table></figure></p>
+<p>返回上一级<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ..</span><br></pre></td></tr></table></figure></p>
+<h2 id="在-data-下安装Python-COCO-API"><a href="#在-data-下安装Python-COCO-API" class="headerlink" title="在 ./data 下安装Python COCO API"></a>在 ./data 下安装Python COCO API</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/pdollar/coco.git</span><br><span class="line"><span class="built_in">cd</span> coco/PythonAPI</span><br><span class="line">make</span><br><span class="line"><span class="built_in">cd</span> ../../..</span><br></pre></td></tr></table></figure>
+<h2 id="下载数据"><a href="#下载数据" class="headerlink" title="下载数据"></a>下载数据</h2><p>setup VOC and COCO datasets (Part of COCO is done)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ./data</span><br><span class="line"></span><br><span class="line"><span class="comment"># Download the training, validation, test data and VOCdevkit</span></span><br><span class="line">wget http://host.robots.ox.ac.uk/pascal/VOC/voc2007/VOCtrainval_06-Nov-2007.tar</span><br><span class="line">wget http://host.robots.ox.ac.uk/pascal/VOC/voc2007/VOCtest_06-Nov-2007.tar</span><br><span class="line">wget http://host.robots.ox.ac.uk/pascal/VOC/voc2007/VOCdevkit_08-Jun-2007.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解压到./data/VOCdevkit/下</span></span><br><span class="line">tar xvf VOCtrainval_06-Nov-2007.tar</span><br><span class="line">tar xvf VOCtest_06-Nov-2007.tar</span><br><span class="line">tar xvf VOCdevkit_08-Jun-2007.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建软链接</span></span><br><span class="line">ln -s VOCdevkit VOCdevkit2007</span><br></pre></td></tr></table></figure></p>
+<p>完成以上步骤后，data文件夹下新增2个文件夹：</p>
+<ul>
+<li>VOCdevkit（包含文件夹VOCcode、VOC2007及一些其他文件）</li>
+<li>VOCdevkit2007 （软链接，点击后跳转至./data/VOCdevkit/）</li>
+</ul>
+<h2 id="下载预训练模型"><a href="#下载预训练模型" class="headerlink" title="下载预训练模型"></a>下载预训练模型</h2><p>./data/scripts/下的.sh文件中的URL无法访问，可以通过作者提供的<a href="https://drive.google.com/drive/folders/0B1_fAEgxdnvJSmF3YUlZcHFqWTQ" target="_blank" rel="noopener">Google Drive</a>下载。<br>选择res101中的voc_0712_80k-110k.tgz，下载到./data中。<br><img src="/2018/09/30/FasterRCNNdemo/6.png" alt=""></p>
+<h2 id="建立预训练模型的软链接"><a href="#建立预训练模型的软链接" class="headerlink" title="建立预训练模型的软链接"></a>建立预训练模型的软链接</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">NET=res101</span><br><span class="line">TRAIN_IMDB=voc_2007_trainval+voc_2012_trainval</span><br><span class="line">mkdir -p output/<span class="variable">$&#123;NET&#125;</span>/<span class="variable">$&#123;TRAIN_IMDB&#125;</span></span><br><span class="line"><span class="built_in">cd</span> output/<span class="variable">$&#123;NET&#125;</span>/<span class="variable">$&#123;TRAIN_IMDB&#125;</span></span><br><span class="line">ln -s ../../../data/voc_2007_trainval+voc_2012_trainval ./default</span><br><span class="line"><span class="built_in">cd</span> ../../..</span><br></pre></td></tr></table></figure>
+<p>这6行代码的功能为：<br>①建立文件夹NewDir = ./output/res101/voc_2007_trainval+voc_2012_trainval/<br>②在新建文件夹的 ${NewDir}/default 中链接下载的预训练模型，即./data/voc_2007_trainval+voc_2012_trainval 中的4个参数文件<br>这时，点击./output/vgg16/coco_2014_train+coco_2014_valminusminival/default可以跳转至./data/coco_2014_train+coco_2014_valminusminival 的4个参数文件</p>
+<h2 id="运行-tools-demo-py"><a href="#运行-tools-demo-py" class="headerlink" title="运行./tools/demo.py"></a>运行./tools/demo.py</h2><p>对./data/demo下的图片进行检测<br><img src="/2018/09/30/FasterRCNNdemo/7.png" alt=""><br><img src="/2018/09/30/FasterRCNNdemo/8.png" alt=""><br>得到图片的主要对象及置信概率：<br><img src="/2018/09/30/FasterRCNNdemo/9.png" alt=""></p>
+</the>
+      
+    </div>
+    
+  </div>
+  
+    
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2018/10/01/VOC2007/">
+                    关于VOC 2007数据集
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2018/08/08/Algorithm/">
+                    保研机试
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#下载项目"><span class="toc-number">1.</span> <span class="toc-text">下载项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改代码为CPU-Only"><span class="toc-number">2.</span> <span class="toc-text">修改代码为CPU Only</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在-lib目录下建立Cython模块"><span class="toc-number">3.</span> <span class="toc-text">在./lib目录下建立Cython模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在-data-下安装Python-COCO-API"><span class="toc-number">4.</span> <span class="toc-text">在 ./data 下安装Python COCO API</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#下载数据"><span class="toc-number">5.</span> <span class="toc-text">下载数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#下载预训练模型"><span class="toc-number">6.</span> <span class="toc-text">下载预训练模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#建立预训练模型的软链接"><span class="toc-number">7.</span> <span class="toc-text">建立预训练模型的软链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运行-tools-demo-py"><span class="toc-number">8.</span> <span class="toc-text">运行./tools/demo.py</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"TensorFlow_Faster_RCNN中demo.py的运行(CPU Only)　| Blog of ZhuoyaYang　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2018/10/01/VOC2007/" title="上一篇: 关于VOC 2007数据集">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2018/08/08/Algorithm/" title="下一篇: 保研机试">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/11/23/UWF-compare/">train+test</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/19/week003/">Week3总结(11.19——11.25)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/12/week002/">Week2总结(11.12——11.18)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/07/js-load-img/">用JavaScript自动加载网页中的图片列表</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/02/week001/">Week1总结(11.5——11.11)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/29/retinal-image/">关于眼底图像分析的相关研究</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/15/dp1015-6/">Dynamic Programming 6</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/12/dp1012-5/">Dynamic Programming 5</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/11/dp1011-4/">Dynamic Programming 4</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/09/dp1009-3/">Dynamic Programming 3</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/08/fastRCNNanalysis/">Faster RCNN 代码分析</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/07/dp1007-2/">Dynamic Programming 2</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/06/dp1006-1/">Dynamic Programming 1</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/01/VOC2007/">关于VOC 2007数据集</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/30/FasterRCNNdemo/">TensorFlow_Faster_RCNN中demo.py的运行(CPU Only)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/08/Algorithm/">保研机试</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/26/Mosaic/">制作蒙太奇效果的马赛克拼图</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/24/Baidu-Picture-Crawler/">在特定关键词下爬取百度图片</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2018 Yang Zhuoya
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by Yang Zhuoya <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

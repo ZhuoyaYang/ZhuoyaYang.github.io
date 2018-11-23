@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="zh-Hansf">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="Yang Zhuoya" />
+
+
+
+<meta name="description" content="Keys Keyboard 2 注意时间复杂度优化方面，一开始没有想到。 Perfect Squares 不可以用贪心，WA了。 Maximum Subarray 注意maxx初始值问题。dp[i]表示以i结尾的最大和，不能返回dp[n-1]。时间复杂度可以优化为O(logn)。 Maximum Product Subarray  Is Subsequence 判断s是否为t的子序列,t的长度">
+<meta name="keywords" content="Dynamic Programming">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dynamic Programming 4">
+<meta property="og:url" content="http://yoursite.com/2018/10/11/dp1011-4/index.html">
+<meta property="og:site_name" content="Blog of ZhuoyaYang">
+<meta property="og:description" content="Keys Keyboard 2 注意时间复杂度优化方面，一开始没有想到。 Perfect Squares 不可以用贪心，WA了。 Maximum Subarray 注意maxx初始值问题。dp[i]表示以i结尾的最大和，不能返回dp[n-1]。时间复杂度可以优化为O(logn)。 Maximum Product Subarray  Is Subsequence 判断s是否为t的子序列,t的长度">
+<meta property="og:locale" content="zh-Hansf">
+<meta property="og:updated_time" content="2018-11-22T13:39:38.340Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Dynamic Programming 4">
+<meta name="twitter:description" content="Keys Keyboard 2 注意时间复杂度优化方面，一开始没有想到。 Perfect Squares 不可以用贪心，WA了。 Maximum Subarray 注意maxx初始值问题。dp[i]表示以i结尾的最大和，不能返回dp[n-1]。时间复杂度可以优化为O(logn)。 Maximum Product Subarray  Is Subsequence 判断s是否为t的子序列,t的长度">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Blog of ZhuoyaYang" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>Dynamic Programming 4 | Blog of ZhuoyaYang</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Yang Zhuoya</a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:yzy970418@gmail.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/ZhuoyaYang" title="GitHub"></a>
+                            
+                                <a class="fa QQ" href="/386627058" title="QQ"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dynamic-Programming/">Dynamic Programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Faster-RCNN/">Faster RCNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mosaic拼图/">Mosaic拼图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Object-Detection/">Object Detection</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TensorFlow/">TensorFlow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VOC2007/">VOC2007</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web-Crawler/">Web Crawler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/retinal-image/">retinal image</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/保研机试/">保研机试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/闭包/">闭包</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://leohujx.github.io/">leohujx</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">北京林业大学，信息管理与信息系统专业，2015级学生。在这里，记录学习心得与成长。</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Yang Zhuoya</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Yang Zhuoya</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:yzy970418@gmail.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/ZhuoyaYang" title="GitHub"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="/386627058" title="QQ"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-dp1011-4" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/10/11/dp1011-4/" class="article-date">
+      <time datetime="2018-10-11T03:24:29.000Z" itemprop="datePublished">2018-10-11</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Dynamic Programming 4
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dynamic-Programming/">Dynamic Programming</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><excerpt in="" index="" |="" 首页摘要=""></excerpt></p>
+<ul>
+<li><strong>Keys Keyboard 2</strong> 注意时间复杂度优化方面，一开始没有想到。</li>
+<li><strong>Perfect Squares</strong> 不可以用贪心，WA了。</li>
+<li><strong>Maximum Subarray</strong> 注意maxx初始值问题。dp[i]表示<strong>以i结尾</strong>的最大和，不能返回dp[n-1]。时间复杂度可以优化为O(logn)。</li>
+<li><strong>Maximum Product Subarray</strong> </li>
+<li><strong>Is Subsequence</strong> 判断s是否为t的子序列,t的长度可能非常大(5000000)。没有用dp。</li>
+<li><strong>Count Numbers With Unique Digits</strong> 是一道数学题…没有用dp。<br>————————————————<strong>Subarray</strong>————————————————</li>
+<li><strong>Maximum Subarray</strong> 数组的最大连续和。注意maxx初始值问题。dp[i]表示<strong>以i结尾</strong>的最大和，不能返回dp[n-1]。时间复杂度可以优化为O(logn)。</li>
+<li><strong>Maximum Product Subarray</strong> 数组的最大连续乘积。</li>
+</ul>
+<p><a href="https://leetcode.com/problems/2-keys-keyboard/" target="_blank" rel="noopener">LeetCode(650) 2 Keys Keyboard</a><br><a href="https://leetcode.com/problems/perfect-squares/" target="_blank" rel="noopener">LeetCode(279) Perfect Squares</a><br><a href="https://leetcode.com/problems/is-subsequence/" target="_blank" rel="noopener">LeetCode(392) Is Subsequence</a><br><a href="https://leetcode.com/problems/count-numbers-with-unique-digits/" target="_blank" rel="noopener">LeetCode(357) Count Numbers With Unique Digits</a><br><a href="https://leetcode.com/problems/maximum-subarray/" target="_blank" rel="noopener">LeetCode(053) Maximum Subarray</a><br><a href="https://leetcode.com/problems/maximum-product-subarray/" target="_blank" rel="noopener">LeetCode(152) Maximum Product Subarray</a></p>
+<a id="more"></a>
+<the rest="" of="" contents="" |="" 余下全文="">
+
+<h2 id="LeetCode-650-2-Keys-Keyboard"><a href="#LeetCode-650-2-Keys-Keyboard" class="headerlink" title="LeetCode(650) 2 Keys Keyboard"></a>LeetCode(650) 2 Keys Keyboard</h2><p><strong><font color="#0049a9" size="5">题目</font></strong><br>最开始有1个A，每次可以copy现有的字符串，或者paste上次copy的内容，问得到n个A最少需要几步。</p>
+<p><strong><font color="#0049a9" size="5">思路</font></strong><br>用dp[i]表示得到i个A最少需要几步。</p>
+<ol>
+<li><strong>边界条件：</strong><br>dp[1]=0，dp[2]=2（1次copy1次paste），dp[3]=3（1次copy2次paste）….</li>
+<li><strong>转移方程：</strong><br>当i&gt;j，i%j==0，dp[i]可以由dp[j]转移过来。</li>
+</ol>
+<ul>
+<li><font color="#f35a4a">由最大的dp[j]转移过来step最小</font>。比如得到100个A，显然由50个A复制粘贴最快，而不是25个</li>
+<li><font color="#f35a4a">j最大=i/2</font>
+
+</li>
+</ul>
+<p><strong><font color="#0049a9" size="5">一些一开始没有考虑到的地方</font></strong><br>这道题比较好想，很快就过了。但时间复杂度为O(n*n)，65ms，只打败了19%。说明有地方没有考虑到，一些判断或循环可以省略。<a href="https://www.cnblogs.com/syjbupt/p/7440824.html" target="_blank" rel="noopener">cnblog上一篇文章</a>提出了一些优化方法。<br>一开始我的循环是这样的：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line">    <span class="keyword">for</span>(j=i<span class="number">-1</span>;j&gt;=<span class="number">2</span>;j--)</span><br><span class="line">	    <span class="keyword">if</span>(i%j==<span class="number">0</span>) </span><br><span class="line">	        dp[i]=min(dp[i],dp[j]+i/j);</span><br></pre></td></tr></table></figure></p>
+<font color="#f35a4a"><strong>但其实j可以从i/2开始，找到第一个可以整除i的j就break。</strong></font>
+
+<p><strong><font color="#0049a9" size="5">代码</font></strong><br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//最开始有1个A，每次可以copy现有的字符串，或者paste上次copy的内容，得到n个A最少需要几步</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minSteps</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> dp[n+<span class="number">1</span>],i,j;</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;=n;i++) dp[i]=i;</span><br><span class="line">        dp[<span class="number">1</span>]=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line">            <span class="keyword">for</span>(j=i/<span class="number">2</span>;j&gt;=<span class="number">2</span>;j--) <span class="comment">//j=1为边界条件，特别注意j!=0</span></span><br><span class="line">                <span class="keyword">if</span>(i%j==<span class="number">0</span>) </span><br><span class="line">                &#123;</span><br><span class="line">                    dp[i]=min(dp[i],dp[j]+i/j);</span><br><span class="line">                    <span class="keyword">break</span>;  <span class="comment">//j最大时i/j最小</span></span><br><span class="line">                &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h2 id="LeetCode-279-Perfect-Squares"><a href="#LeetCode-279-Perfect-Squares" class="headerlink" title="LeetCode(279) Perfect Squares"></a>LeetCode(279) Perfect Squares</h2><p><strong><font color="#0049a9" size="5">题目</font></strong><br>n可以用最少多少个完全平方数表示。</p>
+<p><strong><font color="#0049a9" size="5">思路</font></strong><br><a href="https://segmentfault.com/a/1190000013363355" target="_blank" rel="noopener">暴力+普通dp+四平方和定理</a><br><strong>方法一:</strong><br>n可以进行拆解：<br>dp(0) = 0;<br>dp(1) = 1;<br>dp(2) = dp[2-1*1]+1;<br>dp(3) = dp[3-1*1]+1;<br>dp(4) = min(dp[4-2*2]+1,dp[4-1*1]+1)<br>dp(5) = min(dp[5-2*2]+1,dp[5-1*1]+1)<br>dp(10) = min(dp[10-3*3]+1,dp[10-2*2]+1,dp[10-1*1]+1)<br><strong>方法二:</strong><br>四平方和定理</p>
+<p><strong><font color="#0049a9" size="5">一些一开始没有考虑到的地方</font></strong><br>一开始，我想用贪心，每次找最大的平方和。但是不行，举个反例：<br>实际：dp[18] = dp[9]+dp[9] = 2<br>贪心：dp[18] = dp[16]+dp[1]+[1] = 3 </p>
+<p><strong><font color="#0049a9" size="5">代码</font></strong><br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//n可以用最小多少个完全平方数表示</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">numSquares</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> dp[n+<span class="number">1</span>],i,j;</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;=n;i++) dp[i]=i;</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;=n;i++)          </span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> num=<span class="built_in">sqrt</span>(i);</span><br><span class="line">            <span class="keyword">for</span>(j=<span class="number">1</span>;j&lt;=num;j++)</span><br><span class="line">                dp[i]=min(dp[i],dp[i-j*j]+<span class="number">1</span>);            </span><br><span class="line">        &#125;        </span><br><span class="line">        <span class="keyword">return</span> dp[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h2 id="LeetCode-392-Is-Subsequence"><a href="#LeetCode-392-Is-Subsequence" class="headerlink" title="LeetCode(392) Is Subsequence"></a>LeetCode(392) Is Subsequence</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//s是否为t的子序列,t的长度可能非常大(5000000)</span></span><br><span class="line"><span class="comment">//可以不用dp</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isSubsequence</span><span class="params">(<span class="built_in">string</span> s, <span class="built_in">string</span> t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len1=s.length(),len2=t.length(),i=<span class="number">0</span>,j=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(j&lt;len2&amp;&amp;i&lt;len1)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(t[j]==s[i]) &#123;j++;i++;&#125;</span><br><span class="line">            <span class="keyword">else</span> j++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i==len1) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="LeetCode-357-Count-Numbers-With-Unique-Digits"><a href="#LeetCode-357-Count-Numbers-With-Unique-Digits" class="headerlink" title="LeetCode(357) Count Numbers With Unique Digits"></a>LeetCode(357) Count Numbers With Unique Digits</h2><p><strong><font color="#0049a9" size="5">题目</font></strong><br>对于0 ≤ x &lt; pow(10,n)，有多少个x每位数字都不重复。</p>
+<p><strong><font color="#0049a9" size="5">思路</font></strong><br>这是一道数学题，不是非用dp不可。</p>
+<ul>
+<li>n=0时，有1个，0</li>
+<li>n=1时，有10个，0-9</li>
+<li>n=2时，十位数可以从1-9上选择，个位数可以从0-9中不同于十位数的剩下9个数中选择，有 9 * 9 个</li>
+<li>n=3时，百位及十位可以沿用n=2的时候的81种，个位可以从0-9中与百位十位不同的剩下8个数中选择，有 81 * 8 = 648 个</li>
+<li>n=4时，有 648 <em> 7 = 4536 个<br>以此类推，对于一个n位数（n&gt;=2），不重复的n位数的个数 = 不重复的n-1位数的个数</em>（11-n）</li>
+</ul>
+<p><a href="https://blog.csdn.net/camellhf/article/details/52711660" target="_blank" rel="noopener">一个很简洁的写法</a></p>
+<p><strong><font color="#0049a9" size="5">代码</font></strong><br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//10^n内有多少个每位数字不重复的数</span></span><br><span class="line"><span class="comment">//dp[i]表示有多少个不重复的i位数</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">countNumbersWithUniqueDigits</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;  <span class="comment">//这句话不能少 return 0 是错的</span></span><br><span class="line">        <span class="keyword">int</span> tol=<span class="number">10</span>,i;</span><br><span class="line">        <span class="keyword">int</span> mal=<span class="number">9</span>;</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            mal=mal*(<span class="number">10</span>-i);</span><br><span class="line">            tol=tol+mal;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> tol;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h2 id="LeetCode-053-Maximum-Subarray"><a href="#LeetCode-053-Maximum-Subarray" class="headerlink" title="LeetCode(053) Maximum Subarray"></a>LeetCode(053) Maximum Subarray</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//找到连续的subarray使和最大</span></span><br><span class="line"><span class="comment">//dp[i]表示以i结尾的最大和</span></span><br><span class="line"><span class="comment">//maxx不要赋值为0，循环中i从数组中第二个开始，maxx赋值为数组的第一个数</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxSubArray</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n=nums.size(),i;    </span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> dp[n],maxx=nums[<span class="number">0</span>];</span><br><span class="line">        dp[<span class="number">0</span>]=nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;n;i++)</span><br><span class="line">        &#123; </span><br><span class="line">            dp[i]=max(nums[i],dp[i<span class="number">-1</span>]+nums[i]);</span><br><span class="line">            maxx=max(maxx,dp[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> maxx;</span><br><span class="line">        <span class="comment">//return dp[n-1];  错,最大的subarray不一定以n-1结尾</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="LeetCode-152-Maximum-Product-Subarray"><a href="#LeetCode-152-Maximum-Product-Subarray" class="headerlink" title="LeetCode(152) Maximum Product Subarray"></a>LeetCode(152) Maximum Product Subarray</h2><p>用dpMax[i]表示以第i个数结尾的最大值，用dpMin[i]表示以第i个数结尾的最小值。参考了<a href="https://blog.csdn.net/sjwl2012/article/details/54576777" target="_blank" rel="noopener">这个博客</a>。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxProduct</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i,n=nums.size();</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> dpMax[n],dpMin[n],maxx=nums[<span class="number">0</span>];</span><br><span class="line">        dpMax[<span class="number">0</span>]=nums[<span class="number">0</span>];dpMin[<span class="number">0</span>]=nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> num1=dpMax[i<span class="number">-1</span>]*nums[i];</span><br><span class="line">            <span class="keyword">int</span> num2=dpMin[i<span class="number">-1</span>]*nums[i];</span><br><span class="line">            dpMax[i]=max(nums[i],max(num1,num2));</span><br><span class="line">            dpMin[i]=min(nums[i],min(num1,num2));</span><br><span class="line">            maxx=max(dpMax[i],maxx);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> maxx;        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+</the>
+      
+    </div>
+    
+  </div>
+  
+    
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2018/10/12/dp1012-5/">
+                    Dynamic Programming 5
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2018/10/09/dp1009-3/">
+                    Dynamic Programming 3
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#LeetCode-650-2-Keys-Keyboard"><span class="toc-number">1.</span> <span class="toc-text">LeetCode(650) 2 Keys Keyboard</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LeetCode-279-Perfect-Squares"><span class="toc-number">2.</span> <span class="toc-text">LeetCode(279) Perfect Squares</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LeetCode-392-Is-Subsequence"><span class="toc-number">3.</span> <span class="toc-text">LeetCode(392) Is Subsequence</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LeetCode-357-Count-Numbers-With-Unique-Digits"><span class="toc-number">4.</span> <span class="toc-text">LeetCode(357) Count Numbers With Unique Digits</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LeetCode-053-Maximum-Subarray"><span class="toc-number">5.</span> <span class="toc-text">LeetCode(053) Maximum Subarray</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LeetCode-152-Maximum-Product-Subarray"><span class="toc-number">6.</span> <span class="toc-text">LeetCode(152) Maximum Product Subarray</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"Dynamic Programming 4　| Blog of ZhuoyaYang　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2018/10/12/dp1012-5/" title="上一篇: Dynamic Programming 5">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2018/10/09/dp1009-3/" title="下一篇: Dynamic Programming 3">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/11/23/UWF-compare/">train+test</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/19/week003/">Week3总结(11.19——11.25)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/12/week002/">Week2总结(11.12——11.18)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/07/js-load-img/">用JavaScript自动加载网页中的图片列表</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/02/week001/">Week1总结(11.5——11.11)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/29/retinal-image/">关于眼底图像分析的相关研究</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/15/dp1015-6/">Dynamic Programming 6</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/12/dp1012-5/">Dynamic Programming 5</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/11/dp1011-4/">Dynamic Programming 4</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/09/dp1009-3/">Dynamic Programming 3</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/08/fastRCNNanalysis/">Faster RCNN 代码分析</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/07/dp1007-2/">Dynamic Programming 2</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/06/dp1006-1/">Dynamic Programming 1</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/01/VOC2007/">关于VOC 2007数据集</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/30/FasterRCNNdemo/">TensorFlow_Faster_RCNN中demo.py的运行(CPU Only)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/08/Algorithm/">保研机试</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/26/Mosaic/">制作蒙太奇效果的马赛克拼图</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/24/Baidu-Picture-Crawler/">在特定关键词下爬取百度图片</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2018 Yang Zhuoya
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by Yang Zhuoya <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
