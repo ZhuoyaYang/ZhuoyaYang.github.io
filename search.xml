@@ -3,6 +3,21 @@
   
     
     <entry>
+      <title>Week4总结(11.26——12.02)</title>
+      <link href="/2018/11/26/week004/"/>
+      <url>/2018/11/26/week004/</url>
+      <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br>这周要在公司实习，会把重心放在项目上。主要是定位好od后定位fovea。</excerpt></p><a id="more"></a><the rest="" of="" contents="" |="" 余下全文=""><h1 id="小蓝书"><a href="#小蓝书" class="headerlink" title="小蓝书"></a><strong><font color="#0049a9" size="5">小蓝书</font></strong></h1><h1 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><strong><font color="#0049a9" size="5">LeetCode</font></strong></h1><ul><li><strong>Invert Binary Tree</strong> 二叉树反转。之前求树是否对称的时候，就想到交换左右子树，然后看反转后的树是否和原树一样。</li></ul><p><a href="https://leetcode.com/problems/invert-binary-tree/" target="_blank" rel="noopener">LeetCode(226) Invert Binary Tree</a></p><h2 id="Invert-Binary-Tree"><a href="#Invert-Binary-Tree" class="headerlink" title="Invert Binary Tree"></a>Invert Binary Tree</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></the>]]></content>
+      
+      <categories>
+          
+          <category> 每周小结 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    <entry>
       <title>Week3总结(11.19——11.25)</title>
       <link href="/2018/11/19/week003/"/>
       <url>/2018/11/19/week003/</url>
