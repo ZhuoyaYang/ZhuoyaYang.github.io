@@ -15,22 +15,14 @@
 
 
 
-<meta name="description" content="初次接触VOC2007的一些简单理解。">
-<meta name="keywords" content="VOC2007">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于VOC 2007数据集">
-<meta property="og:url" content="http://yoursite.com/2018/10/01/VOC2007/index.html">
+<meta property="og:title" content="Week5总结(12.3——12.9)">
+<meta property="og:url" content="http://yoursite.com/2018/12/03/week005/index.html">
 <meta property="og:site_name" content="Blog of ZhuoyaYang">
-<meta property="og:description" content="初次接触VOC2007的一些简单理解。">
 <meta property="og:locale" content="zh-Hansf">
-<meta property="og:image" content="http://yoursite.com/2018/10/01/VOC2007/1.png">
-<meta property="og:image" content="http://yoursite.com/2018/10/01/VOC2007/2.png">
-<meta property="og:image" content="http://yoursite.com/2018/10/01/VOC2007/3.png">
-<meta property="og:updated_time" content="2018-10-01T09:55:39.130Z">
+<meta property="og:updated_time" content="2018-12-02T23:32:41.175Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于VOC 2007数据集">
-<meta name="twitter:description" content="初次接触VOC2007的一些简单理解。">
-<meta name="twitter:image" content="http://yoursite.com/2018/10/01/VOC2007/1.png">
+<meta name="twitter:title" content="Week5总结(12.3——12.9)">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -62,7 +54,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>关于VOC 2007数据集 | Blog of ZhuoyaYang</title>
+<title>Week5总结(12.3——12.9) | Blog of ZhuoyaYang</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -265,11 +257,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-VOC2007" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-week005" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/10/01/VOC2007/" class="article-date">
-      <time datetime="2018-10-01T09:11:35.000Z" itemprop="datePublished">2018-10-01</time>
+      <a href="/2018/12/03/week005/" class="article-date">
+      <time datetime="2018-12-02T23:32:05.000Z" itemprop="datePublished">2018-12-03</time>
 </a>
 
 
@@ -284,7 +276,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      关于VOC 2007数据集
+      Week5总结(12.3——12.9)
     </h1>
   
 
@@ -293,15 +285,11 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/学习心得/">学习心得</a>
+    <a class="article-category-link" href="/categories/每周小结/">每周小结</a>
     </div>
 
 
         
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VOC2007/">VOC2007</a></li></ul>
-    </div>
-
         <div class="clearfix"></div>
       </div>
       
@@ -309,22 +297,15 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p><excerpt in="" index="" |="" 首页摘要=""><br>初次接触VOC2007的一些简单理解。<br><a id="more"></a></excerpt></p>
-<p><the rest="" of="" contents="" |="" 余下全文=""><br>数据集结构如图，这里用来做目标检测，所以只看前3个文件夹。<br><img src="/2018/10/01/VOC2007/1.png" alt=""></the></p>
-<h2 id="Annotations"><a href="#Annotations" class="headerlink" title="Annotations"></a>Annotations</h2><p>XML格式的图像标记文件。<br><img src="/2018/10/01/VOC2007/2.png" alt=""></p>
-<h2 id="ImageSets-Main"><a href="#ImageSets-Main" class="headerlink" title="ImageSets-Main"></a>ImageSets-Main</h2><p>包括84个txt文件：</p>
-<ul>
-<li>4个txt文件是对数据集总体test、train、trainval、val的划分情况。<ul>
-<li>test.txt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4952</li>
-<li>train.txt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2501</li>
-<li>val.txt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2510</li>
-<li>trainval.txt&nbsp;&nbsp;5011  (train+val)<br>test+trainval = 图像总量9963张</li>
-</ul>
-</li>
-<li>20类图像，每类有4个txt文件。对总体的test、train、trainval、val再分为20类。<br>例如aeroplane_test.txt，表示test.txt中每张图像是否是aeroplane类的。1表示是，-1则不是。<br>一张图像检测出几种Object，就属于几个类。</li>
-</ul>
-<h2 id="JPEGImages"><a href="#JPEGImages" class="headerlink" title="JPEGImages"></a>JPEGImages</h2><p>Jpg格式的原始图像，9963张。<br><img src="/2018/10/01/VOC2007/3.png" alt=""></p>
+        <excerpt in="" index="" |="" 首页摘要="">
 
+<a id="more"></a>
+<p><the rest="" of="" contents="" |="" 余下全文=""></the></p>
+<h1 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><strong><font color="#0049a9" size="5">LeetCode</font></strong></h1><ul>
+<li><strong>Decode String</strong> 3[a2[c]]解码变成accaccacc，用的递归。递归的子任务分解是非常重要的。我分解的就丑而不全。参考了一个解法，tooooo elegant！！ </li>
+</ul>
+<p><a href="https://leetcode.com/problems/product-of-array-except-self/" target="_blank" rel="noopener">LeetCode(238) Product of Array Except Self</a></p>
+</excerpt>
       
     </div>
     
@@ -335,16 +316,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/10/06/dp1006-1/">
-                    Dynamic Programming 1
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/09/30/FasterRCNNdemo/">
-                    TensorFlow_Faster_RCNN中demo.py的运行(CPU Only)
+                <a href="/2018/11/26/week004/">
+                    Week4总结(11.26——12.02)
                 </a>
             </div>
         
@@ -356,7 +331,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Annotations"><span class="toc-number">1.</span> <span class="toc-text">Annotations</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ImageSets-Main"><span class="toc-number">2.</span> <span class="toc-text">ImageSets-Main</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JPEGImages"><span class="toc-number">3.</span> <span class="toc-text">JPEGImages</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#LeetCode"><span class="toc-number">1.</span> <span class="toc-text">LeetCode</span></a></li></ol>
         
     </div>
     <style>
@@ -392,7 +367,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"关于VOC 2007数据集　| Blog of ZhuoyaYang　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Week5总结(12.3——12.9)　| Blog of ZhuoyaYang　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -412,15 +387,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/10/06/dp1006-1/" title="上一篇: Dynamic Programming 1">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/09/30/FasterRCNNdemo/" title="下一篇: TensorFlow_Faster_RCNN中demo.py的运行(CPU Only)">
+            <a href="/2018/11/26/week004/" title="下一篇: Week4总结(11.26——12.02)">
                 <i class="fa fa-angle-right"></i>
             </a>
         
