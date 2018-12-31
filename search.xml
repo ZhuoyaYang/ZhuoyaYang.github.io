@@ -3,10 +3,10 @@
   
     
     <entry>
-      <title>Week7总结(12.17——12.23)</title>
-      <link href="/2018/12/17/week007/"/>
-      <url>/2018/12/17/week007/</url>
-      <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br>12.17距离9.28过去了80天，还有562天找工作，7个80天。<br><a id="more"></a></excerpt></p><p><the rest="" of="" contents="" |="" 余下全文=""></the></p><h1 id="做了啥"><a href="#做了啥" class="headerlink" title="做了啥"></a>做了啥</h1><p>这周是第15个教学周：</p><ul><li>周一：PCL:Proposal Cluster Learning for Weakly Supervised Object Detection。并不能看懂，还是有一些收获，具体见印象笔记。</li><li>周二：昨天老师问我post+od/fovea怎么样了…因为效果并不好，今天写了实验报告，周三和老师讨论。晚上做gis实验。</li><li>周三：上午和老师讨论，AP的计算公式。下午改网络，test的时候只取最高的，发现一直用的TEST.MODE=’top’有问题。开组会，学姐可爱！</li><li>周四：原来github上的作者有模型参数报告：<a href="https://arxiv.org/pdf/1702.02138.pdf。faster-rcnn也讲的很详细了：https://arxiv.org/pdf/1506.01497.pdf，我还到处找...top原来取代是第一次nms。做了gis课堂展示。" target="_blank" rel="noopener">https://arxiv.org/pdf/1702.02138.pdf。faster-rcnn也讲的很详细了：https://arxiv.org/pdf/1506.01497.pdf，我还到处找...top原来取代是第一次nms。做了gis课堂展示。</a></li><li>周五：上午讲课堂展示。明天要考研了。按照新的评价指标重新跑了test，ap取最高，中心点算平均距离，还是没有更好…</li><li>周六：在信工所，摸鱼的一天。写了系统实施计划，953个字，由于摸鱼写了一天。</li><li>周日：复习了一半gis，尝试了不同的后极部大小。之前是width/12 height/10，又试了width/35 width/20 height/15、width/35 width/20 height/15。</li></ul>]]></content>
+      <title>Week8总结(12.24——12.30)</title>
+      <link href="/2018/12/24/week008/"/>
+      <url>/2018/12/24/week008/</url>
+      <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br>这是2018最后一周，过了这周学校就没事了！<br>12.24距离9.28过去了87天，还有555天找工作，6.4个87天。<br><a id="more"></a></excerpt></p><p><the rest="" of="" contents="" |="" 余下全文=""></the></p><h1 id="做了啥"><a href="#做了啥" class="headerlink" title="做了啥"></a>做了啥</h1>]]></content>
       
       <categories>
           
@@ -18,10 +18,10 @@
     </entry>
     
     <entry>
-      <title>Week8总结(12.24——12.30)</title>
-      <link href="/2018/12/17/week008/"/>
-      <url>/2018/12/17/week008/</url>
-      <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br>这是2018最后一周，过了这周学校就没事了！<br>12.24距离9.28过去了87天，还有555天找工作，6.4个87天。<br><a id="more"></a></excerpt></p><p><the rest="" of="" contents="" |="" 余下全文=""></the></p><h1 id="做了啥"><a href="#做了啥" class="headerlink" title="做了啥"></a>做了啥</h1>]]></content>
+      <title>Week7总结(12.17——12.23)</title>
+      <link href="/2018/12/17/week007/"/>
+      <url>/2018/12/17/week007/</url>
+      <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br>12.17距离9.28过去了80天，还有562天找工作，7个80天。<br><a id="more"></a></excerpt></p><p><the rest="" of="" contents="" |="" 余下全文=""></the></p><h1 id="做了啥"><a href="#做了啥" class="headerlink" title="做了啥"></a>做了啥</h1><p>这周是第15个教学周：</p><ul><li>周一：PCL:Proposal Cluster Learning for Weakly Supervised Object Detection。并不能看懂，还是有一些收获，具体见印象笔记。</li><li>周二：昨天老师问我post+od/fovea怎么样了…因为效果并不好，今天写了实验报告，周三和老师讨论。晚上做gis实验。</li><li>周三：上午和老师讨论，AP的计算公式。下午改网络，test的时候只取最高的，发现一直用的TEST.MODE=’top’有问题。开组会，学姐可爱！</li><li>周四：原来github上的作者有模型参数报告：<a href="https://arxiv.org/pdf/1702.02138.pdf。faster-rcnn也讲的很详细了：https://arxiv.org/pdf/1506.01497.pdf，我还到处找...top原来取代是第一次nms。做了gis课堂展示。" target="_blank" rel="noopener">https://arxiv.org/pdf/1702.02138.pdf。faster-rcnn也讲的很详细了：https://arxiv.org/pdf/1506.01497.pdf，我还到处找...top原来取代是第一次nms。做了gis课堂展示。</a></li><li>周五：上午讲课堂展示。明天要考研了。按照新的评价指标重新跑了test，ap取最高，中心点算平均距离，还是没有更好…</li><li>周六：在信工所，摸鱼的一天。写了系统实施计划，953个字，由于摸鱼写了一天。</li><li>周日：复习了一半gis，尝试了不同的后极部大小。之前是width/12 height/10，又试了width/35 width/20 height/15、width/35 width/20 height/15。</li></ul>]]></content>
       
       <categories>
           
