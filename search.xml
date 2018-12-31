@@ -3,10 +3,40 @@
   
     
     <entry>
+      <title>Week7总结(12.17——12.23)</title>
+      <link href="/2018/12/17/week007/"/>
+      <url>/2018/12/17/week007/</url>
+      <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br>12.17距离9.28过去了80天，还有562天找工作，7个80天。<br><a id="more"></a></excerpt></p><p><the rest="" of="" contents="" |="" 余下全文=""></the></p><h1 id="做了啥"><a href="#做了啥" class="headerlink" title="做了啥"></a>做了啥</h1><p>这周是第15个教学周：</p><ul><li>周一：PCL:Proposal Cluster Learning for Weakly Supervised Object Detection。并不能看懂，还是有一些收获，具体见印象笔记。</li><li>周二：昨天老师问我post+od/fovea怎么样了…因为效果并不好，今天写了实验报告，周三和老师讨论。晚上做gis实验。</li><li>周三：上午和老师讨论，AP的计算公式。下午改网络，test的时候只取最高的，发现一直用的TEST.MODE=’top’有问题。开组会，学姐可爱！</li><li>周四：原来github上的作者有模型参数报告：<a href="https://arxiv.org/pdf/1702.02138.pdf。faster-rcnn也讲的很详细了：https://arxiv.org/pdf/1506.01497.pdf，我还到处找...top原来取代是第一次nms。做了gis课堂展示。" target="_blank" rel="noopener">https://arxiv.org/pdf/1702.02138.pdf。faster-rcnn也讲的很详细了：https://arxiv.org/pdf/1506.01497.pdf，我还到处找...top原来取代是第一次nms。做了gis课堂展示。</a></li><li>周五：上午讲课堂展示。明天要考研了。按照新的评价指标重新跑了test，ap取最高，中心点算平均距离，还是没有更好…</li><li>周六：在信工所，摸鱼的一天。写了系统实施计划，953个字，由于摸鱼写了一天。</li><li>周日：复习了一半gis，尝试了不同的后极部大小。之前是width/12 height/10，又试了width/35 width/20 height/15、width/35 width/20 height/15。</li></ul>]]></content>
+      
+      <categories>
+          
+          <category> 每周小结 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    <entry>
+      <title>Week8总结(12.24——12.30)</title>
+      <link href="/2018/12/17/week008/"/>
+      <url>/2018/12/17/week008/</url>
+      <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br>这是2018最后一周，过了这周学校就没事了！<br>12.24距离9.28过去了87天，还有555天找工作，6.4个87天。<br><a id="more"></a></excerpt></p><p><the rest="" of="" contents="" |="" 余下全文=""></the></p><h1 id="做了啥"><a href="#做了啥" class="headerlink" title="做了啥"></a>做了啥</h1>]]></content>
+      
+      <categories>
+          
+          <category> 每周小结 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    <entry>
       <title>Week6总结(12.10——12.16)</title>
       <link href="/2018/12/10/week006/"/>
       <url>/2018/12/10/week006/</url>
-      <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br>真快啊，每周小结都第6周了。12.10距离9.28也已经过去73天了，还有569天就要找工作，还有7.8个73天。<br>这周是第14个教学周。再提醒自己一下，专选课要做实验、课堂展示，16周考试。系统15周周日要基本做完，16周周日要交。<br>这周就是好好做系统！！！<br><a id="more"></a></excerpt></p><p><the rest="" of="" contents="" |="" 余下全文=""></the></p><h1 id="系统"><a href="#系统" class="headerlink" title="系统"></a><strong><font color="#0049a9" size="5">系统</font></strong></h1><p>好难啊，我再也不说做网站简单了。基本框架是弄好了：</p><ul><li>用户登录：将用户名、密码的dict用AJAX传递到后台。在数据库中查询，将查询状态返回前台。不正确则显示弹窗，正确则进入/home/username</li><li>上传图片：用了JQuery插件，把file用AJAX传给后台。保存在后台指定文件夹下，启动检测程序，把检测到的图片保存在另一个文件夹下。</li></ul><h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><p>这周状态差评，主要是不太会做系统，所以非常不耐心。这非常不好，以后不会的东西可多了，提高学习能力吧。</p>]]></content>
+      <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br>真快啊，每周小结都第6周了。12.10距离9.28也已经过去73天了，还有569天就要找工作，还有7.8个73天。<br>这周是第14个教学周。再提醒自己一下，专选课要做实验、课堂展示，16周考试。系统15周周日要基本做完，16周周日要交。<br>这周就是好好做系统！！！<br><a id="more"></a></excerpt></p><the rest="" of="" contents="" |="" 余下全文=""><h1 id="系统"><a href="#系统" class="headerlink" title="系统"></a><strong><font color="#0049a9" size="5">系统</font></strong></h1><p>好难啊，我再也不说做网站简单了。基本框架是弄好了：</p><ul><li>用户登录：用了插件，可以飘雪，用户名/密码错误时sweetalert。将用户名、密码的dict用AJAX传递到后台。在数据库中查询，将查询状态返回前台。不正确则显示弹窗，正确则进入/home/username。</li><li>上传图片：用了JQuery插件，可以拖动、预览。把file用AJAX传给后台。保存在后台指定文件夹下，启动检测程序，把检测到的图片保存在另一个文件夹下。</li></ul><h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><p>这周状态差评，主要是不太会做系统，所以非常不耐心。这非常不好，以后不会的东西可多了，提高学习能力吧。</p></the>]]></content>
       
       <categories>
           
