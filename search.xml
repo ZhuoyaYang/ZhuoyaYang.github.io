@@ -413,7 +413,7 @@
     </entry>
     
     <entry>
-      <title>Week9总结(1.7——1.13)</title>
+      <title>Week10总结(1.7——1.13)</title>
       <link href="/2018/01/07/week010/"/>
       <url>/2018/01/07/week010/</url>
       <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br>84days，541days.<br><a id="more"></a></excerpt></p><p><the rest="" of="" contents="" |="" 余下全文=""></the></p><h1 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><strong><font color="#0049a9" size="5">LeetCode</font></strong></h1><p><strong><font color="#ff0000" size="4">括号匹配:</font></strong></p><ul><li><strong>Valid Parentheses</strong> 三种括号[]{}()的匹配。用栈，有一种很巧妙的方法。</li></ul><p><a href="https://leetcode.com/problems/valid-parentheses/" target="_blank" rel="noopener">LeetCode(20) Valid Parentheses</a></p><h2 id="Valid-Parentheses"><a href="#Valid-Parentheses" class="headerlink" title="Valid Parentheses"></a>Valid Parentheses</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure><h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1>]]></content>
