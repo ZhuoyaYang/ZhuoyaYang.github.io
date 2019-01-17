@@ -6,7 +6,7 @@
       <title>改loss中解决的问题</title>
       <link href="/2019/01/17/faster-rcnn-loss/"/>
       <url>/2019/01/17/faster-rcnn-loss/</url>
-      <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br>loss大概应该差不多改好了！！从一开始的摸不着头脑，一直掉坑、掉坑、再爬出来，收获很多很多。赶紧记录下来，防止日后不记得。<br><a id="more"></a></excerpt></p><the rest="" of="" contents="" |="" 余下全文=""></the>]]></content>
+      <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br>改了一周，loss大概应该差不多改好了！！<br>一开始完全摸不着头脑，一直掉坑、摸索、再爬出来。现在再回头看，好像不太难了哦，这次增加了目标物体之间的距离约束，下次再改个角度，大概只要1天吧😄。<br>改loss需要明白项目文件间的调用关系，再加上tensorflow的基础知识。由于我之前没怎么自己写过tensorflow，完全是个新手，很多问题是由于对tensorflow不熟悉造成的。下一步要夯实tensorflow基础。<br><a id="more"></a></excerpt></p><p><the rest="" of="" contents="" |="" 余下全文=""></the></p><h2 id="文件间的调用关系"><a href="#文件间的调用关系" class="headerlink" title="文件间的调用关系"></a>文件间的调用关系</h2><ul><li><ol><li>train_val.py中：<br>blobs = self.data_layer.forward() ， 读取下一张图片为blobs。<br>blobs为一个dict：blobs[‘data’],blobs[‘im_info’],blobs[‘gt_boxes’]<br>但是这里我加入了图片名、是否水平翻转：blobs[‘image_name’]=”xxx.jpg”、blobs[‘flip’]=True/False。</li></ol></li><li><ol start="2"><li></li></ol></li></ul>]]></content>
       
       <categories>
           
