@@ -15,17 +15,17 @@
 
 
 
-<meta name="description" content="开个帖子总结一下基础知识，梳理一下答案。">
+<meta name="description" content="loss大概应该差不多改好了！！从一开始的摸不着头脑，一直掉坑、掉坑、再爬出来，收获很多很多。赶紧记录下来，防止日后不记得。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="常见问题复习(一)">
-<meta property="og:url" content="http://yoursite.com/2019/01/10/interviwe01/index.html">
+<meta property="og:title" content="改loss中解决的问题">
+<meta property="og:url" content="http://yoursite.com/2019/01/17/faster-rcnn-loss/index.html">
 <meta property="og:site_name" content="Blog of ZhuoyaYang">
-<meta property="og:description" content="开个帖子总结一下基础知识，梳理一下答案。">
+<meta property="og:description" content="loss大概应该差不多改好了！！从一开始的摸不着头脑，一直掉坑、掉坑、再爬出来，收获很多很多。赶紧记录下来，防止日后不记得。">
 <meta property="og:locale" content="zh-Hansf">
-<meta property="og:updated_time" content="2019-01-10T01:01:53.019Z">
+<meta property="og:updated_time" content="2019-01-17T09:37:53.684Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="常见问题复习(一)">
-<meta name="twitter:description" content="开个帖子总结一下基础知识，梳理一下答案。">
+<meta name="twitter:title" content="改loss中解决的问题">
+<meta name="twitter:description" content="loss大概应该差不多改好了！！从一开始的摸不着头脑，一直掉坑、掉坑、再爬出来，收获很多很多。赶紧记录下来，防止日后不记得。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -57,7 +57,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>常见问题复习(一) | Blog of ZhuoyaYang</title>
+<title>改loss中解决的问题 | Blog of ZhuoyaYang</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -260,11 +260,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-interviwe01" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-faster-rcnn-loss" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2019/01/10/interviwe01/" class="article-date">
-      <time datetime="2019-01-10T00:59:18.000Z" itemprop="datePublished">2019-01-10</time>
+      <a href="/2019/01/17/faster-rcnn-loss/" class="article-date">
+      <time datetime="2019-01-17T09:37:18.000Z" itemprop="datePublished">2019-01-17</time>
 </a>
 
 
@@ -279,7 +279,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      常见问题复习(一)
+      改loss中解决的问题
     </h1>
   
 
@@ -288,7 +288,7 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/基础知识/">基础知识</a>
+    <a class="article-category-link" href="/categories/掉坑日记/">掉坑日记</a>
     </div>
 
 
@@ -300,10 +300,18 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p><excerpt in="" index="" |="" 首页摘要=""><br>开个帖子总结一下基础知识，梳理一下答案。<br><a id="more"></a></excerpt></p>
+        <p><excerpt in="" index="" |="" 首页摘要=""><br>loss大概应该差不多改好了！！从一开始的摸不着头脑，一直掉坑、掉坑、再爬出来，收获很多很多。赶紧记录下来，防止日后不记得。<br><a id="more"></a></excerpt></p>
 <the rest="" of="" contents="" |="" 余下全文="">
 
-<h2 id="1-感受野是什么，如何计算"><a href="#1-感受野是什么，如何计算" class="headerlink" title="1.感受野是什么，如何计算"></a>1.感受野是什么，如何计算</h2><h2 id="2-IoU如何计算"><a href="#2-IoU如何计算" class="headerlink" title="2.IoU如何计算"></a>2.IoU如何计算</h2><h2 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h2></the>
+
+
+
+
+
+
+
+
+</the>
       
     </div>
     
@@ -314,16 +322,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2019/01/17/week011/">
-                    Week11总结(1.14——1.20)
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2019/01/07/week010/">
-                    Week10总结(1.7——1.13)
+                <a href="/2019/01/17/week011/">
+                    Week11总结(1.14——1.20)
                 </a>
             </div>
         
@@ -335,7 +337,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-感受野是什么，如何计算"><span class="toc-number">1.</span> <span class="toc-text">1.感受野是什么，如何计算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-IoU如何计算"><span class="toc-number">2.</span> <span class="toc-text">2.IoU如何计算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3"><span class="toc-number">3.</span> <span class="toc-text">3.</span></a></li></ol>
+            
         
     </div>
     <style>
@@ -371,7 +373,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"常见问题复习(一)　| Blog of ZhuoyaYang　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"改loss中解决的问题　| Blog of ZhuoyaYang　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -391,15 +393,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2019/01/17/week011/" title="上一篇: Week11总结(1.14——1.20)">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2019/01/07/week010/" title="下一篇: Week10总结(1.7——1.13)">
+            <a href="/2019/01/17/week011/" title="下一篇: Week11总结(1.14——1.20)">
                 <i class="fa fa-angle-right"></i>
             </a>
         
