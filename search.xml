@@ -3,6 +3,21 @@
   
     
     <entry>
+      <title>Week12总结(1.21——1.27)</title>
+      <link href="/2019/01/21/week012/"/>
+      <url>/2019/01/21/week012/</url>
+      <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br>这周要加油呀。<br><a id="more"></a></excerpt></p><p><the rest="" of="" contents="" |="" 余下全文=""></the></p><h1 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><strong><font color="#0049a9" size="5">LeetCode</font></strong></h1><ul><li><strong>Best Time to Buy and Sell Stock with Cooldown</strong> </li><li><strong>Binary Tree Maximum Path Sum</strong> </li><li><strong>Sort Colors</strong></li></ul><p><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/" target="_blank" rel="noopener">LeetCode(309) Best Time to Buy and Sell Stock with Cooldown</a><br><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/" target="_blank" rel="noopener">LeetCode(124) Binary Tree Maximum Path Sum</a><br><a href="https://leetcode.com/problems/sort-colors/" target="_blank" rel="noopener">LeetCode(75) Sort Colors</a></p><h2 id="Best-Time-to-Buy-and-Sell-Stock-with-Cooldown"><a href="#Best-Time-to-Buy-and-Sell-Stock-with-Cooldown" class="headerlink" title="Best Time to Buy and Sell Stock with Cooldown"></a>Best Time to Buy and Sell Stock with Cooldown</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure><h2 id="Binary-Tree-Maximum-Path-Sum"><a href="#Binary-Tree-Maximum-Path-Sum" class="headerlink" title="Binary Tree Maximum Path Sum"></a>Binary Tree Maximum Path Sum</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure><h2 id="Sort-Colors"><a href="#Sort-Colors" class="headerlink" title="Sort Colors"></a>Sort Colors</h2><p>解法一：见week009<br>解法二：双指针，遍历1遍数组<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></p><h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1>]]></content>
+      
+      <categories>
+          
+          <category> 每周小结 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    <entry>
       <title>cs231n-1</title>
       <link href="/2019/01/18/cs231n-1/"/>
       <url>/2019/01/18/cs231n-1/</url>
@@ -37,21 +52,6 @@
       <link href="/2019/01/17/week011/"/>
       <url>/2019/01/17/week011/</url>
       <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br>其实现在已经周四下午啦。一直在改loss，掉到好多坑里，又不断摸索，爬出来。现在有的坑也不知道具体是什么原因，收获了很多。<br><a id="more"></a></excerpt></p><the rest="" of="" contents="" |="" 余下全文=""><h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><ul><li>周一至周四在改loss</li><li>这周周五-日上午都在休息，有个采访</li><li>周日下午测试了一下loss，的确有好一点，但不知道为什么0.005没有0.002好。还有2个想法：<ul><li>350-500 以外的产生loss</li><li>尝试0.0025 0.003</li><li>尝试更大 iter</li></ul></li><li>如果是我的话，不会一直满满的占着2块GPU，在知道别人最近也一直在用的情况下。可能是我比较敏感，所以会为别人想很多，这真不是什么好事。沟通过好几次，但有效时长只有半天，下次直接说一人一个不论早晚好了。不生气不生气，大度大度，毕竟什么人都有，况且人家应该只是大条了一点。</li></ul></the>]]></content>
-      
-      <categories>
-          
-          <category> 每周小结 </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    <entry>
-      <title>Week12总结(1.21——1.27)</title>
-      <link href="/2019/01/17/week012/"/>
-      <url>/2019/01/17/week012/</url>
-      <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br>这周要加油呀。<br><a id="more"></a></excerpt></p><p><the rest="" of="" contents="" |="" 余下全文=""></the></p><h1 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><strong><font color="#0049a9" size="5">LeetCode</font></strong></h1><ul><li><strong>Best Time to Buy and Sell Stock with Cooldown</strong> </li><li><strong>Binary Tree Maximum Path Sum</strong> </li><li><strong>Sort Colors</strong></li></ul><p><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/" target="_blank" rel="noopener">LeetCode(309) Best Time to Buy and Sell Stock with Cooldown</a><br><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/" target="_blank" rel="noopener">LeetCode(124) Binary Tree Maximum Path Sum</a><br><a href="https://leetcode.com/problems/sort-colors/" target="_blank" rel="noopener">LeetCode(75) Sort Colors</a></p><h2 id="Best-Time-to-Buy-and-Sell-Stock-with-Cooldown"><a href="#Best-Time-to-Buy-and-Sell-Stock-with-Cooldown" class="headerlink" title="Best Time to Buy and Sell Stock with Cooldown"></a>Best Time to Buy and Sell Stock with Cooldown</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure><h2 id="Binary-Tree-Maximum-Path-Sum"><a href="#Binary-Tree-Maximum-Path-Sum" class="headerlink" title="Binary Tree Maximum Path Sum"></a>Binary Tree Maximum Path Sum</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure><h2 id="Sort-Colors"><a href="#Sort-Colors" class="headerlink" title="Sort Colors"></a>Sort Colors</h2><p>解法一：见week009<br>解法二：双指针，遍历1遍数组<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></p><h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1>]]></content>
       
       <categories>
           
