@@ -51,7 +51,7 @@
       <title>Week11总结(1.14——1.20)</title>
       <link href="/2019/01/17/week011/"/>
       <url>/2019/01/17/week011/</url>
-      <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br>其实现在已经周四下午啦。一直在改loss，掉到好多坑里，又不断摸索，爬出来。现在有的坑也不知道具体是什么原因，收获了很多。<br><a id="more"></a></excerpt></p><the rest="" of="" contents="" |="" 余下全文=""><h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><ul><li>周一至周四在改loss</li><li>这周周五-日上午都在休息，有个采访</li><li>周日下午测试了一下loss，的确有好一点，但不知道为什么0.005没有0.002好。还有2个想法：<ul><li>350-500 以外的产生loss</li><li>尝试0.0025 0.003</li><li>尝试更大 iter</li></ul></li><li>如果是我的话，不会一直满满的占着2块GPU，在知道别人最近也一直在用的情况下。可能是我比较敏感，所以会为别人想很多，这真不是什么好事。沟通过好几次，但有效时长只有半天，下次直接说一人一个不论早晚好了。不生气不生气，大度大度，毕竟什么人都有，况且人家应该只是大条了一点。</li></ul></the>]]></content>
+      <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br>其实现在已经周四下午啦。一直在改loss，掉到好多坑里，又不断摸索，爬出来。现在有的坑也不知道具体是什么原因，收获了很多。<br><a id="more"></a></excerpt></p><the rest="" of="" contents="" |="" 余下全文=""><h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><ul><li>周一至周四在改loss</li><li>这周周五-日上午都在休息，有个采访</li><li>周日下午测试了一下loss，的确有好一点，但不知道为什么0.005没有0.002好。还有2个想法：<ul><li>350-500 以外的产生loss</li><li>尝试0.0025 0.003</li><li>尝试更大 iter</li></ul></li><li>如果是我的话，不会一直满满的占着2块GPU，在知道别人最近也一直在用的情况下。可能是我比较敏感，所以会为别人想很多，这真不是什么好事。沟通过好几次，但有效时长只有半天，下次直接说一人一个不论早晚好了。不生气不生气，大度大度，毕竟什么人都有，多沟通吧。</li></ul></the>]]></content>
       
       <categories>
           
@@ -66,7 +66,7 @@
       <title>常见问题复习(一)</title>
       <link href="/2019/01/10/interviwe01/"/>
       <url>/2019/01/10/interviwe01/</url>
-      <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br>开个帖子总结一下基础知识，梳理一下答案。<br><a id="more"></a></excerpt></p><the rest="" of="" contents="" |="" 余下全文=""><h2 id="1-感受野是什么，如何计算"><a href="#1-感受野是什么，如何计算" class="headerlink" title="1.感受野是什么，如何计算"></a>1.感受野是什么，如何计算</h2><h2 id="2-IoU如何计算"><a href="#2-IoU如何计算" class="headerlink" title="2.IoU如何计算"></a>2.IoU如何计算</h2><h2 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h2></the>]]></content>
+      <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br>开个帖子总结一下基础知识，梳理一下答案。<br><a id="more"></a></excerpt></p><the rest="" of="" contents="" |="" 余下全文=""><h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><h2 id="1-感受野是什么，如何计算"><a href="#1-感受野是什么，如何计算" class="headerlink" title="1.感受野是什么，如何计算"></a>1.感受野是什么，如何计算</h2><h2 id="2-IoU如何计算"><a href="#2-IoU如何计算" class="headerlink" title="2.IoU如何计算"></a>2.IoU如何计算</h2><h2 id="3-GBDT，XGBOOST"><a href="#3-GBDT，XGBOOST" class="headerlink" title="3.GBDT，XGBOOST"></a>3.GBDT，XGBOOST</h2><h1 id="数学逻辑"><a href="#数学逻辑" class="headerlink" title="数学逻辑"></a>数学逻辑</h1><h2 id="1-给定n个苹果，其中一个轻，求最优称的次数的期望"><a href="#1-给定n个苹果，其中一个轻，求最优称的次数的期望" class="headerlink" title="1. 给定n个苹果，其中一个轻，求最优称的次数的期望"></a>1. 给定n个苹果，其中一个轻，求最优称的次数的期望</h2></the>]]></content>
       
       <categories>
           
