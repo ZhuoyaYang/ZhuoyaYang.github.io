@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="Keys Keyboard 2 注意时间复杂度优化方面。 Perfect Squares 不可以用贪心。 Maximum Subarray 注意maxx初始值问题。dp[i]表示以i结尾的最大和，不能返回dp[n-1]。时间复杂度可以优化为O(logn)。 Maximum Product Subarray  Is Subsequence 判断s是否为t的子序列,t的长度可能非常大(500000">
+<meta name="description" content="LeetCode(650) 2 Keys KeyboardLeetCode(279) Perfect SquaresLeetCode(392) Is SubsequenceLeetCode(357) Count Numbers With Unique DigitsLeetCode(053) Maximum SubarrayLeetCode(152) Maximum Product Subarray">
 <meta name="keywords" content="Dynamic Programming">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Dynamic Programming 4">
 <meta property="og:url" content="http://yoursite.com/2018/10/11/dp1011-4/index.html">
 <meta property="og:site_name" content="Blog of ZhuoyaYang">
-<meta property="og:description" content="Keys Keyboard 2 注意时间复杂度优化方面。 Perfect Squares 不可以用贪心。 Maximum Subarray 注意maxx初始值问题。dp[i]表示以i结尾的最大和，不能返回dp[n-1]。时间复杂度可以优化为O(logn)。 Maximum Product Subarray  Is Subsequence 判断s是否为t的子序列,t的长度可能非常大(500000">
+<meta property="og:description" content="LeetCode(650) 2 Keys KeyboardLeetCode(279) Perfect SquaresLeetCode(392) Is SubsequenceLeetCode(357) Count Numbers With Unique DigitsLeetCode(053) Maximum SubarrayLeetCode(152) Maximum Product Subarray">
 <meta property="og:locale" content="zh-Hansf">
-<meta property="og:updated_time" content="2019-02-28T08:28:06.620Z">
+<meta property="og:updated_time" content="2019-02-28T08:45:47.473Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Dynamic Programming 4">
-<meta name="twitter:description" content="Keys Keyboard 2 注意时间复杂度优化方面。 Perfect Squares 不可以用贪心。 Maximum Subarray 注意maxx初始值问题。dp[i]表示以i结尾的最大和，不能返回dp[n-1]。时间复杂度可以优化为O(logn)。 Maximum Product Subarray  Is Subsequence 判断s是否为t的子序列,t的长度可能非常大(500000">
+<meta name="twitter:description" content="LeetCode(650) 2 Keys KeyboardLeetCode(279) Perfect SquaresLeetCode(392) Is SubsequenceLeetCode(357) Count Numbers With Unique DigitsLeetCode(053) Maximum SubarrayLeetCode(152) Maximum Product Subarray">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -305,7 +305,9 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p><excerpt in="" index="" |="" 首页摘要=""></excerpt></p>
+        <p><excerpt in="" index="" |="" 首页摘要=""><br><a href="https://leetcode.com/problems/2-keys-keyboard/" target="_blank" rel="noopener">LeetCode(650) 2 Keys Keyboard</a><br><a href="https://leetcode.com/problems/perfect-squares/" target="_blank" rel="noopener">LeetCode(279) Perfect Squares</a><br><a href="https://leetcode.com/problems/is-subsequence/" target="_blank" rel="noopener">LeetCode(392) Is Subsequence</a><br><a href="https://leetcode.com/problems/count-numbers-with-unique-digits/" target="_blank" rel="noopener">LeetCode(357) Count Numbers With Unique Digits</a><br><a href="https://leetcode.com/problems/maximum-subarray/" target="_blank" rel="noopener">LeetCode(053) Maximum Subarray</a><br><a href="https://leetcode.com/problems/maximum-product-subarray/" target="_blank" rel="noopener">LeetCode(152) Maximum Product Subarray</a><br><a id="more"></a></excerpt></p>
+<the rest="" of="" contents="" |="" 余下全文="">
+
 <ul>
 <li><strong>Keys Keyboard 2</strong> 注意时间复杂度优化方面。</li>
 <li><strong>Perfect Squares</strong> 不可以用贪心。</li>
@@ -316,10 +318,6 @@
 <li><strong>Maximum Subarray</strong> 数组的最大连续和。注意maxx初始值问题。dp[i]表示<strong>以i结尾</strong>的最大和，不能返回dp[n-1]。时间复杂度可以优化为O(logn)。</li>
 <li><strong>Maximum Product Subarray</strong> 数组的最大连续乘积。</li>
 </ul>
-<p><a href="https://leetcode.com/problems/2-keys-keyboard/" target="_blank" rel="noopener">LeetCode(650) 2 Keys Keyboard</a><br><a href="https://leetcode.com/problems/perfect-squares/" target="_blank" rel="noopener">LeetCode(279) Perfect Squares</a><br><a href="https://leetcode.com/problems/is-subsequence/" target="_blank" rel="noopener">LeetCode(392) Is Subsequence</a><br><a href="https://leetcode.com/problems/count-numbers-with-unique-digits/" target="_blank" rel="noopener">LeetCode(357) Count Numbers With Unique Digits</a><br><a href="https://leetcode.com/problems/maximum-subarray/" target="_blank" rel="noopener">LeetCode(053) Maximum Subarray</a><br><a href="https://leetcode.com/problems/maximum-product-subarray/" target="_blank" rel="noopener">LeetCode(152) Maximum Product Subarray</a></p>
-<a id="more"></a>
-<the rest="" of="" contents="" |="" 余下全文="">
-
 <h2 id="LeetCode-650-2-Keys-Keyboard"><a href="#LeetCode-650-2-Keys-Keyboard" class="headerlink" title="LeetCode(650) 2 Keys Keyboard"></a>LeetCode(650) 2 Keys Keyboard</h2><p><strong><font color="#0049a9" size="5">题目</font></strong><br>最开始有1个A，每次可以copy现有的字符串，或者paste上次copy的内容，问得到n个A最少需要几步。</p>
 <p><strong><font color="#0049a9" size="5">思路</font></strong><br>用dp[i]表示得到i个A最少需要几步。</p>
 <ol>
