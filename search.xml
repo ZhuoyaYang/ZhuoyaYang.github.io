@@ -18,27 +18,6 @@
     </entry>
     
     <entry>
-      <title>关于眼底图像分析的相关研究</title>
-      <link href="/2018/10/29/retinal-image/"/>
-      <url>/2018/10/29/retinal-image/</url>
-      <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br>查到的一些2010年至今，眼底图像的相关研究。<br><a id="more"></a></excerpt></p><the rest="" of="" contents="" |="" 余下全文=""><h2 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h2><ul><li>DRIVE Dataset<br><a href="http://www.isi.uu.nl/Research/Databases/DRIVE/index.php" target="_blank" rel="noopener">drive官网</a><br>40张。test20，train20。其中，test提供了2种专家手动分割的效果图，如下：<br><img src="/2018/10/29/retinal-image/2.png" alt=""></li><li>MESSIDOR Dataset<br><a href="http://www.adcis.net/en/Download-Third-Party/Messidor.html" target="_blank" rel="noopener">messidor官网</a><br>1200张。annotation包括视网膜病变等级、黄斑水肿风险2个特征。<br><img src="/2018/10/29/retinal-image/3.png" alt=""><br>其他的datasets，查到的有STARE Dataset、ORIGA Dataset、DIARETDB0 Dataset、DIARETDB1 Dataset<br><a href="https://www.hindawi.com/journals/joph/2015/180972/" target="_blank" rel="noopener">参考文献</a></li></ul><h2 id="专业名词"><a href="#专业名词" class="headerlink" title="专业名词"></a>专业名词</h2><p><img src="/2018/10/29/retinal-image/1.png" alt=""></p><ul><li>Microaneurysms 微血管瘤</li><li>Hemorrhages 出血斑点</li><li>Exudats 渗液</li><li>Arterioles 动脉</li><li>Venules 静脉<br>参考博客：<a href="https://blog.csdn.net/u011797832/article/details/82988880" target="_blank" rel="noopener">Early Retainal Tissue Damage Detection using Machine Learning</a></li></ul><p><font size="5"><strong>Ultra Wide Field 广角影像相关：</strong></font></p><h2 id="Improving-vessel-segmentation-in-ultra-wide-field-of-view-retinal-fluorescein-angiograms"><a href="#Improving-vessel-segmentation-in-ultra-wide-field-of-view-retinal-fluorescein-angiograms" class="headerlink" title="Improving vessel segmentation in ultra-wide field-of-view retinal fluorescein angiograms"></a>Improving vessel segmentation in ultra-wide field-of-view retinal fluorescein angiograms</h2><ul><li>IEEE EMBC / 2011.09 </li><li>荧光造影的广角影像中血管的分割<br>超广角影像会造成<code>血管变形</code>，提出一种基于steerable滤波 + automatic thresholding 的血管分割方法。<br>先用steerable滤波对图像，然后对过响应的地方设置惩罚参数，然后绘制threshold-region大小的曲线，选择适合的阈值，使血管刚好被分割。<br><img src="/2018/10/29/retinal-image/4.png" alt=""></li></ul><h2 id="Contextual-detection-of-diabetic-pathology-in-wide-field-retinal-angiograms"><a href="#Contextual-detection-of-diabetic-pathology-in-wide-field-retinal-angiograms" class="headerlink" title="Contextual detection of diabetic pathology in wide-field retinal angiograms"></a>Contextual detection of diabetic pathology in wide-field retinal angiograms</h2><ul><li>IEEE EMBS / 2008.02</li><li>定位广角影像的血管造影中的滲漏、缺血。</li></ul><h2 id="Joint-Optic-Disc-and-Cup-Segmentation-Based-on-Multi-label-Deep-Network-and-Polar-Transformation"><a href="#Joint-Optic-Disc-and-Cup-Segmentation-Based-on-Multi-label-Deep-Network-and-Polar-Transformation" class="headerlink" title="Joint Optic Disc and Cup Segmentation Based on Multi-label Deep Network and Polar Transformation"></a>Joint Optic Disc and Cup Segmentation Based on Multi-label Deep Network and Polar Transformation</h2><ul><li>IEEE TMI / 2018</li><li>视盘与视杯分割<br>引入了极坐标，对U-net进行改进（增加多尺度输入、多标签输出），以青光眼的筛查为背景，对视盘（OD）和视杯（OC）进行准确分割。<br><a href="http://www.nimte.cas.cn/news/progress/201801/t20180109_4930748.html" target="_blank" rel="noopener">参考文献</a></li></ul><h2 id="Fast-Localization-and-Segmentation-of-Optic-Disk-in-Retinal-Images-Using-Directional-Matched-Filtering-and-Level-Sets"><a href="#Fast-Localization-and-Segmentation-of-Optic-Disk-in-Retinal-Images-Using-Directional-Matched-Filtering-and-Level-Sets" class="headerlink" title="Fast Localization and Segmentation of Optic Disk in Retinal Images Using Directional Matched Filtering and Level Sets"></a>Fast Localization and Segmentation of Optic Disk in Retinal Images Using Directional Matched Filtering and Level Sets</h2><ul><li>IEEE ITB / 2012.07</li><li>普通眼底影像中的视盘定位于分割<br>首先用template matching(模版匹配)确定几个候选OD，然后利用血管特征确定OD。通过检测到的OD中心、预估的OD半径、梯度信息进行视盘分割。使用Morphological filtering(形态学滤波)去除影响分割的毛细血管及OD外的明亮部分。</li></ul></the>]]></content>
-      
-      <categories>
-          
-          <category> 学习心得 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> retinal image </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
       <title>Dynamic Programming 6</title>
       <link href="/2018/10/15/dp1015-6/"/>
       <url>/2018/10/15/dp1015-6/</url>
