@@ -3,6 +3,21 @@
   
     
     <entry>
+      <title>Assignment-1 Softmax的实现</title>
+      <link href="/2019/03/22/softmax-bp/"/>
+      <url>/2019/03/22/softmax-bp/</url>
+      <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br>前向传播计算softmax的损失、反向传播更新参数。详情请看<a href="http://cs231n.github.io/assignments2018/assignment1/" target="_blank" rel="noopener">作业要求</a><br><a id="more"></a></excerpt></p><p><the rest="" of="" contents="" |="" 余下全文=""><br>发现网上的答案都很简单，关于W的梯度没有详细推导。所以把我推的搬上来。</the></p><h1 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h1><h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><ul><li>W: A numpy array of shape (D, C) containing weights.</li><li>X: A numpy array of shape (N, D) containing a minibatch of data.</li><li>y: A numpy array of shape (N,) containing training labels; y[i] = c means that X[i] has label c, where 0 &lt;= c &lt; C.</li><li>reg: (float) regularization strength<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2></li><li>loss, dW</li></ul><h1 id="前向传播计算loss"><a href="#前向传播计算loss" class="headerlink" title="前向传播计算loss"></a>前向传播计算loss</h1><ul><li>softmax层的输入为<strong>X</strong>，维度为<strong>（N，D）</strong>。表示输入<strong>batchsize=N</strong>个样本，每个样本有D维特征。<ul><li>$X_{i}$表示一个样本的D维特征</li></ul></li><li>weights为<strong>W</strong>，维度为<strong>（D，C）</strong>，<ul><li>$W_{j}$表示某个样本的D维特征，分别对类别$j$的贡献程度</li></ul></li></ul><h2 id="with-loops"><a href="#with-loops" class="headerlink" title="with loops"></a>with loops</h2><p>不能用矩阵乘法对N个样本一起计算，要一个一个算得分。即$X_{i} * W$，得到$X_{i}$大小为（1,C）的得分向量，记为$S$。该样本的loss为$L_{i} = -log(\frac{e^{S_{y_{i}}}}{sum_{j=1}^C e^{S_{j}}})$<br>这里插一个题外话，关于得分的理解，可以这样看，因为<br> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> </span><br></pre></td></tr></table></figure></p><h2 id="vectorized-version"><a href="#vectorized-version" class="headerlink" title="vectorized version"></a>vectorized version</h2>]]></content>
+      
+      
+        <tags>
+            
+            <tag> 基础知识 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>Dynamic Programming 6</title>
       <link href="/2018/10/15/dp1015-6/"/>
       <url>/2018/10/15/dp1015-6/</url>
@@ -60,21 +75,6 @@
         <tags>
             
             <tag> Dynamic Programming </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
-      <title>Assignment-1 Softmax的实现</title>
-      <link href="/2018/10/09/softmax-bp/"/>
-      <url>/2018/10/09/softmax-bp/</url>
-      <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br>前向传播计算softmax的损失、反向传播更新参数。详情请看<a href="http://cs231n.github.io/assignments2018/assignment1/" target="_blank" rel="noopener">作业要求</a><br><a id="more"></a></excerpt></p><p><the rest="" of="" contents="" |="" 余下全文=""><br>发现网上的答案都很简单，关于W的梯度没有详细推导。所以把我推的搬上来。</the></p><h1 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h1><h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><ul><li>W: A numpy array of shape (D, C) containing weights.</li><li>X: A numpy array of shape (N, D) containing a minibatch of data.</li><li>y: A numpy array of shape (N,) containing training labels; y[i] = c means that X[i] has label c, where 0 &lt;= c &lt; C.</li><li>reg: (float) regularization strength<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2></li><li>loss, dW</li></ul><h1 id="前向传播计算loss"><a href="#前向传播计算loss" class="headerlink" title="前向传播计算loss"></a>前向传播计算loss</h1><ul><li>softmax层的输入为<strong>X</strong>，维度为<strong>（N，D）</strong>。表示输入<strong>batchsize=N</strong>个样本，每个样本有D维特征。<ul><li>$X_{i}$表示一个样本的D维特征</li></ul></li><li>weights为<strong>W</strong>，维度为<strong>（D，C）</strong>，<ul><li>$W_{j}$表示某个样本的D维特征，分别对类别$j$的贡献程度</li></ul></li></ul><h2 id="with-loops"><a href="#with-loops" class="headerlink" title="with loops"></a>with loops</h2><p>不能用矩阵乘法对N个样本一起计算，要一个一个算得分。即$X_{i} * W$，得到$X_{i}$大小为（1,C）的得分向量，记为$S$。该样本的loss为$L_{i} = -log(\frac{e^{S_{y_{i}}}}{sum_{j=1}^C e^{S_{j}}})$<br>这里插一个题外话，关于得分的理解，可以这样看，因为<br> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> </span><br></pre></td></tr></table></figure></p><h2 id="vectorized-version"><a href="#vectorized-version" class="headerlink" title="vectorized version"></a>vectorized version</h2>]]></content>
-      
-      
-        <tags>
-            
-            <tag> 基础知识 </tag>
             
         </tags>
       
