@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="Blog of ZhuoyaYang">
 <meta property="og:description" content="前向传播计算softmax的损失、反向传播更新参数。详情请看作业要求。发现网上的答案都很简单，关于W的梯度没有详细推导。所以把我推的顺手搬上来。">
 <meta property="og:locale" content="zh-Hansf">
-<meta property="og:updated_time" content="2019-03-23T12:28:22.294Z">
+<meta property="og:updated_time" content="2019-03-23T12:34:44.288Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Assignment-1 Softmax的实现">
 <meta name="twitter:description" content="前向传播计算softmax的损失、反向传播更新参数。详情请看作业要求。发现网上的答案都很简单，关于W的梯度没有详细推导。所以把我推的顺手搬上来。">
@@ -327,7 +327,7 @@
 <h4 id="Loss-i"><a href="#Loss-i" class="headerlink" title="$Loss_{i}$"></a><font size="5"><strong>$Loss_{i}$</strong></font></h4><p>$X_{i} W$，得到$X_{i}$大小为（1,C）的得分向量，记为$S$。<br>$X_{i} W_{j}$，得到$X_{i}$对于类别$j$的得分，记为$S_{j}$</p>
 <p><font size="4">样本$i$的loss为:</font> $L_{i} = -log(\frac{e^{S_{y_{i}}}}{\sum_{j=1}^C e^{S_{j}}}) = -S_{y_{i}}+log(\sum_{j=1}^C e^{S_{j}}) = -X_{i}W_{y_{i}}+log(\sum_{j=1}^C e^{X_{i}W_{j}}) $</p>
 <p><font size="4">加上l2正则化约束后：</font> $Loss = \sum_{i}^N L_{i} + \frac{reg}{2}{||W||_{2}}^2$</p>
-<h4 id="frac-partial-L-i-partial-W-j"><a href="#frac-partial-L-i-partial-W-j" class="headerlink" title="$\frac{\partial L_{i}}{\partial W_{j}}$"></a><font size="5"><strong>$\frac{\partial L_{i}}{\partial W_{j}}$</strong></font></h4><p>当$j = y_{i}$，$\frac{\partial L_{i}}{\partial W_{j}} = -X_{i} + \frac{X_{i}e^{X_{i}W_{j}}}{\sum_{k=1}^C e^{X_{i}W_{k}}}$<br>当$j \ne y_{i}$，$\frac{\partial L_{i}}{\partial W_{j}} = \frac{X_{i}e^{X_{i}W_{j}}}{\sum_{k=1}^C e^{X_{i}W_{k}}}$</p>
+<h4 id="frac-partial-L-i-partial-W-j"><a href="#frac-partial-L-i-partial-W-j" class="headerlink" title="$\frac{\partial L_{i}}{\partial W_{j}}$"></a><font size="5.5"><strong>$\frac{\partial L_{i}}{\partial W_{j}}$</strong></font></h4><p>当$j = y_{i}$，$\frac{\partial L_{i}}{\partial W_{j}} = -X_{i} + \frac{X_{i}e^{X_{i}W_{j}}}{\sum_{k=1}^C e^{X_{i}W_{k}}}$<br>当$j \ne y_{i}$，$\frac{\partial L_{i}}{\partial W_{j}} = \frac{X_{i}e^{X_{i}W_{j}}}{\sum_{k=1}^C e^{X_{i}W_{k}}}$</p>
 <p>我们知道第$i$个样本softmax之后$j$类的概率：$Softmax_{i,j} = \frac{e^{X_{i}W_{j}}}{\sum_{k=1}^C e^{X_{i}W_{k}}}$<br>所以$\frac{\partial L_{i}}{\partial W_{j}}$可以简化为：</p>
 <div style="padding-left:35px">当$j = y_{i}$，$\frac{\partial L_{i}}{\partial W_{j}} = X_{i}Softmax_{j} - X_{i} = X_{i}(Softmax_{j}-1)$<br>当$j \ne y_{i}$，$\frac{\partial L_{i}}{\partial W_{j}} = X_{i}Softmax_{j}$</div>
 
