@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="Blog of ZhuoyaYang">
 <meta property="og:description" content="前向传播计算softmax的损失、反向传播更新参数。详情请看作业要求。发现网上的答案都很简单，关于W的梯度没有详细推导。所以把我推的顺手搬上来。">
 <meta property="og:locale" content="zh-Hansf">
-<meta property="og:updated_time" content="2019-03-23T12:24:15.168Z">
+<meta property="og:updated_time" content="2019-03-23T12:24:52.415Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Assignment-1 Softmax的实现">
 <meta name="twitter:description" content="前向传播计算softmax的损失、反向传播更新参数。详情请看作业要求。发现网上的答案都很简单，关于W的梯度没有详细推导。所以把我推的顺手搬上来。">
@@ -304,7 +304,7 @@
         <p><excerpt in="" index="" |="" 首页摘要=""><br>前向传播计算softmax的损失、反向传播更新参数。详情请看<a href="http://cs231n.github.io/assignments2018/assignment1/" target="_blank" rel="noopener">作业要求</a>。<br>发现网上的答案都很简单，关于W的梯度没有详细推导。所以把我推的顺手搬上来。<br><a id="more"></a></excerpt></p>
 <the rest="" of="" contents="" |="" 余下全文="">
 
-<h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><div style="padding-left:35px"><br><ul><br><li>W: A numpy array of shape (D, C) containing weights.</li><br><li>X: A numpy array of shape (N, D) containing a minibatch of data.</li><br><li>y: A numpy array of shape (N,) containing training labels; y[i] = c means that X[i] has label c, where 0 &lt;= c &lt; C.</li><br><li>reg: (float) regularization strength</li><br></ul><br></div><br>### Output<br><div style="padding-left:35px"><br>- loss, dW<br></div>
+<h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><div style="padding-left:35px"><br><ul><br><li>W: A numpy array of shape (D, C) containing weights.</li><br><li>X: A numpy array of shape (N, D) containing a minibatch of data.</li><br><li>y: A numpy array of shape (N,) containing training labels; y[i] = c means that X[i] has label c, where 0 &lt;= c &lt; C.</li><br><li>reg: (float) regularization strength</li><br></ul><br></div><br>### Output<br><div style="padding-left:35px"><br><li>loss, dW</li><br></div>
 
 <h2 id="前向传播计算loss-dW"><a href="#前向传播计算loss-dW" class="headerlink" title="前向传播计算loss,dW"></a>前向传播计算loss,dW</h2><ul>
 <li>softmax层的输入为<strong>X</strong>，维度为<strong>（N，D）</strong>。表示输入<strong>batchsize=N</strong>个样本，每个样本有D维特征。<ul>
