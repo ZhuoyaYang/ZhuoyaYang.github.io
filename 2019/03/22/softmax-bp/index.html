@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/plante.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/plante.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="基础知识," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前向传播计算softmax的损失、反向传播更新参数。详情请看作业要求。发现网上的答案都很简单，关于W的梯度没有详细推导。所以把我推的顺手搬上来。">
+<meta name="keywords" content="基础知识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Assignment-1 Softmax的实现">
+<meta property="og:url" content="http://yoursite.com/2019/03/22/softmax-bp/index.html">
+<meta property="og:site_name" content="Zhuoya的星球">
+<meta property="og:description" content="前向传播计算softmax的损失、反向传播更新参数。详情请看作业要求。发现网上的答案都很简单，关于W的梯度没有详细推导。所以把我推的顺手搬上来。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-03-24T04:15:02.005Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Assignment-1 Softmax的实现">
+<meta name="twitter:description" content="前向传播计算softmax的损失、反向传播更新参数。详情请看作业要求。发现网上的答案都很简单，关于W的梯度没有详细推导。所以把我推的顺手搬上来。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/22/softmax-bp/"/>
+
+
+
+
+
+  <title>Assignment-1 Softmax的实现 | Zhuoya的星球</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Zhuoya的星球</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">人生在勤，不索何获</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/22/softmax-bp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yang Zhuoya">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/14.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhuoya的星球">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Assignment-1 Softmax的实现</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-22T17:25:35+08:00">
+                2019-03-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><excerpt in="" index="" |="" 首页摘要=""><br>前向传播计算softmax的损失、反向传播更新参数。详情请看<a href="http://cs231n.github.io/assignments2018/assignment1/" target="_blank" rel="noopener">作业要求</a>。<br>发现网上的答案都很简单，关于W的梯度没有详细推导。所以把我推的顺手搬上来。<br><a id="more"></a></excerpt></p>
+<the rest="" of="" contents="" |="" 余下全文="">
+
+<h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><ul>
+<li>W: A numpy array of shape (D, C) containing weights.</li>
+<li>X: A numpy array of shape (N, D) containing a minibatch of data.</li>
+<li>y: A numpy array of shape (N,) containing training labels; y[i] = c means that X[i] has label c, where 0 &lt;= c &lt; C.</li>
+<li>reg: (float) regularization strength</li>
+</ul>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><ul>
+<li>loss, dW</li>
+</ul>
+<h2 id="前向传播计算loss-dW"><a href="#前向传播计算loss-dW" class="headerlink" title="前向传播计算loss,dW"></a>前向传播计算loss,dW</h2><ul>
+<li>softmax层的输入为<strong>X</strong>，维度为<strong>（N，D）</strong>。表示输入<strong>batchsize=N</strong>个样本，每个样本有D维特征。<ul>
+<li>$X_{i}$表示一个样本的D维特征</li>
+</ul>
+</li>
+<li>weights为<strong>W</strong>，维度为<strong>（D，C）</strong>。<ul>
+<li>$W_{j}$表示某个样本的D维特征，分别对类别$j$的贡献程度</li>
+</ul>
+</li>
+</ul>
+<h3 id="with-loops"><a href="#with-loops" class="headerlink" title="with loops"></a><font size="5">with loops</font></h3><p>要求使用循环，逐个样本计算损失$L_{i}$，逐个样本逐个类别计算梯度$\partial W_{j}$。</p>
+<h4 id="Loss的计算"><a href="#Loss的计算" class="headerlink" title="Loss的计算"></a><font size="5"><strong>Loss的计算</strong></font></h4><p>$X_{i} W$，得到$X_{i}$大小为（1,C）的得分向量，记为$S$。<br>$X_{i} W_{j}$，得到$X_{i}$对于类别$j$的得分，记为$S_{j}$</p>
+<p><font size="4">样本$i$的loss为:</font> $L_{i} = -log(\frac{e^{S_{y_{i}}}}{\sum_{j=1}^C e^{S_{j}}}) = -S_{y_{i}}+log(\sum_{j=1}^C e^{S_{j}}) = -X_{i}W_{y_{i}}+log(\sum_{j=1}^C e^{X_{i}W_{j}}) $</p>
+<p><font size="4">加上l2正则化约束后：</font> $Loss = \sum_{i}^N L_{i} + \frac{reg}{2}{||W||_{2}}^2$</p>
+<h4 id="frac-partial-L-i-partial-W-j-的计算"><a href="#frac-partial-L-i-partial-W-j-的计算" class="headerlink" title="$\frac{\partial L_{i}}{\partial W_{j}}$的计算"></a><font size="5.5"><strong>$\frac{\partial L_{i}}{\partial W_{j}}$的计算</strong></font></h4><p>当$j = y_{i}$，$\frac{\partial L_{i}}{\partial W_{j}} = -X_{i} + \frac{X_{i}e^{X_{i}W_{j}}}{\sum_{k=1}^C e^{X_{i}W_{k}}}$<br>当$j \ne y_{i}$，$\frac{\partial L_{i}}{\partial W_{j}} = \frac{X_{i}e^{X_{i}W_{j}}}{\sum_{k=1}^C e^{X_{i}W_{k}}}$</p>
+<p>我们知道第$i$个样本softmax之后$j$类的概率：$Softmax_{i,j} = \frac{e^{X_{i}W_{j}}}{\sum_{k=1}^C e^{X_{i}W_{k}}}$<br>所以$\frac{\partial L_{i}}{\partial W_{j}}$可以简化为：</p>
+<div style="padding-left:35px">当$j = y_{i}$，$\frac{\partial L_{i}}{\partial W_{j}} = X_{i}Softmax_{j} - X_{i} = X_{i}(Softmax_{j}-1)$<br>当$j \ne y_{i}$，$\frac{\partial L_{i}}{\partial W_{j}} = X_{i}Softmax_{j}$</div>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">N = X.shape[<span class="number">0</span>]</span><br><span class="line">C = W.shape[<span class="number">1</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(N):</span><br><span class="line">score = X[i].dot(W)     <span class="comment"># (1,D) dot (D,C) = (1,C) 即公式中的S向量</span></span><br><span class="line"><span class="comment"># score -= np.max(score)</span></span><br><span class="line">exp_y = np.exp(score[y[i]])</span><br><span class="line">exp_C = np.sum(np.exp(score))</span><br><span class="line">softmax_y = exp_y/exp_C      <span class="comment"># 类别y的概率 exp_y=0 exp_C=1 log(0) nan</span></span><br><span class="line"><span class="comment"># loss += -np.log(softmax_y)     # 最大化真实标签y的概率-&gt;最大化概率对数-&gt;最小化负的概率对数</span></span><br><span class="line">loss_i = -score[y[i]]+np.log(exp_C)</span><br><span class="line">loss += loss_i</span><br><span class="line"><span class="keyword">for</span> j <span class="keyword">in</span> range(C):</span><br><span class="line">  <span class="keyword">if</span> j == y[i]:</span><br><span class="line">    dW[:,j] += X[i]*(softmax_y<span class="number">-1</span>)</span><br><span class="line">  <span class="keyword">else</span>:</span><br><span class="line">    exp_j = np.exp(score[j])</span><br><span class="line">    softmax_j = exp_j / exp_C      <span class="comment"># 类别j的概率 (1,1)</span></span><br><span class="line">    dW[:,j] += X[i]*softmax_j      <span class="comment"># (1,D)*(1,1)</span></span><br><span class="line">loss /= N</span><br><span class="line">loss += <span class="number">0.5</span>*reg*np.sum(W*W)</span><br><span class="line">dW = dW/N + reg*W</span><br></pre></td></tr></table></figure>
+<h3 id="vectorized-version"><a href="#vectorized-version" class="headerlink" title="vectorized version"></a><font size="5">vectorized version</font></h3><p>同理<strong>with loops</strong>，只是找到规律后，可以不用循环得到结果。<br>$Loss$很简单，不说了。<br>  <div style="padding-left:35px">当$j = y_{i}$ , $\frac{\partial Loss}{\partial W} =  X’\left[Softmax-1\right]$<br>  当$j \ne y_{i}$ , $\frac{\partial Loss}{\partial W} =  X’Softmax$</div></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">N = X.shape[<span class="number">0</span>]</span><br><span class="line">score = X.dot(W)     <span class="comment"># (N,C)维得分矩阵</span></span><br><span class="line">score_y = score[range(N),y].reshape(<span class="number">-1</span>,<span class="number">1</span>)     <span class="comment"># (N,1)维</span></span><br><span class="line">exp_C = np.sum(np.exp(score),axis=<span class="number">1</span>).reshape(<span class="number">-1</span>,<span class="number">1</span>)    <span class="comment"># (N,1)维</span></span><br><span class="line">loss = np.sum(-score_y + np.log(exp_C))</span><br><span class="line">loss = loss/N+<span class="number">0.5</span>*reg*np.sum(W*W)</span><br><span class="line"></span><br><span class="line">softmax_NC = np.exp(score) / exp_C    <span class="comment"># (N,C)维</span></span><br><span class="line">softmax_NC[range(N),y] -= <span class="number">1</span></span><br><span class="line">dW = (X.T).dot(softmax_NC)            <span class="comment"># (D,N)*(N,C)</span></span><br><span class="line">dW = dW/N+reg*W</span><br></pre></td></tr></table></figure>
+</the>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/基础知识/" rel="tag"># 基础知识</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/15/dp1015-6/" rel="next" title="Dynamic Programming 6">
+                <i class="fa fa-chevron-left"></i> Dynamic Programming 6
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/14.jpg"
+                alt="Yang Zhuoya" />
+            
+              <p class="site-author-name" itemprop="name">Yang Zhuoya</p>
+              <p class="site-description motion-element" itemprop="description">我们走在浪潮之巅，我们可以投身其中，我们可以改变世界。我因此永远激动，彻夜不眠。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#参数"><span class="nav-number">1.</span> <span class="nav-text">参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Input"><span class="nav-number">1.1.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output"><span class="nav-number">1.2.</span> <span class="nav-text">Output</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前向传播计算loss-dW"><span class="nav-number">2.</span> <span class="nav-text">前向传播计算loss,dW</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#with-loops"><span class="nav-number">2.1.</span> <span class="nav-text">with loops</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Loss的计算"><span class="nav-number">2.1.1.</span> <span class="nav-text">Loss的计算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#frac-partial-L-i-partial-W-j-的计算"><span class="nav-number">2.1.2.</span> <span class="nav-text">$\frac{\partial L_{i}}{\partial W_{j}}$的计算</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vectorized-version"><span class="nav-number">2.2.</span> <span class="nav-text">vectorized version</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="heart">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yang Zhuoya</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.staticfile.org/MathJax/MathJax-2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

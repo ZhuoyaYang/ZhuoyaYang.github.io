@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/plante.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/plante.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Mosaic拼图," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="用之前在百度中爬取的图片，制作蒙太奇效果的马赛克拼图。首先，对搜集到的图片进行识别与筛选，去除不相关的图片。再用选出的图片在AndreaMosaic软件下组成模板图。">
+<meta name="keywords" content="Mosaic拼图">
+<meta property="og:type" content="article">
+<meta property="og:title" content="制作蒙太奇效果的马赛克拼图">
+<meta property="og:url" content="http://yoursite.com/2018/07/26/Mosaic/index.html">
+<meta property="og:site_name" content="Zhuoya的星球">
+<meta property="og:description" content="用之前在百度中爬取的图片，制作蒙太奇效果的马赛克拼图。首先，对搜集到的图片进行识别与筛选，去除不相关的图片。再用选出的图片在AndreaMosaic软件下组成模板图。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2018/07/26/Mosaic/1.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/07/26/Mosaic/2.png">
+<meta property="og:image" content="http://yoursite.com/2018/07/26/Mosaic/3.png">
+<meta property="og:image" content="http://yoursite.com/2018/07/26/Mosaic/4.png">
+<meta property="og:image" content="http://yoursite.com/2018/07/26/Mosaic/5.png">
+<meta property="og:image" content="http://yoursite.com/2018/07/26/Mosaic/6.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/07/26/Mosaic/7.jpg">
+<meta property="og:updated_time" content="2018-10-08T02:03:19.040Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="制作蒙太奇效果的马赛克拼图">
+<meta name="twitter:description" content="用之前在百度中爬取的图片，制作蒙太奇效果的马赛克拼图。首先，对搜集到的图片进行识别与筛选，去除不相关的图片。再用选出的图片在AndreaMosaic软件下组成模板图。">
+<meta name="twitter:image" content="http://yoursite.com/2018/07/26/Mosaic/1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/07/26/Mosaic/"/>
+
+
+
+
+
+  <title>制作蒙太奇效果的马赛克拼图 | Zhuoya的星球</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Zhuoya的星球</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">人生在勤，不索何获</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/26/Mosaic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yang Zhuoya">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/14.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhuoya的星球">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">制作蒙太奇效果的马赛克拼图</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-26T11:38:33+08:00">
+                2018-07-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习心得/" itemprop="url" rel="index">
+                    <span itemprop="name">学习心得</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><excerpt in="" index="" |="" 首页摘要=""><br>用之前在百度中爬取的图片，制作蒙太奇效果的<font size="3" color="#483D8B"><strong>马赛克拼图</strong></font>。首先，对搜集到的图片进行识别与筛选，去除不相关的图片。再用选出的图片在<code>AndreaMosaic</code>软件下组成模板图。<br><a id="more"></a></excerpt></p>
+<the rest="" of="" contents="" |="" 余下全文="">
+
+<p>之前爬取了1500张林俊杰的图片，制作了如下图所示的蒙太奇效果的马赛克拼图。将原图放大，可以看到每一张小图，都是林俊杰的图片。  </p>
+<p><img src="/2018/07/26/Mosaic/1.jpg" alt="">  </p>
+<p>是不是很有意思呢~ 完成这样一张图片需要进行三个步骤。</p>
+<h2 id="通过爬虫获取图片"><a href="#通过爬虫获取图片" class="headerlink" title="通过爬虫获取图片"></a>通过爬虫获取图片</h2><p>之前从百度图片的林俊杰关键词下爬取了1500张，可以参考之前的博客——<a href="http://yangzhuoya.top/2018/07/24/Baidu-Picture-Crawler/" target="_blank" rel="noopener">爬取百度图片</a></p>
+<h2 id="通过人脸识别筛选图片"><a href="#通过人脸识别筛选图片" class="headerlink" title="通过人脸识别筛选图片"></a>通过人脸识别筛选图片</h2><p>这里用到了第三方库<strong>face_recognition</strong>。其中的函数可以定位人脸，提取面部特征，并进行匹配。<br>通过如下代码，对<strong>MyPictures</strong>文件夹中的1500张图片进行遍历。将检测到林俊杰面部特征的图片放在 <strong>JJLin</strong> 文件夹下，将不相关的图片放在 <strong>Not_JJLin</strong> 文件夹下。   </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding:utf-8</span></span><br><span class="line"><span class="keyword">import</span> face_recognition</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> shutil</span><br><span class="line"></span><br><span class="line"><span class="comment"># 存放匹配到的，含有JJ的图片</span></span><br><span class="line"><span class="keyword">if</span> os.path.exists(<span class="string">"JJLin"</span>) <span class="keyword">is</span> <span class="keyword">False</span>:</span><br><span class="line">    os.mkdir(<span class="string">"JJLin"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 存放不含有JJ的图片</span></span><br><span class="line"><span class="keyword">if</span> os.path.exists(<span class="string">"Not_JJLin"</span>) <span class="keyword">is</span> <span class="keyword">False</span>:</span><br><span class="line">    os.mkdir(<span class="string">"Not_JJLin"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取JJ图片作为匹配的模板</span></span><br><span class="line">img = face_recognition.load_image_file(<span class="string">"./MyPictures/JJLin781.jpg"</span>)</span><br><span class="line"><span class="comment"># 人脸位置</span></span><br><span class="line">JJ_locs = face_recognition.face_locations(img)</span><br><span class="line"><span class="comment"># 人脸特征</span></span><br><span class="line">JJ_encs = face_recognition.face_encodings(img, JJ_locs)[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 遍历1500张图片</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">1501</span>):</span><br><span class="line">    path = os.path.join(<span class="string">"MyPictures"</span>,<span class="string">"JJLin"</span>+str(i)+<span class="string">".jpg"</span>)</span><br><span class="line">    img = face_recognition.load_image_file(path)</span><br><span class="line">    <span class="comment"># 提取第i张图片包含的人脸及特征</span></span><br><span class="line">    unknown_locs = face_recognition.face_locations(img)</span><br><span class="line">    unknown_encs = face_recognition.face_encodings(img, unknown_locs)</span><br><span class="line">    <span class="comment"># 遍历第i张图片包含的所有人脸</span></span><br><span class="line">    flag = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> e <span class="keyword">in</span> unknown_encs:</span><br><span class="line">        match = face_recognition.compare_faces([JJ_encs], e)</span><br><span class="line">        <span class="keyword">if</span> match[<span class="number">0</span>]:</span><br><span class="line">            flag = <span class="number">1</span></span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">if</span> flag == <span class="number">1</span>:</span><br><span class="line">        shutil.copy(path, <span class="string">"./JJLin"</span>)</span><br><span class="line">        print(str(i)+<span class="string">"   Yes"</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        shutil.copy(path, <span class="string">"./Not_JJLin"</span>)</span><br><span class="line">        print(str(i)+<span class="string">"   No"</span>)</span><br><span class="line">print(<span class="string">"Done”)</span></span><br></pre></td></tr></table></figure>
+<p><font size="4">  <strong>JJLin文件夹下的部分图片：</strong></font><br><img src="/2018/07/26/Mosaic/2.png" alt=""></p>
+<p><font size="4">  <strong>Not_JJLin文件夹下的部分图片：</strong></font><br><img src="/2018/07/26/Mosaic/3.png" alt=""></p>
+<p>大部分与林俊杰无关的图片被筛选了出来，但也有少数侧面照、半脸照、低像素图片被误放到了不相关文件夹。<br>如图 JJLin1438.jpg 的大图是一张面部不清楚的低像素图片。</p>
+<p>在此基础上，人工进行了二次筛选，最终获得了1000张相关图片。</p>
+<h2 id="通过AndreaMosaic制作马赛克拼图"><a href="#通过AndreaMosaic制作马赛克拼图" class="headerlink" title="通过AndreaMosaic制作马赛克拼图"></a>通过AndreaMosaic制作马赛克拼图</h2><p>制作马赛克拼图用的软件是AndreaMosaic，可以<a href="https://andreamosaic.en.uptodown.com/mac" target="_blank" rel="noopener">在官网下载</a>。</p>
+<p><img src="/2018/07/26/Mosaic/4.png" alt=""></p>
+<p>如果出现乱码，可以在<img src="/2018/07/26/Mosaic/5.png" alt="">设置语言为English</p>
+<p>然后选择一张模板图，设置分割组合参数，再选择图像库，就可以生成了。</p>
+<p>效果还是不错的。忍不住多放几张，O(∩_∩)O~</p>
+<p><img src="/2018/07/26/Mosaic/6.jpg" alt=""></p>
+<p><img src="/2018/07/26/Mosaic/7.jpg" alt=""></p>
+</the>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Mosaic拼图/" rel="tag"># Mosaic拼图</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/24/Baidu-Picture-Crawler/" rel="next" title="在特定关键词下爬取百度图片">
+                <i class="fa fa-chevron-left"></i> 在特定关键词下爬取百度图片
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/08/Algorithm/" rel="prev" title="保研机试">
+                保研机试 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/14.jpg"
+                alt="Yang Zhuoya" />
+            
+              <p class="site-author-name" itemprop="name">Yang Zhuoya</p>
+              <p class="site-description motion-element" itemprop="description">我们走在浪潮之巅，我们可以投身其中，我们可以改变世界。我因此永远激动，彻夜不眠。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#通过爬虫获取图片"><span class="nav-number">1.</span> <span class="nav-text">通过爬虫获取图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过人脸识别筛选图片"><span class="nav-number">2.</span> <span class="nav-text">通过人脸识别筛选图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过AndreaMosaic制作马赛克拼图"><span class="nav-number">3.</span> <span class="nav-text">通过AndreaMosaic制作马赛克拼图</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="heart">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yang Zhuoya</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.staticfile.org/MathJax/MathJax-2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
