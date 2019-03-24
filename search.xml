@@ -136,7 +136,7 @@
       
       <categories>
           
-          <category> 学习心得 </category>
+          <category> 项目调试 </category>
           
       </categories>
       
@@ -145,7 +145,7 @@
             
             <tag> Object Detection </tag>
             
-            <tag> TensorFlow </tag>
+            <tag> Faster R-CNN </tag>
             
         </tags>
       
@@ -159,14 +159,14 @@
       
       <categories>
           
-          <category> ACM </category>
+          <category> 保研心得 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 保研机试 </tag>
+            <tag> 机试 </tag>
             
         </tags>
       
@@ -180,7 +180,7 @@
       
       <categories>
           
-          <category> 学习心得 </category>
+          <category> 瞎鼓捣 </category>
           
       </categories>
       
@@ -201,7 +201,7 @@
       
       <categories>
           
-          <category> 学习心得 </category>
+          <category> 瞎鼓捣 </category>
           
       </categories>
       
