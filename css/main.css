@@ -1051,6 +1051,7 @@ pre .javascript .function {
 }
 .tag-cloud {
   text-align: center;
+  margin-top: 60px;
 }
 .tag-cloud a {
   display: inline-block;
@@ -1823,7 +1824,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #9a91ff;
+  background: #c620d4;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2387,7 +2388,7 @@ pre .javascript .function {
   position: absolute;
   top: 11px;
   left: 0;
-  margin-left: 4px;
+  margin-left: -6px;
   width: 10px;
   height: 10px;
   opacity: 0.5;
