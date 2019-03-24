@@ -807,6 +807,23 @@
 
 
 
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: '976c7c649676e8fa6572',
+          clientSecret: 'da5dd44a8a116c903d070a7b9310d97d46f50a68',
+          repo: 'ZhuoyaYang.github.io',
+          owner: 'ZhuoyaYang',
+          admin: ['ZhuoyaYang'],
+          id: md5(window.location.pathname),
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')
+       </script>
+
   
 
   <script type="text/javascript">
