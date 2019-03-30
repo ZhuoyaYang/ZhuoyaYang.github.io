@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="关于flow control、congestion control">
+<meta name="description" content="关于flow control、congestion control。流量控制：发送端应考虑接收端的接收速度。让发送端不要太快，接收端来得及接收。拥塞控制：发送端应考虑网络的负载量。防止过多数据注入网络，使路由器、链路过载。">
 <meta name="keywords" content="TCP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TCP相关">
 <meta property="og:url" content="http://yoursite.com/2019/03/30/TCP/index.html">
 <meta property="og:site_name" content="Zhuoya的星球">
-<meta property="og:description" content="关于flow control、congestion control">
+<meta property="og:description" content="关于flow control、congestion control。流量控制：发送端应考虑接收端的接收速度。让发送端不要太快，接收端来得及接收。拥塞控制：发送端应考虑网络的负载量。防止过多数据注入网络，使路由器、链路过载。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-30T08:20:19.092Z">
+<meta property="og:updated_time" content="2019-03-30T08:34:53.676Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TCP相关">
-<meta name="twitter:description" content="关于flow control、congestion control">
+<meta name="twitter:description" content="关于flow control、congestion control。流量控制：发送端应考虑接收端的接收速度。让发送端不要太快，接收端来得及接收。拥塞控制：发送端应考虑网络的负载量。防止过多数据注入网络，使路由器、链路过载。">
 
 
 
@@ -397,7 +397,7 @@
       
 
       
-        <p><excerpt in="" index="" |="" 首页摘要=""><br>关于flow control、congestion control<br><a id="more"></a></excerpt></p>
+        <p><excerpt in="" index="" |="" 首页摘要=""><br>关于flow control、congestion control。<br>流量控制：发送端应考虑<strong>接收端的接收速度</strong>。让发送端不要太快，接收端来得及接收。<br>拥塞控制：发送端应考虑<strong>网络的负载量</strong>。防止过多数据注入网络，使路由器、链路过载。<br><a id="more"></a></excerpt></p>
 <the rest="" of="" contents="" |="" 余下全文="">
 
 <h1 id="拥塞控制"><a href="#拥塞控制" class="headerlink" title="拥塞控制"></a>拥塞控制</h1><p>TCP的拥塞控制主要依赖于<strong>拥塞窗口cwnd</strong>(congestion window)、<strong>慢启动阈值ssthresh</strong>(slow start threshold)。</p>
@@ -405,7 +405,13 @@
 <li>cwnd&lt;ssthresh: 使用慢开始算法。</li>
 <li>cwnm&gt;ssthresh: 停止使用慢开始算法，开始使用拥塞避免算法。<br>慢启动可以让cwnd<strong>成倍增长</strong>，而拥塞避免中cwnd的增长是<strong>线性的</strong>。</li>
 </ul>
-<p>判断网络拥塞的依据是<strong>出现超时</strong>，有两种情况：<br>（1) RTO超时，重传数据包，此时TCP反应强烈：<br>将ssthresh降低为此时cwnd的一半<br>将cwnd重新设为初始值(IW)<br>重新进入慢启动阶段<br>原则：加法增大、乘法减小。<br>（2) 连续收到3个duplicate ACK时，重传数据包，无须等待RTO。此情况即为下面的快速重传。</p>
+<p>判断网络拥塞的依据是<strong>出现超时</strong>、<strong>3ACK</strong>，：<br>（1）超时，超过RTO超时重传时间</p>
+<ul>
+<li>将ssthresh降低为此时cwnd的一半</li>
+<li>将cwnd重新设为初始值(IW)</li>
+<li>重新进入慢启动阶段<br>（2）3ACK，连续收到3个对同一报文的重复确认</li>
+</ul>
+<p>（2)<br>连续收到3个duplicate ACK时，重传数据包，无须等待RTO。此情况即为下面的快速重传。</p>
 <h2 id="慢启动"><a href="#慢启动" class="headerlink" title="慢启动"></a>慢启动</h2><p>刚开始发送数据的时候，不清楚网络的负荷情况，使用慢启动算法试探地、由慢到快的增大拥塞窗口。每收到一次确认，$cwnd_{n+1}=cwnd_{n}*2$。<br>发送端的发送窗口cwnd的增长是指数级的，如果带宽为$W$，那么经过$RTTlog_{2}W$的时间就会占满带宽。</p>
 <h2 id="拥塞避免"><a href="#拥塞避免" class="headerlink" title="拥塞避免"></a>拥塞避免</h2><p>在拥塞避免阶段，拥塞窗口</p>
 <h2 id="快重传"><a href="#快重传" class="headerlink" title="快重传"></a>快重传</h2><h2 id="快恢复"><a href="#快恢复" class="headerlink" title="快恢复"></a>快恢复</h2></the>
