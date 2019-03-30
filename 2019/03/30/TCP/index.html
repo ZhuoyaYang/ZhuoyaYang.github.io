@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Zhuoya的星球">
 <meta property="og:description" content="关于congestion control、flow control。拥塞控制：发送端应考虑网络的负载量。防止过多数据注入网络，使路由器、链路过载。流量控制：发送端应考虑接收端的接收速度。让发送端不要太快，接收端来得及接收。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-30T09:28:36.258Z">
+<meta property="og:updated_time" content="2019-03-30T09:29:14.366Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TCP相关">
 <meta name="twitter:description" content="关于congestion control、flow control。拥塞控制：发送端应考虑网络的负载量。防止过多数据注入网络，使路由器、链路过载。流量控制：发送端应考虑接收端的接收速度。让发送端不要太快，接收端来得及接收。">
@@ -412,7 +412,7 @@
 <h2 id="拥塞避免"><a href="#拥塞避免" class="headerlink" title="拥塞避免"></a>拥塞避免</h2><p>在拥塞避免阶段，拥塞窗口每经过一个RTT，$cwnd_{n+1}=cwnd_{n}+1$。<br>具有“加法增大”的特点，比慢开始阶段拥塞窗口的增长速率缓慢得多。</p>
 <h2 id="快重传"><a href="#快重传" class="headerlink" title="快重传"></a>快重传</h2><p>有时，个别报文段会在网络传输过程中丢失，<strong>但网络并未阻塞</strong>。如果发送端未收到ACK，产生超时。就会把cwnd设置为初试值IW，错误地启动慢开始，降低传输速率。<br>这是，我们需要<strong>快重传</strong>方法，<strong>让发送端尽早知道个别报文段的丢失</strong>。快重传方法要求接收方立即确认，即使<strong>受到失序报文段也要立即发送对已收到报文段的重复确认</strong>。发送方只要连续收到3个重复确认，就开始<strong>快重传</strong>。</p>
 <h2 id="快恢复"><a href="#快恢复" class="headerlink" title="快恢复"></a>快恢复</h2><p>发送端收到连续3个重复确认之后，知道<strong>只是缺失了个别报文</strong>。不启动慢开始，而是执行快恢复算法。将慢启动阈值ssthresh降低为此时cwnd的一半，cwnd=ssthresh+3。进入<strong>拥塞避免</strong>阶段。</p>
-<h1 id="流量控制"><a href="#流量控制" class="headerlink" title="流量控制"></a>流量控制</h1><p>使用滑动窗口实现流量控制。TODO:待补充。</p>
+<h1 id="流量控制"><a href="#流量控制" class="headerlink" title="流量控制"></a>流量控制</h1><p>使用滑动窗口实现流量控制。<em>TODO:待补充。</em></p>
 </the>
       
     </div>
