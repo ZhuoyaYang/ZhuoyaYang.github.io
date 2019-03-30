@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Zhuoya的星球">
 <meta property="og:description" content="关于flow control、congestion control。流量控制：发送端应考虑接收端的接收速度。让发送端不要太快，接收端来得及接收。拥塞控制：发送端应考虑网络的负载量。防止过多数据注入网络，使路由器、链路过载。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-30T08:59:28.666Z">
+<meta property="og:updated_time" content="2019-03-30T09:01:06.790Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TCP相关">
 <meta name="twitter:description" content="关于flow control、congestion control。流量控制：发送端应考虑接收端的接收速度。让发送端不要太快，接收端来得及接收。拥塞控制：发送端应考虑网络的负载量。防止过多数据注入网络，使路由器、链路过载。">
@@ -406,7 +406,8 @@
 <li>cwnm&gt;ssthresh: 停止使用慢开始算法，开始使用拥塞避免算法。<br>慢启动可以让cwnd<strong>成倍增长</strong>，而拥塞避免中cwnd的增长是<strong>线性的</strong>。</li>
 </ul>
 <p>判断网络拥塞的依据是<strong>出现超时</strong>、<strong>3ACK</strong>，：</p>
-<p><div style="padding-left:-30px">1. 超时，即超过<strong>超时重传时间RTO</strong></div><br>    (1) 将ssthresh降低为此时cwnd的一半，将cwnd重新设为初始值(IW)<br>    (2) 重新进入慢启动阶段</p>
+<p><div style="padding-left:-30px">1. 超时，即超过<strong>超时重传时间RTO</strong></div></p>
+<p><div style="padding-left:30px"><br>    (1) 将ssthresh降低为此时cwnd的一半，将cwnd重新设为初始值(IW)<br>    (2) 重新进入慢启动阶段<br></div></p>
 <ol start="2">
 <li>3ACK，连续收到3个对同一报文的重复确认<br> (1) 启动<strong>快速重传</strong>，无须等待RTO<br> (2) 将ssthresh降低为此时cwnd的一半，cwnd=ssthresh<br> (3) 进入<strong>拥塞避免</strong>阶段，而非慢启动阶段</li>
 </ol>
