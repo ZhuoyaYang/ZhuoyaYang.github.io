@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Zhuoya的星球">
 <meta property="og:description" content="都比较常规。LeetCode(072) Edit DistanceLeetCode(120) TriangleLeetCode(063) Unique Paths iiLeetCode(064) Minimum Path SumLeetCode(198) House Robber">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-28T12:11:54.537Z">
+<meta property="og:updated_time" content="2019-03-31T23:55:11.725Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Dynamic Programming 1">
 <meta name="twitter:description" content="都比较常规。LeetCode(072) Edit DistanceLeetCode(120) TriangleLeetCode(063) Unique Paths iiLeetCode(064) Minimum Path SumLeetCode(198) House Robber">
@@ -400,8 +400,8 @@
         <p><excerpt in="" index="" |="" 首页摘要=""><br>都比较常规。<br><a href="https://leetcode.com/problems/edit-distance/" target="_blank" rel="noopener">LeetCode(072) Edit Distance</a><br><a href="https://leetcode.com/problems/triangle/" target="_blank" rel="noopener">LeetCode(120) Triangle</a><br><a href="https://leetcode.com/problems/unique-paths-ii/" target="_blank" rel="noopener">LeetCode(063) Unique Paths ii</a><br><a href="https://leetcode.com/problems/minimum-path-sum/" target="_blank" rel="noopener">LeetCode(064) Minimum Path Sum</a><br><a href="https://leetcode.com/problems/house-robber/" target="_blank" rel="noopener">LeetCode(198) House Robber</a><br><!--Edit Distance划重点，其次是Triangle--><br><a id="more"></a></excerpt></p>
 <the rest="" of="" contents="" |="" 余下全文="">
 
-<h2 id="LeetCode-072-Edit-Distance"><a href="#LeetCode-072-Edit-Distance" class="headerlink" title="LeetCode(072)Edit Distance"></a>LeetCode(072)Edit Distance</h2><p><strong><font color="#f35a4a" size="5">题目</font></strong><br>给定两个字符串word1, word2。<br>通过替换(replace)，插入(insert)，删除(delete)操作，将word1变成word2，最少需要几步。<br><strong><font color="#0049a9" size="4">思路：</font></strong><br>用一个二维数组dp来记录，dp[i][j]表示将word1.substr[i]变为word.substr[j]的最少步数。   </p>
-<p><strong><font color="#0049a9" size="4">边界条件：</font></strong></p>
+<h2 id="LeetCode-072-Edit-Distance"><a href="#LeetCode-072-Edit-Distance" class="headerlink" title="LeetCode(072)Edit Distance"></a>LeetCode(072)Edit Distance</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a><strong><font color="#f35a4a">题目</font></strong></h3><p>给定两个字符串word1, word2。<br>通过替换(replace)，插入(insert)，删除(delete)操作，将word1变成word2，最少需要几步。<br><strong><font color="#0049a9" size="3">思路：</font></strong><br>用一个二维数组dp来记录，dp[i][j]表示将word1.substr[i]变为word.substr[j]的最少步数。   </p>
+<p><strong><font color="#0049a9" size="3">边界条件：</font></strong></p>
 <ul>
 <li>将空字符串word1插入j次，可以变为word2.substr(j)<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dp[<span class="number">0</span>][j] = j;</span><br></pre></td></tr></table></figure></li>
 <li>将字符串word1.substr(i)删除i次，可以变为空字符串word2<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dp[i][<span class="number">0</span>] = i;</span><br></pre></td></tr></table></figure>
@@ -595,7 +595,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#LeetCode-072-Edit-Distance"><span class="nav-number">1.</span> <span class="nav-text">LeetCode(072)Edit Distance</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LeetCode-120-Triangle"><span class="nav-number">2.</span> <span class="nav-text">LeetCode(120)Triangle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LeetCode-063-Unique-Paths-ii"><span class="nav-number">3.</span> <span class="nav-text">LeetCode(063)Unique Paths ii</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LeetCode-064-Minimum-Path-Sum"><span class="nav-number">4.</span> <span class="nav-text">LeetCode(064)Minimum Path Sum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LeetCode-198-House-Robber"><span class="nav-number">5.</span> <span class="nav-text">LeetCode(198)House Robber</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#LeetCode-072-Edit-Distance"><span class="nav-number">1.</span> <span class="nav-text">LeetCode(072)Edit Distance</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目"><span class="nav-number">1.1.</span> <span class="nav-text">题目</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LeetCode-120-Triangle"><span class="nav-number">2.</span> <span class="nav-text">LeetCode(120)Triangle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LeetCode-063-Unique-Paths-ii"><span class="nav-number">3.</span> <span class="nav-text">LeetCode(063)Unique Paths ii</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LeetCode-064-Minimum-Path-Sum"><span class="nav-number">4.</span> <span class="nav-text">LeetCode(064)Minimum Path Sum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LeetCode-198-House-Robber"><span class="nav-number">5.</span> <span class="nav-text">LeetCode(198)House Robber</span></a></li></ol></div>
             
 
           </div>
