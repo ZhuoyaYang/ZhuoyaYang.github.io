@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Zhuoya的星球">
 <meta property="og:description" content="LeetCode(486) Predict the WinnerLeetCode(005) Longest Palindromic SubstringLeetCode(712) Minimum ASCII Delete Sum for Two StringsLeetCode(322) Coin ChangeLeetCode(338) Counting Bits">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-31T23:49:35.618Z">
+<meta property="og:updated_time" content="2019-03-31T23:52:03.905Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Dynamic Programming 3">
 <meta name="twitter:description" content="LeetCode(486) Predict the WinnerLeetCode(005) Longest Palindromic SubstringLeetCode(712) Minimum ASCII Delete Sum for Two StringsLeetCode(322) Coin ChangeLeetCode(338) Counting Bits">
@@ -438,7 +438,7 @@
 <p><font size="4"><strong>方法一：</strong></font><br>用dp[i][j]记录子串[i…j]的回文子串长度。0表示不是回文子串。</p>
 <p><font size="4"><strong>方法二：</strong></font><br>从CSDN上看到的方法，<a href="https://www.cnblogs.com/coderJiebao/p/Algorithmofnotes30.html" target="_blank" rel="noopener">动态规划——最长回文子串</a><br>用dp[i][j]=0 or 1表示子串i-j是否回文，长度即为j-i+1</p>
 <h3 id="边界条件"><a href="#边界条件" class="headerlink" title="边界条件"></a><strong><font color="#0049a9">边界条件</font></strong></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)  </span><br><span class="line">&#123;</span><br><span class="line">    dp[i][i]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(i&lt;n<span class="number">-1</span>) <span class="keyword">if</span>(s[i]==s[i+<span class="number">1</span>]) dp[i][i+<span class="number">1</span>]=<span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="转移方程"><a href="#转移方程" class="headerlink" title="转移方程"></a><strong><font color="#0049a9">转移方程</font></strong></h3><p><font size="4"><strong>可以把转移情况分为两类：</strong></font></p>
+<h3 id="转移方程"><a href="#转移方程" class="headerlink" title="转移方程"></a><strong><font color="#0049a9">转移方程</font></strong></h3><p><font size="3"><strong>可以把转移情况分为两类：</strong></font></p>
 <ol>
 <li>S[i] == S[j]，只要 S[i+1] 至 S[j-1] 是回文子串，S[i] 至 S[j] 就是回文子串；如果S[i+1] 至 S[j-1] 不是回文子串，则 S[i] 至 S[j] 也不是回文子串。</li>
 <li>S[i] != S[j]，那么 S[i] 至 S[j] 一定不是回文子串。
