@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Zhuoya的星球">
 <meta property="og:description" content="关于CNN中的参数量、计算量。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-01T02:26:50.029Z">
+<meta property="og:updated_time" content="2019-04-01T02:51:48.135Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CNN相关">
 <meta name="twitter:description" content="关于CNN中的参数量、计算量。">
@@ -404,9 +404,9 @@
 <li>卷积大小: $W_{k} \times H_{k} \times C \times N$，其中，$C$为input channel，$N$为output channel。</li>
 <li>卷积后的feature map大小: $w’ \times h’ \times N$</li>
 </ul>
-<p><a href="http://cs231n.github.io/assets/conv-demo/index.html" target="_blank" rel="noopener">CS231N-卷积过程动态演示</a><br>如CS231N的动态图所示，$W \times H \times C $的输入与$W_{k} \times H_{k} \times C$的卷积核，<strong>一对一地</strong>分别进行卷积，得到的C个输出，大小分别为$W_{k} \times H_{k} \times 1$。对应位置相加，再加上偏置。重复这个过程$N$，得到output channel为$N$的输出。</p>
-<h1 id="参数量para"><a href="#参数量para" class="headerlink" title="参数量para"></a>参数量para</h1><p>参数量只与卷积核、偏置的个数有关。<br>偏置的个数=卷积后的output channel。<br>$$ para = N \times (W_{k} \times H_{k} \times C + 1)$$</p>
-<h1 id="计算量FLOPs"><a href="#计算量FLOPs" class="headerlink" title="计算量FLOPs"></a>计算量FLOPs</h1><p>$$ FLOPs = w’ \times h’ \times N \times (W_{k} \times H_{k} \times C + 1) =  w’ \times h’ \times para$$</p>
+<p><a href="http://cs231n.github.io/assets/conv-demo/index.html" target="_blank" rel="noopener">CS231N-卷积过程动态演示</a><br>如CS231N的动态图所示，大小为$W \times H \times C$的输入与大小为$W_{k} \times H_{k} \times C$的卷积核，<strong>对应通道</strong>进行卷积操作。相当于1个input对应1个kernel，同时滑动，得到$C$个结果。$C$个结果相加再加上偏置，得到一个输出结果。重复$C$个卷积的滑动$N$次，得到output channel为$N$的输出。</p>
+<h1 id="参数量para"><a href="#参数量para" class="headerlink" title="参数量para"></a>参数量para</h1><p>参数量只与卷积核、偏置的个数有关。<br>偏置的个数 = 卷积后的output channel<br>$$ para = N \times (W_{k} \times H_{k} \times C + 1)$$</p>
+<h1 id="计算量FLOPs"><a href="#计算量FLOPs" class="headerlink" title="计算量FLOPs"></a>计算量FLOPs</h1><p>共有$w’ \times h’ \times N$个输出。<br>对于每个输出，进行了$W_{k} \times H_{k} \times C + 1$次运算，表示C个大小为$W_{k} \times H_{k}$的卷积进行卷积运算，再加上偏置。<br>$$ FLOPs = w’ \times h’ \times N \times (W_{k} \times H_{k} \times C + 1) =  w’ \times h’ \times para$$</p>
 
       
     </div>
