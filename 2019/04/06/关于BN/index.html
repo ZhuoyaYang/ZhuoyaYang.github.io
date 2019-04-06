@@ -79,19 +79,14 @@
 
 
 
-<meta name="description" content="关于CNN中的参数量、计算量。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于BN">
 <meta property="og:url" content="http://yoursite.com/2019/04/06/关于BN/index.html">
 <meta property="og:site_name" content="Zhuoya的星球">
-<meta property="og:description" content="关于CNN中的参数量、计算量。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/04/06/关于BN/CNN-para-FLOPs/1.png">
-<meta property="og:updated_time" content="2019-04-06T12:13:54.248Z">
+<meta property="og:updated_time" content="2019-04-06T15:18:38.036Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于BN">
-<meta name="twitter:description" content="关于CNN中的参数量、计算量。">
-<meta name="twitter:image" content="http://yoursite.com/2019/04/06/关于BN/CNN-para-FLOPs/1.png">
 
 
 
@@ -398,24 +393,13 @@
       
 
       
-        <p><excerpt in="" index="" |="" 首页摘要=""><br>关于CNN中的参数量、计算量。<br><a id="more"></a></excerpt></p>
-<p><the rest="" of="" contents="" |="" 余下全文=""></the></p>
-<ul>
-<li>输入大小: $W \times H \times C $</li>
-<li>卷积大小: $W_{f} \times H_{f} \times C \times N$，其中，$C$为input channel，$N$为output channel。</li>
-<li>卷积后的feature map大小: $w’ \times h’ \times N$</li>
-</ul>
-<h1 id="卷积过程"><a href="#卷积过程" class="headerlink" title="卷积过程"></a>卷积过程</h1><p><a href="http://cs231n.github.io/assets/conv-demo/index.html" target="_blank" rel="noopener">CS231N-卷积过程动态演示</a>，再结合CS231N-lecture7对卷积运算的讲解，<a href="http://cs231n.stanford.edu/slides/2016/winter1516_lecture7.pdf" target="_blank" rel="noopener">slide-lecture7</a>。</p>
-<ol>
-<li>有$N$个filter，大小为$W_{f} \times H_{f} \times C$，分别与$W \times H \times C$的input进行$N$组独立的卷积运算。</li>
-<li>对于每组运算，kernel与input对齐（depth一定是同维度的），<strong>kernel从input内部每个位置划过</strong>，进行点积运算$W_{f}^T X + b$（$X$是input的一小块区域），得到2每个位置的输出。每次滑动的计算量为$W_{f} \times H_{f} \times C + 1$。如下图所示，每次其实是进行$5 \times 5 \times 3 = 75$维的点乘运算。再加上偏置b，共76次运算。</li>
-<li>重复进行这个过程，将$N$组卷积依次在input内部滑动，得到output channel为$N$的输出。</li>
-</ol>
-<p><img src="/2019/04/06/关于BN/CNN-para-FLOPs/1.png" alt=""> </p>
-<h1 id="参数量para"><a href="#参数量para" class="headerlink" title="参数量para"></a>参数量para</h1><p>参数量只与卷积核、偏置的个数有关。<br>偏置的个数 = 卷积后的output channel<br>$$ para = N \times (W_{f} \times H_{f} \times C + 1)$$</p>
-<h1 id="计算量FLOPs"><a href="#计算量FLOPs" class="headerlink" title="计算量FLOPs"></a>计算量FLOPs</h1><p>共有$w’ \times h’ \times N$个输出。<br>对于每个输出，进行了$W_{f} \times H_{f} \times C + 1$次运算，表示C个大小为$W_{f} \times H_{f}$的卷积进行卷积运算，再加上偏置。<br>$$ FLOPs = w’ \times h’ \times N \times (W_{f} \times H_{f} \times C + 1) =  w’ \times h’ \times para$$</p>
-<h1 id="连接个数"><a href="#连接个数" class="headerlink" title="连接个数"></a>连接个数</h1><p><em>TODO:</em></p>
+        <excerpt in="" index="" |="" 首页摘要="">
 
+<a id="more"></a>
+<the rest="" of="" contents="" |="" 余下全文="">
+
+
+</the></excerpt>
       
     </div>
     
@@ -505,17 +489,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -579,22 +554,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#卷积过程"><span class="nav-number">1.</span> <span class="nav-text">卷积过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参数量para"><span class="nav-number">2.</span> <span class="nav-text">参数量para</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#计算量FLOPs"><span class="nav-number">3.</span> <span class="nav-text">计算量FLOPs</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#连接个数"><span class="nav-number">4.</span> <span class="nav-text">连接个数</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
