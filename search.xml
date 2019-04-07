@@ -3,42 +3,6 @@
   
     
     <entry>
-      <title>VGGNet/GoogLeNet/ResNet</title>
-      <link href="/2019/04/06/VGGNet:GoogLeNet:ResNet/"/>
-      <url>/2019/04/06/VGGNet:GoogLeNet:ResNet/</url>
-      <content type="html"><![CDATA[<excerpt in="" index="" |="" 首页摘要=""><a id="more"></a><the rest="" of="" contents="" |="" 余下全文=""></the></excerpt>]]></content>
-      
-      <categories>
-          
-          <category> CNN </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> VGGNet,GoogLeNet,ResNet </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
-      <title>关于BN</title>
-      <link href="/2019/04/06/%E5%85%B3%E4%BA%8EBN/"/>
-      <url>/2019/04/06/%E5%85%B3%E4%BA%8EBN/</url>
-      <content type="html"><![CDATA[<excerpt in="" index="" |="" 首页摘要=""><a id="more"></a><the rest="" of="" contents="" |="" 余下全文=""></the></excerpt>]]></content>
-      
-      <categories>
-          
-          <category> BN </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    <entry>
       <title>CNN相关</title>
       <link href="/2019/04/01/CNN-para-FLOPs/"/>
       <url>/2019/04/01/CNN-para-FLOPs/</url>
