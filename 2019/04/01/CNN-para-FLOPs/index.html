@@ -88,7 +88,7 @@
 <meta property="og:description" content="关于CNN中的参数量、计算量，1*1卷积的作用。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/04/01/CNN-para-FLOPs/1.png">
-<meta property="og:updated_time" content="2019-04-07T09:05:24.335Z">
+<meta property="og:updated_time" content="2019-04-07T09:07:07.521Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CNN相关">
 <meta name="twitter:description" content="关于CNN中的参数量、计算量，1*1卷积的作用。">
@@ -420,8 +420,11 @@
 <li>1*1的卷积<strong>不结合</strong>像素的<strong>相邻邻域</strong>的信息。</li>
 <li>如果输入是<strong>2维平面</strong>，1*1的卷积显然没有任何用处。</li>
 <li>但输入为[w,h,c]，可以看做以w*h为平面，深度为c的立方体。1*1的卷积实际上是对每个像素在channel上进行c维特征的线性组合。<strong>保留了原有的平面结构，调控depth，完成升维或降维的功能。</strong> n组1*1的卷积，分别进行n次独立的channel信息整合。</li>
-<li>还有人说1*1卷积可以<strong>增加非线性、增强模型表达性</strong>。我不太认同。这里引用一个知乎上别人的观点。首先，加入padding之后不论多大的卷积，feature map的尺寸都不会改变，这并不是1*1卷积独有的。其次，增加非线性特性是激活函数的功劳，和卷积没有必然关系。<blockquote>
+<li>还有人说1*1卷积可以<strong>增加非线性、增强模型表达性</strong>。我不太认同。这里引用一个知乎上别人的观点：<blockquote>
 <p>“1*1卷积核，可以在保持feature map尺度不变的的前提下大幅增加非线性特性（利用后接的非线性激活函数），把网络做的很deep。”</p>
+<ul>
+<li>首先，加入padding之后不论多大的卷积，feature map的尺寸都不会改变，这并不是1*1卷积独有的。其次，增加非线性特性是激活函数的功劳，和卷积没有必然关系。</li>
+</ul>
 </blockquote>
 </li>
 </ul>
