@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="关于CNN中的参数量、计算量。">
+<meta name="description" content="关于CNN中的参数量、计算量，1*1卷积的作用。">
 <meta name="keywords" content="FLOPs,para">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CNN相关">
 <meta property="og:url" content="http://yoursite.com/2019/04/01/CNN-para-FLOPs/index.html">
 <meta property="og:site_name" content="Zhuoya的星球">
-<meta property="og:description" content="关于CNN中的参数量、计算量。">
+<meta property="og:description" content="关于CNN中的参数量、计算量，1*1卷积的作用。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/04/01/CNN-para-FLOPs/1.png">
-<meta property="og:updated_time" content="2019-04-06T12:11:56.694Z">
+<meta property="og:updated_time" content="2019-04-07T09:02:27.299Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CNN相关">
-<meta name="twitter:description" content="关于CNN中的参数量、计算量。">
+<meta name="twitter:description" content="关于CNN中的参数量、计算量，1*1卷积的作用。">
 <meta name="twitter:image" content="http://yoursite.com/2019/04/01/CNN-para-FLOPs/1.png">
 
 
@@ -399,7 +399,7 @@
       
 
       
-        <p><excerpt in="" index="" |="" 首页摘要=""><br>关于CNN中的参数量、计算量。<br><a id="more"></a></excerpt></p>
+        <p><excerpt in="" index="" |="" 首页摘要=""><br>关于CNN中的参数量、计算量，1*1卷积的作用。<br><a id="more"></a></excerpt></p>
 <p><the rest="" of="" contents="" |="" 余下全文=""></the></p>
 <ul>
 <li>输入大小: $W \times H \times C $</li>
@@ -416,6 +416,16 @@
 <h1 id="参数量para"><a href="#参数量para" class="headerlink" title="参数量para"></a>参数量para</h1><p>参数量只与卷积核、偏置的个数有关。<br>偏置的个数 = 卷积后的output channel<br>$$ para = N \times (W_{f} \times H_{f} \times C + 1)$$</p>
 <h1 id="计算量FLOPs"><a href="#计算量FLOPs" class="headerlink" title="计算量FLOPs"></a>计算量FLOPs</h1><p>共有$w’ \times h’ \times N$个输出。<br>对于每个输出，进行了$W_{f} \times H_{f} \times C + 1$次运算，表示C个大小为$W_{f} \times H_{f}$的卷积进行卷积运算，再加上偏置。<br>$$ FLOPs = w’ \times h’ \times N \times (W_{f} \times H_{f} \times C + 1) =  w’ \times h’ \times para$$</p>
 <h1 id="连接个数"><a href="#连接个数" class="headerlink" title="连接个数"></a>连接个数</h1><p><em>TODO:</em></p>
+<h1 id="1-1卷积的作用"><a href="#1-1卷积的作用" class="headerlink" title="1*1卷积的作用"></a>1*1卷积的作用</h1><ul>
+<li>1*1的卷积不结合像素的相邻邻域的信息。</li>
+<li>如果输入是2维平面，显然1*1的卷积没有任何用处。</li>
+<li>但输入为w<em>h</em>c，可以看做以w<em>h为平面，深度为c的立方体。1</em>1的卷积实际上是对每个像素在channel上进行特征的线性组合。保留了原有的平面结构，调控depth，完成升维或降维的功能。n组卷积代表了n种线性组合方式。</li>
+</ul>
+<ul>
+<li>还有人说1<em>1卷积可以增加非线性、增强模型表达性。我不太认同。这里引用一个知乎上别人的观点：“1</em>1卷积核，可以在保持feature map尺度不变的的前提下大幅增加非线性特性（利用后接的非线性激活函数），把网络做的很deep。”首先，加入padding之后不论多大的卷积，feature map的尺寸都不会改变，这并不是1*1卷积独有的。其次，增加非线性特性是激活函数的功劳，和卷积没有必然关系。</li>
+</ul>
+<hr>
+<p><a href="https://www.zhihu.com/question/56024942/answer/369745892" target="_blank" rel="noopener">一个十分认同的回答</a></p>
 
       
     </div>
@@ -592,7 +602,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#卷积过程"><span class="nav-number">1.</span> <span class="nav-text">卷积过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参数量para"><span class="nav-number">2.</span> <span class="nav-text">参数量para</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#计算量FLOPs"><span class="nav-number">3.</span> <span class="nav-text">计算量FLOPs</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#连接个数"><span class="nav-number">4.</span> <span class="nav-text">连接个数</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#卷积过程"><span class="nav-number">1.</span> <span class="nav-text">卷积过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参数量para"><span class="nav-number">2.</span> <span class="nav-text">参数量para</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#计算量FLOPs"><span class="nav-number">3.</span> <span class="nav-text">计算量FLOPs</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#连接个数"><span class="nav-number">4.</span> <span class="nav-text">连接个数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-1卷积的作用"><span class="nav-number">5.</span> <span class="nav-text">1*1卷积的作用</span></a></li></ol></div>
             
 
           </div>
