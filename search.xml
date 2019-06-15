@@ -19,6 +19,10 @@
             
             <tag> 3D Object Dection </tag>
             
+            <tag> PointPillars </tag>
+            
+            <tag> VoxelNet </tag>
+            
         </tags>
       
     </entry>
