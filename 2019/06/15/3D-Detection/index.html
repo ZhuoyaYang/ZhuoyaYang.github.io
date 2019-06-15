@@ -82,15 +82,15 @@
 <meta name="description" content="3D Object Dection for Point Clounds的两篇论文。">
 <meta name="keywords" content="3D Object Dection,PointPillars,VoxelNet">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PointPillars &amp;&amp; VoxelNet">
+<meta property="og:title" content="VoxelNet &amp;&amp; PointPillars">
 <meta property="og:url" content="http://yoursite.com/2019/06/15/3D-Detection/index.html">
 <meta property="og:site_name" content="Zhuoya的星球">
 <meta property="og:description" content="3D Object Dection for Point Clounds的两篇论文。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/06/15/3D-Detection/1.png">
-<meta property="og:updated_time" content="2019-06-15T10:22:22.758Z">
+<meta property="og:updated_time" content="2019-06-15T10:23:40.662Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="PointPillars &amp;&amp; VoxelNet">
+<meta name="twitter:title" content="VoxelNet &amp;&amp; PointPillars">
 <meta name="twitter:description" content="3D Object Dection for Point Clounds的两篇论文。">
 <meta name="twitter:image" content="http://yoursite.com/2019/06/15/3D-Detection/1.png">
 
@@ -128,7 +128,7 @@
 
 
 
-  <title>PointPillars && VoxelNet | Zhuoya的星球</title>
+  <title>VoxelNet && PointPillars | Zhuoya的星球</title>
   
 
 
@@ -316,7 +316,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">PointPillars && VoxelNet</h1>
+          <h1 class="post-title" itemprop="name headline">VoxelNet && PointPillars</h1>
         
 
         <div class="post-meta">
@@ -368,7 +368,7 @@
 
           
           
-             <span id="/2019/06/15/3D-Detection/" class="leancloud_visitors" data-flag-title="PointPillars && VoxelNet">
+             <span id="/2019/06/15/3D-Detection/" class="leancloud_visitors" data-flag-title="VoxelNet && PointPillars">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -403,8 +403,8 @@
 <p><the rest="" of="" contents="" |="" 余下全文=""><br>这两篇论文思路相似，PointPillars可以看做是VoxelNet的优化，将3D卷积变为2D，速度提升较大。此外，还有一些零零碎碎的改进，使总体准确率较VoxelNet也有一定提升。二者在以下方面一致：</the></p>
 <ul>
 <li><strong>训练数据</strong>，只使用激光雷达(LiDAR)数据，没有image的RGB信息</li>
-<li><strong>特征提取</strong>，用可学习的encoder得到machine-learned feature，取代人为设计的特征（hand-crafted feature）。每个单位（Pillars/Voxel）都对应一个特征向量。</li>
-<li><strong>网络整体结构</strong>都包含三部分，虽然论文中有不同的叫法，但功能是一致的：<br>|       | PointPillars               |  VoxelNet                  |<br>|——-|:————————–:|—————————:|<br>|第一部分| feature learning network   |  feature encoder network   |<br>|第二部分| convolutional middle layers|  2D convolutional backbone |<br>|第三部分| RPN                        |  detection head(SSD)       | </li>
+<li><strong>特征提取</strong>，用可学习的encoder得到machine-learned feature，取代人为设计的特征（hand-crafted feature）。每个单位（Voxel/Pillar）都对应一个特征向量。</li>
+<li><strong>网络整体结构</strong>都包含三部分，虽然论文中有不同的叫法，但功能是一致的：<br>|       | VoxelNet                   |  PointPillars              |<br>|——-|:————————–:|—————————:|<br>|第一部分| feature learning network   |  feature encoder network   |<br>|第二部分| convolutional middle layers|  2D convolutional backbone |<br>|第三部分| RPN                        |  detection head(SSD)       | </li>
 </ul>
 <h1 id="PointPillars"><a href="#PointPillars" class="headerlink" title="PointPillars"></a>PointPillars</h1><p>分为3个</p>
 <p>##<br><img src="/2019/06/15/3D-Detection/1.png" alt=""> </p>
