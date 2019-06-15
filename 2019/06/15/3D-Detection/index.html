@@ -88,7 +88,7 @@
 <meta property="og:description" content="3D Object Dection for Point Clounds的两篇论文。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/06/15/3D-Detection/1.png">
-<meta property="og:updated_time" content="2019-06-15T10:30:20.531Z">
+<meta property="og:updated_time" content="2019-06-15T10:31:13.873Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VoxelNet &amp;&amp; PointPillars">
 <meta name="twitter:description" content="3D Object Dection for Point Clounds的两篇论文。">
@@ -404,8 +404,34 @@
 <ol>
 <li><strong>数据类型</strong>，只使用激光雷达(LiDAR)数据，没有image的RGB信息</li>
 <li><strong>特征提取</strong>，用可学习的encoder得到machine-learned feature，取代人为设计的特征（hand-crafted feature）。每个单位（Voxel/Pillar）都对应一个特征向量。</li>
-<li><strong>网络整体结构</strong>都包含三部分，虽然论文中有不同的叫法，但功能是一致的：<br>|       | VoxelNet                   |  PointPillars              |<br>|——-|:—————-|:—————-|<br>|第一部分| feature learning network   |  feature encoder network   |<br>|第二部分| convolutional middle layers|  2D convolutional backbone |<br>|第三部分| RPN                        |  detection head(SSD)       | </li>
+<li><strong>网络整体结构</strong>都包含三部分，虽然论文中有不同的叫法，但功能是一致的：</li>
 </ol>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align:left">VoxelNet</th>
+<th style="text-align:left">PointPillars</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>第一部分</td>
+<td style="text-align:left">feature learning network</td>
+<td style="text-align:left">feature encoder network</td>
+</tr>
+<tr>
+<td>第二部分</td>
+<td style="text-align:left">convolutional middle layers</td>
+<td style="text-align:left">2D convolutional backbone</td>
+</tr>
+<tr>
+<td>第三部分</td>
+<td style="text-align:left">RPN</td>
+<td style="text-align:left">detection head(SSD)</td>
+</tr>
+</tbody>
+</table>
 <h1 id="PointPillars"><a href="#PointPillars" class="headerlink" title="PointPillars"></a>PointPillars</h1><p>分为3个</p>
 <p>##<br><img src="/2019/06/15/3D-Detection/1.png" alt=""> </p>
 
