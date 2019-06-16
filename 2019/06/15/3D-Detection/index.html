@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/06/15/3D-Detection/2.png">
 <meta property="og:image" content="http://yoursite.com/2019/06/15/3D-Detection/1.png">
-<meta property="og:updated_time" content="2019-06-16T09:51:11.122Z">
+<meta property="og:updated_time" content="2019-06-16T10:08:03.756Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VoxelNet &amp;&amp; PointPillars">
 <meta name="twitter:description" content="3D Object Dection for Point Clounds的两篇论文。">
@@ -455,7 +455,9 @@
 </ol>
 <ul>
 <li>将voxel内的LiDAR points记作集合$V={p_{i} = [x_{i},y_{i},z_{i},r_{i}]^T \in \mathbb{R}^4 }$，$x_{i},y_{i},z_{i}$就是该点在3D空间的坐标，$r_{i}$为反射比。</li>
-<li>将points的特征从4维增加到7维。对$V$内所有points的坐标取平均得到中心点坐标$$(v_{x},v_{y},v_{z})$。计算points到中心点的距离，得到$V={\hat{p_i} = [x_{i},y_{i},z_{i},r_{i},x_i-v_x,y_i-v_y,z_i-v_z]^T \in \mathbb{R}^4 }$</li>
+<li>将point-wise feature从4维增加到7维。计算$V$内points的坐标取平均得到中心点$(v_{x},v_{y},v_{z})$。计算points到中心点的距离，得到$V_{in}={\hat{p_i} = [x_{i},y_{i},z_{i},r_{i},x_i-v_x,y_i-v_y,z_i-v_z]^T \in \mathbb{R}^7 }$</li>
+<li>用FCN将7维的point-wise feature$\hat{p_i}$映射到新的特征空间。这里的FCN包括全连接网络(linear layer)、BN和非线性激活函数ReLU。显然，新特征的维度取决于全连接网络的神经元数量。<strong>每个神经元可以看做对之前特征的一次线性组合</strong>，有$m$个神经元就是进行了$m$次独立的线性组合，得到$m$维新特征，$f_i \in \mathbb{R}^m $。</li>
+<li>对voxel内所有points的point-wise feature进行element-wise maxpooling，得到局部聚合特征$\widetilde{f} \in \mathbb{R}^m $。</li>
 </ul>
 <ol start="5">
 <li>Sparse Tensor Representation</li>
