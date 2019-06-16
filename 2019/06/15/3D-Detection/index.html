@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/06/15/3D-Detection/2.png">
 <meta property="og:image" content="http://yoursite.com/2019/06/15/3D-Detection/1.png">
-<meta property="og:updated_time" content="2019-06-16T10:29:52.667Z">
+<meta property="og:updated_time" content="2019-06-16T10:34:18.194Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VoxelNet &amp;&amp; PointPillars">
 <meta name="twitter:description" content="3D Object Dection for Point Clounds的两篇论文。">
@@ -444,7 +444,7 @@
 </ul>
 </li>
 </ul>
-<p>总而言之，把Voxel在Z方向上合并，即可将若干Voxel合为一个Pillar。所以3D空间划分为Voxels后，<strong>Voxels之间仍然是3D的</strong>，而不同Pillars在Z方向上跨度相同，<strong>Pillars之间是2D的</strong>。<strong>维度减少是PointPillars更快的关键</strong>。</p>
+<p>总而言之，把Voxel在Z方向上合并，即可将若干Voxel合为一个Pillar。3D空间划分为Voxels后，<strong>Voxel grid仍然是3D的</strong>，而不同Pillars在Z方向上跨度相同，<strong>Pillars grid是2D的</strong>。<strong>维度减少是PointPillars更快的关键</strong>。</p>
 <h1 id="Feature-Learning-Network"><a href="#Feature-Learning-Network" class="headerlink" title="Feature Learning Network"></a>Feature Learning Network</h1><p>对于3D目标检测网络来说，<strong>网络的第一步特征提取是关键</strong>，也是与2D目标检测的不同之处。下面再详细介绍一下两个网络编码部分的不同。</p>
 <h2 id="VoxelNet"><a href="#VoxelNet" class="headerlink" title="VoxelNet"></a>VoxelNet</h2><p><img src="/2019/06/15/3D-Detection/2.png" alt=""> </p>
 <ol>
