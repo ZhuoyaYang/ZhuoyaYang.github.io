@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/06/15/3D-Detection/2.png">
 <meta property="og:image" content="http://yoursite.com/2019/06/15/3D-Detection/1.png">
-<meta property="og:updated_time" content="2019-06-16T08:53:44.386Z">
+<meta property="og:updated_time" content="2019-06-16T09:51:11.122Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VoxelNet &amp;&amp; PointPillars">
 <meta name="twitter:description" content="3D Object Dection for Point Clounds的两篇论文。">
@@ -448,12 +448,17 @@
 <h1 id="Feature-Learning-Network"><a href="#Feature-Learning-Network" class="headerlink" title="Feature Learning Network"></a>Feature Learning Network</h1><p>对于3D目标检测网络来说，<strong>网络的第一步特征提取是关键</strong>，也是与2D目标检测的不同之处。下面再详细介绍一下两个网络编码部分的不同。</p>
 <h2 id="VoxelNet"><a href="#VoxelNet" class="headerlink" title="VoxelNet"></a>VoxelNet</h2><p><img src="/2019/06/15/3D-Detection/2.png" alt=""> </p>
 <ol>
-<li>Voxel Partition</li>
-<li>Grouping</li>
-<li>Random Sampling</li>
-<li><font style="color:#f0f"><strong>Stacked Voxel Feature Encoding</strong></font>
-
-</li>
+<li>Voxel Partition<br>将大小为$D\times H \times W$3D空间划分为equally spaced的voxels，如图所示。一个voxel的大小为$v_{D}\times v_{H} \times v_{W}$，得到的3D voxel grid的大小为$D’=D/v_{D}$，$H’=H/v_{H}$，$W’=W/v_{W}$。</li>
+<li>Grouping<br>将每个voxel中的点视为一组。</li>
+<li>Random Sampling<br>对于点较密集的voxel，随机选取$T$个点。</li>
+<li><font style="color:#f0f"><strong>Stacked Voxel Feature Encoding</strong></font><br>VFE layers是Feature Learning Network的核心部分。该层的输入为voxel内的点云，输出为该voxel的特征向量。</li>
+</ol>
+<ul>
+<li>将voxel内的LiDAR points记作集合$V={p_{i} = [x_{i},y_{i},z_{i},r_{i}]^T \in \mathbb{R}^4 }$，$x_{i},y_{i},z_{i}$就是该点在3D空间的坐标，$r_{i}$为反射比。</li>
+<li>将points的特征从4维增加到7维。对$V$内所有points的坐标取平均得到中心点坐标$$(v_{x},v_{y},v_{z})$。计算points到中心点的距离，得到$V={\hat{p_i} = [x_{i},y_{i},z_{i},r_{i},x_i-v_x,y_i-v_y,z_i-v_z]^T \in \mathbb{R}^4 }$</li>
+</ul>
+<ol start="5">
+<li>Sparse Tensor Representation</li>
 </ol>
 <h2 id="PointPillars"><a href="#PointPillars" class="headerlink" title="PointPillars"></a>PointPillars</h2><p><img src="/2019/06/15/3D-Detection/1.png" alt=""> </p>
 </the>
