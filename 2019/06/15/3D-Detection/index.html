@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/06/15/3D-Detection/2.png">
 <meta property="og:image" content="http://yoursite.com/2019/06/15/3D-Detection/1.png">
-<meta property="og:updated_time" content="2019-06-16T04:12:46.687Z">
+<meta property="og:updated_time" content="2019-06-16T05:09:19.986Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VoxelNet &amp;&amp; PointPillars">
 <meta name="twitter:description" content="3D Object Dection for Point Clounds的两篇论文。">
@@ -435,9 +435,9 @@
 </table>
 <ul>
 <li>在网络第一部分，将3D空间划分为若干单位（Voxel/Pillar），对非空单位进行编码。对内部points进行取样、特征表示、特征学习，得到Voxel/Pillar的特征向量，即voxel-wise/pillar-wise feature。按照单位原有的空间oxel/VoxelNet得到4D tensor，而PointPillars得到3D tensor。</li>
-<li>在网络第二部分，用3D/2D卷积进一步学习4D/3D tensor中单位与单位之间的空间关系（aggregate spatial context）。</li>
+<li>在网络第二部分，用3D/2D卷积进一步学习4D/3D tensor中单位与单位之间的空间关系（aggregate spatial context）。最终得到<strong>与3D空间平面长宽W、H相关的3D tensor</strong>，这与图像卷积得到的结果相似。类比一下，两者都得到$W’ \times H’ \times D$的feature map。图像卷积的feature map上每一点代表原图（2D平面）上一定邻域（具体邻域大小与感受野相关）的$D$维特征。而空间卷积的feature map上每一点代表BEV视角（2D平面）上以一定领域为底面的立方体的$D$维特征。仿佛把空间压扁，或者俯视整个空间，将空间在Z方向上的特征整合在feature map的深度$D$中。</li>
+<li>在网络的第三部分，<h1 id="VoxelNet"><a href="#VoxelNet" class="headerlink" title="VoxelNet"></a>VoxelNet</h1><img src="/2019/06/15/3D-Detection/2.png" alt=""> </li>
 </ul>
-<h1 id="VoxelNet"><a href="#VoxelNet" class="headerlink" title="VoxelNet"></a>VoxelNet</h1><p><img src="/2019/06/15/3D-Detection/2.png" alt=""> </p>
 <h1 id="PointPillars"><a href="#PointPillars" class="headerlink" title="PointPillars"></a>PointPillars</h1><p><img src="/2019/06/15/3D-Detection/1.png" alt=""> </p>
 
       
