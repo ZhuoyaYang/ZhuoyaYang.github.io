@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/06/15/3D-Detection/2.png">
 <meta property="og:image" content="http://yoursite.com/2019/06/15/3D-Detection/1.png">
-<meta property="og:updated_time" content="2019-06-16T08:37:46.498Z">
+<meta property="og:updated_time" content="2019-06-16T08:43:17.810Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VoxelNet &amp;&amp; PointPillars">
 <meta name="twitter:description" content="3D Object Dection for Point Clounds的两篇论文。">
@@ -401,7 +401,9 @@
 
       
         <p><excerpt in="" index="" |="" 首页摘要=""><br>3D Object Dection for Point Clounds的两篇论文。<br><a id="more"></a></excerpt></p>
-<p><the rest="" of="" contents="" |="" 余下全文=""><br>这两篇论文思路相似，PointPillars可以看做是VoxelNet的优化，将3D卷积变为2D，速度提升较大。此外，还有一些零零碎碎的改进，使总体准确率较VoxelNet也有一定提升。二者在以下方面一致：</the></p>
+<the rest="" of="" contents="" |="" 余下全文="">
+
+<h1 id="网络的整体结构"><a href="#网络的整体结构" class="headerlink" title="网络的整体结构"></a>网络的整体结构</h1><p>这两篇论文思路相似，PointPillars可以看做是VoxelNet的优化，将3D卷积变为2D，速度提升较大。此外，还有一些零零碎碎的改进，使总体准确率较VoxelNet也有一定提升。二者在以下方面一致：</p>
 <ol>
 <li><strong>数据类型</strong>，只使用激光雷达(LiDAR)数据，没有image的RGB信息</li>
 <li><strong>特征提取</strong>，用可学习的encoder得到machine-learned feature，取代人为设计的特征（hand-crafted feature）。每个单位（Voxel/Pillar）都对应一个特征向量。</li>
@@ -443,10 +445,10 @@
 </li>
 </ul>
 <p>总而言之，把Voxel在Z方向上合并，即可将若干Voxel合为一个Pillar。所以3D空间划分为Voxels后，<strong>Voxels之间仍然是3D的</strong>，而不同Pillars在Z方向上跨度相同，<strong>Pillars之间是2D的</strong>。<strong>维度减少是PointPillars更快的关键</strong>。</p>
-<p>对于3D目标检测网络来说，<strong>网络的第一步特征提取是关键</strong>，下面再详细介绍一下两个网络编码部分的不同。</p>
-<h1 id="VoxelNet"><a href="#VoxelNet" class="headerlink" title="VoxelNet"></a>VoxelNet</h1><p><img src="/2019/06/15/3D-Detection/2.png" alt=""> </p>
-<h1 id="PointPillars"><a href="#PointPillars" class="headerlink" title="PointPillars"></a>PointPillars</h1><p><img src="/2019/06/15/3D-Detection/1.png" alt=""> </p>
-
+<h1 id="feature-learning-network"><a href="#feature-learning-network" class="headerlink" title="feature learning network"></a>feature learning network</h1><p>对于3D目标检测网络来说，<strong>网络的第一步特征提取是关键</strong>，也是与2D目标检测的不同之处。下面再详细介绍一下两个网络编码部分的不同。</p>
+<h2 id="VoxelNet"><a href="#VoxelNet" class="headerlink" title="VoxelNet"></a>VoxelNet</h2><p><img src="/2019/06/15/3D-Detection/2.png" alt=""> </p>
+<h2 id="PointPillars"><a href="#PointPillars" class="headerlink" title="PointPillars"></a>PointPillars</h2><p><img src="/2019/06/15/3D-Detection/1.png" alt=""> </p>
+</the>
       
     </div>
     
@@ -626,7 +628,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#VoxelNet"><span class="nav-number">1.</span> <span class="nav-text">VoxelNet</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PointPillars"><span class="nav-number">2.</span> <span class="nav-text">PointPillars</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#网络的整体结构"><span class="nav-number">1.</span> <span class="nav-text">网络的整体结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#feature-learning-network"><span class="nav-number">2.</span> <span class="nav-text">feature learning network</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#VoxelNet"><span class="nav-number">2.1.</span> <span class="nav-text">VoxelNet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PointPillars"><span class="nav-number">2.2.</span> <span class="nav-text">PointPillars</span></a></li></ol></li></ol></div>
             
 
           </div>
