@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/06/15/3D-Detection/2.png">
 <meta property="og:image" content="http://yoursite.com/2019/06/15/3D-Detection/1.png">
-<meta property="og:updated_time" content="2019-06-16T10:17:52.526Z">
+<meta property="og:updated_time" content="2019-06-16T10:26:29.539Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VoxelNet &amp;&amp; PointPillars">
 <meta name="twitter:description" content="3D Object Dection for Point Clounds的两篇论文。">
@@ -458,12 +458,11 @@
 <li>将point-wise feature从4维增加到7维。计算$V$内points的坐标取平均得到中心点$(v_{x},v_{y},v_{z})$。计算points到中心点的距离，得到$V_{in}={\hat{p_i} = [x_{i},y_{i},z_{i},r_{i},x_i-v_x,y_i-v_y,z_i-v_z]^T \in \mathbb{R}^7 }$</li>
 <li>用FCN将7维的point-wise feature$\hat{p_i}$映射到新的特征空间。这里的FCN包括全连接网络(linear layer)、BN和非线性激活函数ReLU。显然，新特征的维度取决于全连接网络的神经元数量。<strong>每个神经元可以看做对之前特征的一次线性组合</strong>，有$m$个神经元就是进行了$m$次独立的线性组合，得到$m$维新特征，$f_i \in \mathbb{R}^m $。</li>
 <li>对voxel内所有points的point-wise feature进行element-wise maxpooling，得到局部聚合特征$\tilde{f} \in \mathbb{R}^m $。element-wise maxpooling就是把points的point-wise feature对齐，每个维度取最大值。</li>
-<li>将$f_i$与$\tilde{f}$拼接，得到point-wise concatenated feature$f_i^{out}=[f_i^T,\tilde{f}^T]^T \in \mathbb{R}^{2m}$</li>
+<li>将$f_i$与$\tilde{f}$拼接，得到point-wise concatenated feature$f_i^{out}=[f_i^T,\tilde{f}^T]^T \in \mathbb{R}^{2m}$<br>如图所示，经过层VFE，进行若干次映射、element-wise maxpooling、拼接，每次可以得到更聚合的point-wise feature。在最后再进行一次element-wise maxpooling，得到该voxel对应的$C$维特征。</li>
 </ul>
 <ol start="5">
-<li>Sparse Tensor Representation</li>
+<li>Sparse Tensor Representation<br>对非空的voxel处理，每个voxel有$C$维特征。对于大小为$D’ \times H’ \times W’$的3D voxel grid，可以得到$C \times D’ \times H’ \times W’$的4D tensor。<h2 id="PointPillars"><a href="#PointPillars" class="headerlink" title="PointPillars"></a>PointPillars</h2><img src="/2019/06/15/3D-Detection/1.png" alt=""> </li>
 </ol>
-<h2 id="PointPillars"><a href="#PointPillars" class="headerlink" title="PointPillars"></a>PointPillars</h2><p><img src="/2019/06/15/3D-Detection/1.png" alt=""> </p>
 </the>
       
     </div>
