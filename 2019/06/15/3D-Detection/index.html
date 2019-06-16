@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/06/15/3D-Detection/2.png">
 <meta property="og:image" content="http://yoursite.com/2019/06/15/3D-Detection/1.png">
-<meta property="og:updated_time" content="2019-06-16T07:53:13.668Z">
+<meta property="og:updated_time" content="2019-06-16T08:26:49.784Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VoxelNet &amp;&amp; PointPillars">
 <meta name="twitter:description" content="3D Object Dection for Point Clounds的两篇论文。">
@@ -419,7 +419,7 @@
 <tr>
 <td>第一部分</td>
 <td style="text-align:left">feature learning network</td>
-<td style="text-align:left">feature encoder network(pillar feature net)</td>
+<td style="text-align:left">feature encoder network</td>
 </tr>
 <tr>
 <td>第二部分</td>
@@ -442,6 +442,7 @@
 </ul>
 </li>
 </ul>
+<p>总而言之，把Z方向上的Voxel合并，即可得到Pillar。所以3D空间划分为Voxels后，Voxels之间仍然是3D的，而pillars之间是2D的。维度减少是PointPillars更快的关键。</p>
 <h1 id="VoxelNet"><a href="#VoxelNet" class="headerlink" title="VoxelNet"></a>VoxelNet</h1><p><img src="/2019/06/15/3D-Detection/2.png" alt=""> </p>
 <h1 id="PointPillars"><a href="#PointPillars" class="headerlink" title="PointPillars"></a>PointPillars</h1><p><img src="/2019/06/15/3D-Detection/1.png" alt=""> </p>
 
