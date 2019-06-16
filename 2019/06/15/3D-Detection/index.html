@@ -87,12 +87,13 @@
 <meta property="og:site_name" content="Zhuoya的星球">
 <meta property="og:description" content="3D Object Dection for Point Clounds的两篇论文。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2019/06/15/3D-Detection/2.png">
 <meta property="og:image" content="http://yoursite.com/2019/06/15/3D-Detection/1.png">
-<meta property="og:updated_time" content="2019-06-15T10:31:13.873Z">
+<meta property="og:updated_time" content="2019-06-16T04:05:56.573Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VoxelNet &amp;&amp; PointPillars">
 <meta name="twitter:description" content="3D Object Dection for Point Clounds的两篇论文。">
-<meta name="twitter:image" content="http://yoursite.com/2019/06/15/3D-Detection/1.png">
+<meta name="twitter:image" content="http://yoursite.com/2019/06/15/3D-Detection/2.png">
 
 
 
@@ -418,7 +419,7 @@
 <tr>
 <td>第一部分</td>
 <td style="text-align:left">feature learning network</td>
-<td style="text-align:left">feature encoder network</td>
+<td style="text-align:left">feature encoder network(pillar feature net)</td>
 </tr>
 <tr>
 <td>第二部分</td>
@@ -432,8 +433,9 @@
 </tr>
 </tbody>
 </table>
-<h1 id="PointPillars"><a href="#PointPillars" class="headerlink" title="PointPillars"></a>PointPillars</h1><p>分为3个</p>
-<p>##<br><img src="/2019/06/15/3D-Detection/1.png" alt=""> </p>
+<p>在网络第一部分，将3D空间划分为若干单位（Voxel/Pillar），对非空单位进行编码。对内部points进行取样、特征表示、特征学习，得到Voxel/Pillar的特征向量，即voxel-wise/pillar-wise feature。按照单位原有的空间oxel/VoxelNet得到4D tensor，而PointPillars得到3D tensor。<br>在网络第二部分，用3D/2D卷积进一步学习4D/3D tensor中单位与单位之间的空间关系（aggregate spatial context）。</p>
+<h1 id="VoxelNet"><a href="#VoxelNet" class="headerlink" title="VoxelNet"></a>VoxelNet</h1><p><img src="/2019/06/15/3D-Detection/2.png" alt=""> </p>
+<h1 id="PointPillars"><a href="#PointPillars" class="headerlink" title="PointPillars"></a>PointPillars</h1><p><img src="/2019/06/15/3D-Detection/1.png" alt=""> </p>
 
       
     </div>
@@ -614,7 +616,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#PointPillars"><span class="nav-number">1.</span> <span class="nav-text">PointPillars</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#VoxelNet"><span class="nav-number">1.</span> <span class="nav-text">VoxelNet</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PointPillars"><span class="nav-number">2.</span> <span class="nav-text">PointPillars</span></a></li></ol></div>
             
 
           </div>
