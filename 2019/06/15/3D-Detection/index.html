@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/06/15/3D-Detection/2.png">
 <meta property="og:image" content="http://yoursite.com/2019/06/15/3D-Detection/1.png">
-<meta property="og:updated_time" content="2019-06-16T08:43:17.810Z">
+<meta property="og:updated_time" content="2019-06-16T08:53:44.386Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VoxelNet &amp;&amp; PointPillars">
 <meta name="twitter:description" content="3D Object Dection for Point Clounds的两篇论文。">
@@ -445,8 +445,16 @@
 </li>
 </ul>
 <p>总而言之，把Voxel在Z方向上合并，即可将若干Voxel合为一个Pillar。所以3D空间划分为Voxels后，<strong>Voxels之间仍然是3D的</strong>，而不同Pillars在Z方向上跨度相同，<strong>Pillars之间是2D的</strong>。<strong>维度减少是PointPillars更快的关键</strong>。</p>
-<h1 id="feature-learning-network"><a href="#feature-learning-network" class="headerlink" title="feature learning network"></a>feature learning network</h1><p>对于3D目标检测网络来说，<strong>网络的第一步特征提取是关键</strong>，也是与2D目标检测的不同之处。下面再详细介绍一下两个网络编码部分的不同。</p>
+<h1 id="Feature-Learning-Network"><a href="#Feature-Learning-Network" class="headerlink" title="Feature Learning Network"></a>Feature Learning Network</h1><p>对于3D目标检测网络来说，<strong>网络的第一步特征提取是关键</strong>，也是与2D目标检测的不同之处。下面再详细介绍一下两个网络编码部分的不同。</p>
 <h2 id="VoxelNet"><a href="#VoxelNet" class="headerlink" title="VoxelNet"></a>VoxelNet</h2><p><img src="/2019/06/15/3D-Detection/2.png" alt=""> </p>
+<ol>
+<li>Voxel Partition</li>
+<li>Grouping</li>
+<li>Random Sampling</li>
+<li><font style="color:#f0f"><strong>Stacked Voxel Feature Encoding</strong></font>
+
+</li>
+</ol>
 <h2 id="PointPillars"><a href="#PointPillars" class="headerlink" title="PointPillars"></a>PointPillars</h2><p><img src="/2019/06/15/3D-Detection/1.png" alt=""> </p>
 </the>
       
@@ -628,7 +636,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#网络的整体结构"><span class="nav-number">1.</span> <span class="nav-text">网络的整体结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#feature-learning-network"><span class="nav-number">2.</span> <span class="nav-text">feature learning network</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#VoxelNet"><span class="nav-number">2.1.</span> <span class="nav-text">VoxelNet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PointPillars"><span class="nav-number">2.2.</span> <span class="nav-text">PointPillars</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#网络的整体结构"><span class="nav-number">1.</span> <span class="nav-text">网络的整体结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Feature-Learning-Network"><span class="nav-number">2.</span> <span class="nav-text">Feature Learning Network</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#VoxelNet"><span class="nav-number">2.1.</span> <span class="nav-text">VoxelNet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PointPillars"><span class="nav-number">2.2.</span> <span class="nav-text">PointPillars</span></a></li></ol></li></ol></div>
             
 
           </div>
