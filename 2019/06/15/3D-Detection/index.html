@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/06/15/3D-Detection/2.png">
 <meta property="og:image" content="http://yoursite.com/2019/06/15/3D-Detection/1.png">
-<meta property="og:updated_time" content="2019-06-16T11:53:24.572Z">
+<meta property="og:updated_time" content="2019-06-16T11:54:15.067Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VoxelNet &amp;&amp; PointPillars">
 <meta name="twitter:description" content="3D Object Dection for Point Clounds的两篇论文。">
@@ -464,7 +464,7 @@
 <li>Sparse Tensor Representation<br>对非空的voxel处理，每个voxel有$C$维特征。对于大小为$D’ \times H’ \times W’$的3D voxel grid，可以得到$C \times D’ \times H’ \times W’$的4D tensor。<h2 id="PointPillars"><a href="#PointPillars" class="headerlink" title="PointPillars"></a>PointPillars</h2><img src="/2019/06/15/3D-Detection/1.png" alt=""><br>VoxelNet在编码部分只有几处微小的区别，总体思路完全一样：</li>
 <li>划分单位<br>voxel grid是3D，而pillar grid是    2D。</li>
 <li>对单位内points进行原始特征表示，得到原始point-wise feature<br>voxel的特征是7维，pillar又加入了2维特征，即距离pillar中心点的x、y距离$x_p，y_p$，共9维。这在一定程度上可以弥补<!--voxel在Z方向划分更细，而-->同一个pillar内竖直方向上的信息损失。</li>
-<li>将point-wise feature映射到新的特征空间（全连接/1<em>1卷积+BN+ReLU）<br>VoxelNet进行了若干组映射，每次映射完对于所有point-wise feature又进行element-wise maxpooling得到聚合特征，将聚合特征再与point-wise feature拼接。而PointPillars只进行一组，没有与聚合特征拼接。<br>这里全连接和1\</em>1卷积可以相互替换，都是对已有的m维特征进行n次线性组合（n为神经元个数或filter个数），得到n维新特征。</li>
+<li>将point-wise feature映射到新的特征空间（全连接/1*1卷积+BN+ReLU）<br>VoxelNet进行了若干组映射，每次映射完对于所有point-wise feature又进行element-wise maxpooling得到聚合特征，将聚合特征再与point-wise feature拼接。而PointPillars只进行一组，没有与聚合特征拼接。<br>这里全连接和1*1卷积可以相互替换，都是对已有的m维特征进行n次线性组合（n为神经元个数或filter个数），得到n维新特征。</li>
 <li>element-wise maxpooling得到element-wise feature<br>每个voxel/pillar得到$C$维特征</li>
 <li>将每个单位的特征向量按照单位之间的空间关系排列<br>VoxelNet得到大小为$C \times D’ \times H’ \times W’$的4D tensor。<br>PointPillars得到大小为$C \times H’ \times W’$的3D tensor。</li>
 </ol>
