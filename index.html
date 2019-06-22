@@ -1709,7 +1709,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/09/dp1009-3/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/09/VoxelNet && PointPillars/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yang Zhuoya">
@@ -1728,7 +1728,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/10/09/dp1009-3/" itemprop="url">Dynamic Programming 3</a></h1>
+                <a class="post-title-link" href="/2018/10/09/VoxelNet && PointPillars/" itemprop="url">未命名</a></h1>
         
 
         <div class="post-meta">
@@ -1751,28 +1751,6 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -1780,7 +1758,7 @@
 
           
           
-             <span id="/2018/10/09/dp1009-3/" class="leancloud_visitors" data-flag-title="Dynamic Programming 3">
+             <span id="/2018/10/09/VoxelNet && PointPillars/" class="leancloud_visitors" data-flag-title="">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1812,14 +1790,103 @@
 
       
         
-          <p><excerpt in="" index="" |="" 首页摘要=""><br><a href="https://leetcode.com/problems/predict-the-winner/" target="_blank" rel="noopener">LeetCode(486) Predict the Winner</a><br><a href="https://leetcode.com/problems/longest-palindromic-substring/description/" target="_blank" rel="noopener">LeetCode(005) Longest Palindromic Substring</a><br><a href="https://leetcode.com/problems/minimum-ascii-delete-sum-for-two-strings/" target="_blank" rel="noopener">LeetCode(712) Minimum ASCII Delete Sum for Two Strings</a><br><a href="https://leetcode.com/problems/coin-change/" target="_blank" rel="noopener">LeetCode(322) Coin Change</a><br><a href="https://leetcode.com/problems/counting-bits/" target="_blank" rel="noopener">LeetCode(338) Counting Bits</a><br></excerpt></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/10/09/dp1009-3/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h1 id="VoxelNet-amp-amp-PointPillars"><a href="#VoxelNet-amp-amp-PointPillars" class="headerlink" title="VoxelNet &amp;&amp; PointPillars"></a>VoxelNet &amp;&amp; PointPillars</h1><h2 id="网络的整体结构"><a href="#网络的整体结构" class="headerlink" title="网络的整体结构"></a>网络的整体结构</h2><p>这两篇论文思路相似，PointPillars可以看做是VoxelNet的优化，将3D卷积变为2D，速度提升较大。此外，还有一些零零碎碎的改进，使总体准确率较VoxelNet也有一定提升。二者在以下方面一致：</p>
+<ol>
+<li><strong>数据类型</strong>，只使用激光雷达(LiDAR)数据，没有image的RGB信息</li>
+<li><strong>特征提取</strong>，用可学习的encoder得到machine-learned feature，取代人为设计的特征（hand-crafted feature）。每个单位（Voxel/Pillar）都对应一个特征向量。</li>
+<li><strong>网络整体结构</strong>都包含三部分，虽然论文中有不同的叫法，但功能是一致的：</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align:left">VoxelNet</th>
+<th style="text-align:left">PointPillars</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>第一部分</td>
+<td style="text-align:left">feature learning network</td>
+<td style="text-align:left">feature encoder network</td>
+</tr>
+<tr>
+<td>第二部分</td>
+<td style="text-align:left">convolutional middle layers(3D)</td>
+<td style="text-align:left">convolutional backbone(2D)</td>
+</tr>
+<tr>
+<td>第三部分</td>
+<td style="text-align:left">RPN</td>
+<td style="text-align:left">detection head(SSD)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>在网络第一部分，将3D空间划分为若干单位（Voxel/Pillar），对非空单位进行编码</strong>。对内部points进行取样、特征表示、特征学习，得到Voxel/Pillar的特征向量，即voxel-wise/pillar-wise feature。按照单位原有的空间关系排列，VoxelNet得到4D tensor，而PointPillars得到3D tensor。</li>
+<li><strong>在网络第二部分，用3D/2D卷积进一步学习4D/3D tensor中单位与单位之间的空间关系（aggregate spatial context）</strong>。最终得到<strong>与3D空间平面长宽W、H相关的3D tensor</strong>，这与图像卷积得到的结果相似。类比一下，两者都得到$W’ \times H’ \times D$的feature map。图像卷积的feature map上每一点代表原图（2D平面）上一定邻域（具体邻域大小与感受野相关）的$D$维特征。而空间卷积的feature map上每一点代表BEV视角（2D平面）上以一定领域为底面的立方体的$D$维特征。仿佛把空间压扁，或者俯视整个空间，将空间在Z方向上的特征整合在feature map的深度$D$中。</li>
+<li><strong>在网络的第三部分，predict 3D bounding box</strong>。虽然VoxelNet使用改进后的RPN，而PointPillars使用SSD，但二者在本质上没有区别。都采用upsample+concatanate得到多尺度特征图。都是全卷积网络，最后用卷积代替全连接，得到probability score map和regression map。如VoxelNet的网络图所示，concatanated后的特征图大小为$W’/2 \times H’/2 \times 768$，分别用$(2+14)$个大小为$W_{f} \times H_{f} \times 768$)的filter，对齐特征图的深度768，在特征图平面上滑动。进行16趟独立的卷积操作，得到16张map。<ul>
+<li>score map的2维分别为正例、负例的概率。</li>
+<li>regression map的14维为正例、负例的3D bounding box的7维坐标。中心点坐标$x,y,z$，长宽高$l,w,h$，rotation(Z轴偏移)$\theta$。</li>
+</ul>
+</li>
+</ul>
+<p>总而言之，把Voxel在Z方向上合并，即可将若干Voxel合为一个Pillar。3D空间划分为Voxels后，<strong>Voxel grid仍然是3D的</strong>，而不同Pillars在Z方向上跨度相同，<strong>Pillars grid是2D的</strong>。<strong>维度减少是PointPillars更快的关键</strong>。</p>
+<h2 id="Feature-Learning-Network"><a href="#Feature-Learning-Network" class="headerlink" title="Feature Learning Network"></a>Feature Learning Network</h2><p>对于3D目标检测网络来说，<strong>网络的第一步特征提取是关键</strong>，也是与2D目标检测的最不同之处。下面再详细介绍一下两个网络编码部分的不同。</p>
+<h3 id="VoxelNet"><a href="#VoxelNet" class="headerlink" title="VoxelNet"></a>VoxelNet</h3><p><img src="/2018/10/09/VoxelNet && PointPillars/./3D-Detection/2.png" alt=""></p>
+<ol>
+<li><p>Voxel Partition</p>
+<p> 将大小为$D\times H \times W$的3D空间划分为equally spaced的voxels，如图所示。一个voxel的大小为$v_{D}\times v_{H} \times v_{W}$，得到的3D voxel grid的大小为$D’=D/v_{D}$，$H’=H/v_{H}$，$W’=W/v_{W}$。</p>
+</li>
+<li><p>Grouping</p>
+<p> 将每个voxel中的点视为一组。</p>
+</li>
+<li><p>Random Sampling</p>
+<p> 对于点较密集的voxel，随机选取$T$个点。</p>
+</li>
+<li><font style="color:#00f"><strong>Stacked Voxel Feature Encoding</strong></font>
+
+<p> VFE layers是Feature Learning Network的核心部分。该层的输入为voxel内的点云，输出为该voxel的特征向量。</p>
+<ul>
+<li>将voxel内的LiDAR points记作集合$V={p_{i} = [x_{i},y_{i},z_{i},r_{i}]^T \in \mathbb{R}^4 }$，$x_{i},y_{i},z_{i}$就是该点在3D空间的坐标，$r_{i}$为反射比。</li>
+<li>将point-wise feature从4维增加到7维。计算$V$内points的坐标取平均得到中心点$(v_{x},v_{y},v_{z})$。计算points到中心点的距离，得到$V_{in}={\hat{p_i} = [x_{i},y_{i},z_{i},r_{i},x_i-v_x,y_i-v_y,z_i-v_z]^T \in \mathbb{R}^7 }$</li>
+<li>用FCN将7维的point-wise feature$\hat{p_i}$映射到新的特征空间。这里的FCN包括全连接网络(linear layer)、BN和非线性激活函数ReLU。显然，新特征的维度取决于全连接网络的神经元数量。<strong>每个神经元可以看做对之前特征的一次线性组合</strong>，有$m$个神经元就是进行了$m$次独立的线性组合，得到$m$维新特征，$f_i \in \mathbb{R}^m $。</li>
+<li>对voxel内所有points的point-wise feature进行element-wise maxpooling，得到局部聚合特征$\widetilde{f} \in \mathbb{R}^m $。element-wise maxpooling就是把points的point-wise feature对齐，每个维度取最大值。</li>
+<li>将$f_i$与$\widetilde{f}$拼接，得到point-wise concatenated feature$f_i^{out}=[f_i^T,\widetilde{f}^{T}]^T \in \mathbb{R}^{2m}$<br>如图所示，经过多层VFE，进行若干次映射、element-wise maxpooling、拼接，每次可以得到更聚合的point-wise feature。在最后再进行一次element-wise maxpooling，得到该voxel对应的$C$维特征。</li>
+</ul>
+</li>
+<li><p>Sparse Tensor Representation</p>
+<p> 对非空的voxel处理，每个voxel有$C$维特征。对于大小为$D’ \times H’ \times W’$的3D voxel grid，可以得到$C \times D’ \times H’ \times W’$的4D tensor。</p>
+</li>
+</ol>
+<h3 id="PointPillars"><a href="#PointPillars" class="headerlink" title="PointPillars"></a>PointPillars</h3><p><img src="/2018/10/09/VoxelNet && PointPillars/./3D-Detection/1.png" alt=""><br>VoxelNet在编码部分只有几处微小的区别，总体思路完全一样：</p>
+<ol>
+<li><strong>划分单位</strong><ul>
+<li>voxel grid是3D，而pillar grid是    2D。</li>
+</ul>
+</li>
+<li>对单位内points进行原始特征表示，得到<strong>原始point-wise feature</strong><ul>
+<li>voxel的特征是7维，pillar又加入了2维特征，即距离pillar中心点的x、y距离$x_p，y_p$，共9维。<!--这在一定程度上可以弥补voxel在Z方向划分更细，而pillar在Z方向上的不进一步划分造成的信息损失。--></li>
+</ul>
+</li>
+<li>将point-wise feature<strong>映射到新的特征空间</strong>（全连接/1*1卷积+BN+ReLU）<ul>
+<li>VoxelNet进行了若干组映射，每次映射完对于所有point-wise feature又进行element-wise maxpooling得到聚合特征，将聚合特征再与point-wise feature拼接。而PointPillars只进行一组，没有与聚合特征拼接。</li>
+<li>这里全连接和1*1卷积可以相互替换，都是对已有的m维特征进行n次线性组合（n为神经元个数或filter个数），得到n维新特征。</li>
+</ul>
+</li>
+<li>element-wise maxpooling<strong>得到element-wise feature</strong><ul>
+<li>每个voxel/pillar得到$C$维特征</li>
+</ul>
+</li>
+<li>将每个单位的特征向量<strong>按照单位之间的空间关系排列</strong><ul>
+<li>VoxelNet得到大小为$C \times D’ \times H’ \times W’$的4D tensor。</li>
+<li>PointPillars得到大小为$C \times H’ \times W’$的3D tensor。</li>
+</ul>
+</li>
+</ol>
+
+          
         
       
     </div>
@@ -1907,7 +1974,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

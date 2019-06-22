@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="TCP," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="关于congestion control、flow control。拥塞控制：发送端应考虑网络的负载量。防止过多数据注入网络，使路由器、链路过载。流量控制：发送端应考虑接收端的接收速度。让发送端不要太快，接收端来得及接收。">
-<meta name="keywords" content="TCP">
+<meta name="description" content="VoxelNet &amp;amp;&amp;amp; PointPillars网络的整体结构这两篇论文思路相似，PointPillars可以看做是VoxelNet的优化，将3D卷积变为2D，速度提升较大。此外，还有一些零零碎碎的改进，使总体准确率较VoxelNet也有一定提升。二者在以下方面一致：  数据类型，只使用激光雷达(LiDAR)数据，没有image的RGB信息 特征提取，用可学习的encoder得到m">
 <meta property="og:type" content="article">
-<meta property="og:title" content="TCP相关">
-<meta property="og:url" content="http://yoursite.com/2019/03/30/TCP/index.html">
+<meta property="og:title" content="Zhuoya的星球">
+<meta property="og:url" content="http://yoursite.com/2018/10/09/VoxelNet && PointPillars/index.html">
 <meta property="og:site_name" content="Zhuoya的星球">
-<meta property="og:description" content="关于congestion control、flow control。拥塞控制：发送端应考虑网络的负载量。防止过多数据注入网络，使路由器、链路过载。流量控制：发送端应考虑接收端的接收速度。让发送端不要太快，接收端来得及接收。">
+<meta property="og:description" content="VoxelNet &amp;amp;&amp;amp; PointPillars网络的整体结构这两篇论文思路相似，PointPillars可以看做是VoxelNet的优化，将3D卷积变为2D，速度提升较大。此外，还有一些零零碎碎的改进，使总体准确率较VoxelNet也有一定提升。二者在以下方面一致：  数据类型，只使用激光雷达(LiDAR)数据，没有image的RGB信息 特征提取，用可学习的encoder得到m">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-04T08:33:03.408Z">
+<meta property="og:image" content="http://yoursite.com/2018/10/09/VoxelNet%20&&%20PointPillars/3D-Detection/2.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/09/VoxelNet%20&&%20PointPillars/3D-Detection/1.png">
+<meta property="og:updated_time" content="2019-06-22T08:51:26.497Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="TCP相关">
-<meta name="twitter:description" content="关于congestion control、flow control。拥塞控制：发送端应考虑网络的负载量。防止过多数据注入网络，使路由器、链路过载。流量控制：发送端应考虑接收端的接收速度。让发送端不要太快，接收端来得及接收。">
+<meta name="twitter:title" content="Zhuoya的星球">
+<meta name="twitter:description" content="VoxelNet &amp;amp;&amp;amp; PointPillars网络的整体结构这两篇论文思路相似，PointPillars可以看做是VoxelNet的优化，将3D卷积变为2D，速度提升较大。此外，还有一些零零碎碎的改进，使总体准确率较VoxelNet也有一定提升。二者在以下方面一致：  数据类型，只使用激光雷达(LiDAR)数据，没有image的RGB信息 特征提取，用可学习的encoder得到m">
+<meta name="twitter:image" content="http://yoursite.com/2018/10/09/VoxelNet%20&&%20PointPillars/3D-Detection/2.png">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/30/TCP/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/10/09/VoxelNet && PointPillars/"/>
 
 
 
 
 
-  <title>TCP相关 | Zhuoya的星球</title>
+  <title> | Zhuoya的星球</title>
   
 
 
@@ -297,7 +299,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/30/TCP/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/09/VoxelNet && PointPillars/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yang Zhuoya">
@@ -314,7 +316,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">TCP相关</h1>
+          <h1 class="post-title" itemprop="name headline"></h1>
         
 
         <div class="post-meta">
@@ -326,8 +328,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-30T16:11:24+08:00">
-                2019-03-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-09T21:54:35+08:00">
+                2018-10-09
               </time>
             
 
@@ -337,28 +339,6 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Network/" itemprop="url" rel="index">
-                    <span itemprop="name">Network</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -366,7 +346,7 @@
 
           
           
-             <span id="/2019/03/30/TCP/" class="leancloud_visitors" data-flag-title="TCP相关">
+             <span id="/2018/10/09/VoxelNet && PointPillars/" class="leancloud_visitors" data-flag-title="">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -397,23 +377,101 @@
       
 
       
-        <p><excerpt in="" index="" |="" 首页摘要=""><br>关于congestion control、flow control。<br>拥塞控制：发送端应考虑<strong>网络的负载量</strong>。防止过多数据注入网络，使路由器、链路过载。<br>流量控制：发送端应考虑<strong>接收端的接收速度</strong>。让发送端不要太快，接收端来得及接收。<br><a id="more"></a></excerpt></p>
-<the rest="" of="" contents="" |="" 余下全文="">
-
-<h1 id="拥塞控制"><a href="#拥塞控制" class="headerlink" title="拥塞控制"></a>拥塞控制</h1><p>TCP的拥塞控制主要依赖于<strong>拥塞窗口cwnd</strong>(congestion window)、<strong>慢启动阈值ssthresh</strong>(slow start threshold)。</p>
+        <h1 id="VoxelNet-amp-amp-PointPillars"><a href="#VoxelNet-amp-amp-PointPillars" class="headerlink" title="VoxelNet &amp;&amp; PointPillars"></a>VoxelNet &amp;&amp; PointPillars</h1><h2 id="网络的整体结构"><a href="#网络的整体结构" class="headerlink" title="网络的整体结构"></a>网络的整体结构</h2><p>这两篇论文思路相似，PointPillars可以看做是VoxelNet的优化，将3D卷积变为2D，速度提升较大。此外，还有一些零零碎碎的改进，使总体准确率较VoxelNet也有一定提升。二者在以下方面一致：</p>
+<ol>
+<li><strong>数据类型</strong>，只使用激光雷达(LiDAR)数据，没有image的RGB信息</li>
+<li><strong>特征提取</strong>，用可学习的encoder得到machine-learned feature，取代人为设计的特征（hand-crafted feature）。每个单位（Voxel/Pillar）都对应一个特征向量。</li>
+<li><strong>网络整体结构</strong>都包含三部分，虽然论文中有不同的叫法，但功能是一致的：</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align:left">VoxelNet</th>
+<th style="text-align:left">PointPillars</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>第一部分</td>
+<td style="text-align:left">feature learning network</td>
+<td style="text-align:left">feature encoder network</td>
+</tr>
+<tr>
+<td>第二部分</td>
+<td style="text-align:left">convolutional middle layers(3D)</td>
+<td style="text-align:left">convolutional backbone(2D)</td>
+</tr>
+<tr>
+<td>第三部分</td>
+<td style="text-align:left">RPN</td>
+<td style="text-align:left">detection head(SSD)</td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li>cwnd&lt;ssthresh: 使用慢开始算法。</li>
-<li>cwnd&gt;ssthresh: 停止使用慢开始算法，开始使用拥塞避免算法。<br>慢启动可以让cwnd<strong>成倍增长</strong>，而拥塞避免中cwnd的增长是<strong>线性的</strong>。</li>
+<li><strong>在网络第一部分，将3D空间划分为若干单位（Voxel/Pillar），对非空单位进行编码</strong>。对内部points进行取样、特征表示、特征学习，得到Voxel/Pillar的特征向量，即voxel-wise/pillar-wise feature。按照单位原有的空间关系排列，VoxelNet得到4D tensor，而PointPillars得到3D tensor。</li>
+<li><strong>在网络第二部分，用3D/2D卷积进一步学习4D/3D tensor中单位与单位之间的空间关系（aggregate spatial context）</strong>。最终得到<strong>与3D空间平面长宽W、H相关的3D tensor</strong>，这与图像卷积得到的结果相似。类比一下，两者都得到$W’ \times H’ \times D$的feature map。图像卷积的feature map上每一点代表原图（2D平面）上一定邻域（具体邻域大小与感受野相关）的$D$维特征。而空间卷积的feature map上每一点代表BEV视角（2D平面）上以一定领域为底面的立方体的$D$维特征。仿佛把空间压扁，或者俯视整个空间，将空间在Z方向上的特征整合在feature map的深度$D$中。</li>
+<li><strong>在网络的第三部分，predict 3D bounding box</strong>。虽然VoxelNet使用改进后的RPN，而PointPillars使用SSD，但二者在本质上没有区别。都采用upsample+concatanate得到多尺度特征图。都是全卷积网络，最后用卷积代替全连接，得到probability score map和regression map。如VoxelNet的网络图所示，concatanated后的特征图大小为$W’/2 \times H’/2 \times 768$，分别用$(2+14)$个大小为$W_{f} \times H_{f} \times 768$)的filter，对齐特征图的深度768，在特征图平面上滑动。进行16趟独立的卷积操作，得到16张map。<ul>
+<li>score map的2维分别为正例、负例的概率。</li>
+<li>regression map的14维为正例、负例的3D bounding box的7维坐标。中心点坐标$x,y,z$，长宽高$l,w,h$，rotation(Z轴偏移)$\theta$。</li>
 </ul>
-<p>判断网络拥塞的依据是<strong>出现超时</strong>、<strong>3ACK</strong>：</p>
-<p><div style="padding-left:-30px">1. 超时，即超过<strong>超时重传时间RTO</strong></div><br>    (1) 将ssthresh降低为此时cwnd的一半，将cwnd重新设为初始值(IW)<br>    (2) 重新进入<strong>慢启动</strong>阶段</p>
-<p><div style="padding-left:-30px">2. 3ACK，连续收到3个对同一报文的重复确认</div><br>    (1) 启动<strong>快速重传</strong>，无须等待RTO<br>    (2) 将ssthresh降低为此时cwnd的一半，cwnd=ssthresh+3<br>    (3) 进入<strong>拥塞避免</strong>阶段，而非慢启动阶段</p>
-<h2 id="慢启动"><a href="#慢启动" class="headerlink" title="慢启动"></a>慢启动</h2><p>刚开始发送数据的时候，不清楚网络的负荷情况，使用慢启动算法试探地、由慢到快的增大拥塞窗口。每收到一次确认，$cwnd_{n+1}=cwnd_{n}*2$。<br>发送端的发送窗口cwnd的增长是指数级的，如果带宽为$W$，那么经过$RTTlog_{2}W$的时间就会占满带宽。</p>
-<h2 id="拥塞避免"><a href="#拥塞避免" class="headerlink" title="拥塞避免"></a>拥塞避免</h2><p>在拥塞避免阶段，拥塞窗口每经过一个RTT，$cwnd_{n+1}=cwnd_{n}+1$。<br>具有“加法增大”的特点，比慢开始阶段拥塞窗口的增长速率缓慢得多。</p>
-<h2 id="快重传"><a href="#快重传" class="headerlink" title="快重传"></a>快重传</h2><p>有时，个别报文段会在网络传输过程中丢失，<strong>但网络并未阻塞</strong>。如果发送端未收到ACK，产生超时。就会把cwnd设置为初试值IW，错误地启动慢开始，降低传输速率。<br>这是，我们需要<strong>快重传</strong>方法，<strong>让发送端尽早知道个别报文段的丢失</strong>。快重传方法要求接收方立即确认，即使<strong>受到失序报文段也要立即发送对已收到报文段的重复确认</strong>。发送方只要连续收到3个重复确认，就开始<strong>快重传</strong>。</p>
-<h2 id="快恢复"><a href="#快恢复" class="headerlink" title="快恢复"></a>快恢复</h2><p>发送端收到连续3个重复确认之后，知道<strong>只是缺失了个别报文</strong>。不启动慢开始，而是执行快恢复算法。将慢启动阈值ssthresh降低为此时cwnd的一半，cwnd=ssthresh+3。进入<strong>拥塞避免</strong>阶段。</p>
-<h1 id="流量控制"><a href="#流量控制" class="headerlink" title="流量控制"></a>流量控制</h1><p>使用滑动窗口实现流量控制。<em>TODO:待补充。</em></p>
-</the>
+</li>
+</ul>
+<p>总而言之，把Voxel在Z方向上合并，即可将若干Voxel合为一个Pillar。3D空间划分为Voxels后，<strong>Voxel grid仍然是3D的</strong>，而不同Pillars在Z方向上跨度相同，<strong>Pillars grid是2D的</strong>。<strong>维度减少是PointPillars更快的关键</strong>。</p>
+<h2 id="Feature-Learning-Network"><a href="#Feature-Learning-Network" class="headerlink" title="Feature Learning Network"></a>Feature Learning Network</h2><p>对于3D目标检测网络来说，<strong>网络的第一步特征提取是关键</strong>，也是与2D目标检测的最不同之处。下面再详细介绍一下两个网络编码部分的不同。</p>
+<h3 id="VoxelNet"><a href="#VoxelNet" class="headerlink" title="VoxelNet"></a>VoxelNet</h3><p><img src="/2018/10/09/VoxelNet && PointPillars/./3D-Detection/2.png" alt=""></p>
+<ol>
+<li><p>Voxel Partition</p>
+<p> 将大小为$D\times H \times W$的3D空间划分为equally spaced的voxels，如图所示。一个voxel的大小为$v_{D}\times v_{H} \times v_{W}$，得到的3D voxel grid的大小为$D’=D/v_{D}$，$H’=H/v_{H}$，$W’=W/v_{W}$。</p>
+</li>
+<li><p>Grouping</p>
+<p> 将每个voxel中的点视为一组。</p>
+</li>
+<li><p>Random Sampling</p>
+<p> 对于点较密集的voxel，随机选取$T$个点。</p>
+</li>
+<li><font style="color:#00f"><strong>Stacked Voxel Feature Encoding</strong></font>
+
+<p> VFE layers是Feature Learning Network的核心部分。该层的输入为voxel内的点云，输出为该voxel的特征向量。</p>
+<ul>
+<li>将voxel内的LiDAR points记作集合$V={p_{i} = [x_{i},y_{i},z_{i},r_{i}]^T \in \mathbb{R}^4 }$，$x_{i},y_{i},z_{i}$就是该点在3D空间的坐标，$r_{i}$为反射比。</li>
+<li>将point-wise feature从4维增加到7维。计算$V$内points的坐标取平均得到中心点$(v_{x},v_{y},v_{z})$。计算points到中心点的距离，得到$V_{in}={\hat{p_i} = [x_{i},y_{i},z_{i},r_{i},x_i-v_x,y_i-v_y,z_i-v_z]^T \in \mathbb{R}^7 }$</li>
+<li>用FCN将7维的point-wise feature$\hat{p_i}$映射到新的特征空间。这里的FCN包括全连接网络(linear layer)、BN和非线性激活函数ReLU。显然，新特征的维度取决于全连接网络的神经元数量。<strong>每个神经元可以看做对之前特征的一次线性组合</strong>，有$m$个神经元就是进行了$m$次独立的线性组合，得到$m$维新特征，$f_i \in \mathbb{R}^m $。</li>
+<li>对voxel内所有points的point-wise feature进行element-wise maxpooling，得到局部聚合特征$\widetilde{f} \in \mathbb{R}^m $。element-wise maxpooling就是把points的point-wise feature对齐，每个维度取最大值。</li>
+<li>将$f_i$与$\widetilde{f}$拼接，得到point-wise concatenated feature$f_i^{out}=[f_i^T,\widetilde{f}^{T}]^T \in \mathbb{R}^{2m}$<br>如图所示，经过多层VFE，进行若干次映射、element-wise maxpooling、拼接，每次可以得到更聚合的point-wise feature。在最后再进行一次element-wise maxpooling，得到该voxel对应的$C$维特征。</li>
+</ul>
+</li>
+<li><p>Sparse Tensor Representation</p>
+<p> 对非空的voxel处理，每个voxel有$C$维特征。对于大小为$D’ \times H’ \times W’$的3D voxel grid，可以得到$C \times D’ \times H’ \times W’$的4D tensor。</p>
+</li>
+</ol>
+<h3 id="PointPillars"><a href="#PointPillars" class="headerlink" title="PointPillars"></a>PointPillars</h3><p><img src="/2018/10/09/VoxelNet && PointPillars/./3D-Detection/1.png" alt=""><br>VoxelNet在编码部分只有几处微小的区别，总体思路完全一样：</p>
+<ol>
+<li><strong>划分单位</strong><ul>
+<li>voxel grid是3D，而pillar grid是    2D。</li>
+</ul>
+</li>
+<li>对单位内points进行原始特征表示，得到<strong>原始point-wise feature</strong><ul>
+<li>voxel的特征是7维，pillar又加入了2维特征，即距离pillar中心点的x、y距离$x_p，y_p$，共9维。<!--这在一定程度上可以弥补voxel在Z方向划分更细，而pillar在Z方向上的不进一步划分造成的信息损失。--></li>
+</ul>
+</li>
+<li>将point-wise feature<strong>映射到新的特征空间</strong>（全连接/1*1卷积+BN+ReLU）<ul>
+<li>VoxelNet进行了若干组映射，每次映射完对于所有point-wise feature又进行element-wise maxpooling得到聚合特征，将聚合特征再与point-wise feature拼接。而PointPillars只进行一组，没有与聚合特征拼接。</li>
+<li>这里全连接和1*1卷积可以相互替换，都是对已有的m维特征进行n次线性组合（n为神经元个数或filter个数），得到n维新特征。</li>
+</ul>
+</li>
+<li>element-wise maxpooling<strong>得到element-wise feature</strong><ul>
+<li>每个voxel/pillar得到$C$维特征</li>
+</ul>
+</li>
+<li>将每个单位的特征向量<strong>按照单位之间的空间关系排列</strong><ul>
+<li>VoxelNet得到大小为$C \times D’ \times H’ \times W’$的4D tensor。</li>
+<li>PointPillars得到大小为$C \times H’ \times W’$的3D tensor。</li>
+</ul>
+</li>
+</ol>
+
       
     </div>
     
@@ -428,12 +486,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/TCP/" rel="tag"># TCP</a>
-          
-        </div>
-      
 
       
       
@@ -443,8 +495,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/25/thinking-325/" rel="next" title="最近的一些思考">
-                <i class="fa fa-chevron-left"></i> 最近的一些思考
+              <a href="/2018/10/09/dp1009-3/" rel="next" title="Dynamic Programming 3">
+                <i class="fa fa-chevron-left"></i> Dynamic Programming 3
               </a>
             
           </div>
@@ -453,8 +505,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/04/01/CNN-para-FLOPs/" rel="prev" title="CNN相关">
-                CNN相关 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/10/11/dp1011-4/" rel="prev" title="Dynamic Programming 4">
+                Dynamic Programming 4 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -593,7 +645,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#拥塞控制"><span class="nav-number">1.</span> <span class="nav-text">拥塞控制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#慢启动"><span class="nav-number">1.1.</span> <span class="nav-text">慢启动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拥塞避免"><span class="nav-number">1.2.</span> <span class="nav-text">拥塞避免</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#快重传"><span class="nav-number">1.3.</span> <span class="nav-text">快重传</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#快恢复"><span class="nav-number">1.4.</span> <span class="nav-text">快恢复</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#流量控制"><span class="nav-number">2.</span> <span class="nav-text">流量控制</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#VoxelNet-amp-amp-PointPillars"><span class="nav-number">1.</span> <span class="nav-text">VoxelNet &amp;&amp; PointPillars</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#网络的整体结构"><span class="nav-number">1.1.</span> <span class="nav-text">网络的整体结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Feature-Learning-Network"><span class="nav-number">1.2.</span> <span class="nav-text">Feature Learning Network</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#VoxelNet"><span class="nav-number">1.2.1.</span> <span class="nav-text">VoxelNet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PointPillars"><span class="nav-number">1.2.2.</span> <span class="nav-text">PointPillars</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
