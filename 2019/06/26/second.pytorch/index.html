@@ -90,7 +90,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/06/26/second.pytorch/2.png">
 <meta property="og:image" content="http://yoursite.com/2019/06/26/second.pytorch/1.png">
 <meta property="og:image" content="http://yoursite.com/2019/06/26/second.pytorch/3.png">
-<meta property="og:updated_time" content="2019-06-26T07:47:28.106Z">
+<meta property="og:updated_time" content="2019-06-26T09:06:31.419Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="pointpillars复现">
 <meta name="twitter:description" content="复现以下pointpillars的结果，GitHub/second.pytorchREADME不是很详细，相关issue也比较少，自己第一次安装的时候也遇到了挺多问题。">
@@ -411,7 +411,9 @@
 <p>加入镜像之后，其他源都更新了，如下图。但pytorch还是从官网下载，这是因为pytorch官方提供的安装命令<code>conda install pytorch torchvision cudatoolkit=10.0 -c pytorch</code>中，最后的<strong>-c pytorch</strong>指定了使用官方源，要使用第三方源的话把这个参数去掉即可。<br><img src="/2019/06/26/second.pytorch/3.png" alt=""></p>
 <h1 id="SpConv"><a href="#SpConv" class="headerlink" title="SpConv"></a>SpConv</h1><p>一个类似于SparseConvNet的空间系数卷积库。</p>
 <h3 id="clone"><a href="#clone" class="headerlink" title="clone"></a>clone</h3><p>因为spconv有一些子模块，比如<a href="https://github.com/pybind/pybind11.git" target="_blank" rel="noopener">third_party/pybind11</a>、<a href="https://github.com/wjakob/clang-cindex-python3" target="_blank" rel="noopener">tools/clang</a>，–recursive可以一并clone这些子模块。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/traveller59/spconv --recursive</span><br></pre></td></tr></table></figure></p>
-<h3 id="安装cmake"><a href="#安装cmake" class="headerlink" title="安装cmake"></a>安装cmake</h3><p>### </p>
+<h3 id="安装cmake"><a href="#安装cmake" class="headerlink" title="安装cmake"></a>安装cmake</h3><p>在<a href="https://cmake.org/download/" target="_blank" rel="noopener">官网</a>下载CMake，要求版本 &gt;= 3.13.2。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/Kitware/CMake/releases/download/v3.15.0-rc2/cmake-3.15.0-rc2-Linux-x86_64.tar.gz&quot;&gt;cmake-3.15.0-rc2-Linux-x86_64.tar.gz</span><br></pre></td></tr></table></figure></p>
+<p>将cmake路径添加到用户路径中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.bashrc </span><br><span class="line">export PATH=/data2/yzy/cmake-3.15.0-rc2-Linux-x86_64/bin:$PATH</span><br><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure></p>
+<p>### </p>
 <h1 id="准备KITTI数据集"><a href="#准备KITTI数据集" class="headerlink" title="准备KITTI数据集"></a>准备KITTI数据集</h1><p>在kitti官网下载，在导航栏选择<a href="http://www.cvlibs.net/datasets/kitti/eval_object.php?obj_benchmark=3d" target="_blank" rel="noopener">object-3d</a>。其中：</p>
 <ul>
 <li>image_2：对应left color images of object data set (12 GB)</li>
