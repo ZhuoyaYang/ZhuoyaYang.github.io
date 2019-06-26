@@ -90,7 +90,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/06/26/second.pytorch/2.png">
 <meta property="og:image" content="http://yoursite.com/2019/06/26/second.pytorch/1.png">
 <meta property="og:image" content="http://yoursite.com/2019/06/26/second.pytorch/3.png">
-<meta property="og:updated_time" content="2019-06-26T07:43:25.010Z">
+<meta property="og:updated_time" content="2019-06-26T07:47:28.106Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="pointpillars复现">
 <meta name="twitter:description" content="复现以下pointpillars的结果，GitHub/second.pytorchREADME不是很详细，相关issue也比较少，自己第一次安装的时候也遇到了挺多问题。">
@@ -408,7 +408,7 @@
 <p>安装完毕后，重新打开一个终端，命令行前面出现(base)。base这是Anaconda在安装时默认创建的环境。出现(base)表示当前处于该环境，下载、删除、运行都是在base环境中进行。可以创建其他环境，用conda env list查看所有环境：<br><img src="/2019/06/26/second.pytorch/2.png" alt=""><br>用conda deactivate、conda activate可以开启、关闭conda环境。<br><img src="/2019/06/26/second.pytorch/1.png" alt=""></p>
 <h3 id="安装依赖包"><a href="#安装依赖包" class="headerlink" title="安装依赖包"></a>安装依赖包</h3><p>SpConv的README中要求CUDA 9.0+，我这里用的9.0，依据CUDA修改cudatoolkit<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda install scikit-image scipy numba pillow matplotlib</span><br><span class="line">conda install pytorch torchvision cudatoolkit=9.0 -c pytorch</span><br></pre></td></tr></table></figure></p>
 <p>pytorch从官方源安装很慢，我加了一个Anaconda清华镜像：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/</span><br><span class="line">conda config --set show_channel_urls yes</span><br></pre></td></tr></table></figure></p>
-<p>加入镜像之后，发现除了pytorch，其他源都更新了。pytorch还是很慢，这是因为pytorch官方提供的安装命令==<strong>conda install</strong> pytorch torchvision cudatoolkit=10.0 <strong>-c pytorch</strong>==中，最后的-c pytorch指定了使用官方源，要使用第三方源的话把这个参数去掉即可。<br><img src="/2019/06/26/second.pytorch/3.png" alt=""></p>
+<p>加入镜像之后，其他源都更新了，如下图。但pytorch还是从官网下载，这是因为pytorch官方提供的安装命令<code>conda install pytorch torchvision cudatoolkit=10.0 -c pytorch</code>中，最后的<strong>-c pytorch</strong>指定了使用官方源，要使用第三方源的话把这个参数去掉即可。<br><img src="/2019/06/26/second.pytorch/3.png" alt=""></p>
 <h1 id="SpConv"><a href="#SpConv" class="headerlink" title="SpConv"></a>SpConv</h1><p>一个类似于SparseConvNet的空间系数卷积库。</p>
 <h3 id="clone"><a href="#clone" class="headerlink" title="clone"></a>clone</h3><p>因为spconv有一些子模块，比如<a href="https://github.com/pybind/pybind11.git" target="_blank" rel="noopener">third_party/pybind11</a>、<a href="https://github.com/wjakob/clang-cindex-python3" target="_blank" rel="noopener">tools/clang</a>，–recursive可以一并clone这些子模块。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/traveller59/spconv --recursive</span><br></pre></td></tr></table></figure></p>
 <h3 id="安装cmake"><a href="#安装cmake" class="headerlink" title="安装cmake"></a>安装cmake</h3><p>### </p>
