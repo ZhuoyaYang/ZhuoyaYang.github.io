@@ -94,7 +94,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/06/26/second.pytorch/6.png">
 <meta property="og:image" content="http://yoursite.com/2019/06/26/second.pytorch/7.png">
 <meta property="og:image" content="http://yoursite.com/2019/06/26/second.pytorch/8.png">
-<meta property="og:updated_time" content="2019-06-27T15:49:23.820Z">
+<meta property="og:updated_time" content="2019-06-27T15:54:49.488Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="pointpillars复现">
 <meta name="twitter:description" content="复现pointpillars的结果，GitHub/second.pytorchREADME不是很详细，相关issue也比较少，自己第一次安装的时候也遇到了挺多问题。">
@@ -418,13 +418,12 @@
 <h3 id="安装cmake"><a href="#安装cmake" class="headerlink" title="安装cmake"></a>安装cmake</h3><p>在<a href="https://cmake.org/download/" target="_blank" rel="noopener">官网</a>下载CMake，要求版本 &gt;= 3.13.2。如果系统已有的cmake符合要求可以跳过这步。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/Kitware/CMake/releases/download/v3.15.0-rc2/cmake-3.15.0-rc2-Linux-x86_64.tar.gz&quot;&gt;cmake-3.15.0-rc2-Linux-x86_64.tar.gz</span><br></pre></td></tr></table></figure></p>
 <p>将cmake路径添加到用户路径中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.bashrc </span><br><span class="line">export PATH=/data2/yzy/cmake-3.15.0-rc2-Linux-x86_64/bin:$PATH</span><br><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure></p>
 <p>然后用cmake –version测试：<br><img src="/2019/06/26/second.pytorch/4.png" alt=""></p>
-<p>由于cuda/cudnn版本，还可能出现其他问题：</p>
+<p>由于cuda/cudnn版本，还可能出现其他问题：<br>我这里用的cuda 9.0，可以到<code>/usr/local</code>下看看已有的cuda版本。</p>
 <ol>
 <li>运行<code>python setup.py bdist_wheel</code>如果出现错误<code>No CMAKE_CUDA_COMPILER could be found</code>，还需要在~/.bashrc中<code>export CUDACXX=/usr/local/cuda-9.0/bin/nvcc</code>，<a href="https://github.com/jetsonhacks/buildLibrealsense2TX/issues/13" target="_blank" rel="noopener">参考issue</a></li>
-<li>Cuda版本不对应<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export CUDNN_INCLUDE_DIR=&quot;/usr/local/cuda-9.0/include&quot;</span><br><span class="line">export CUDNN_LIBRARY=&quot;/usr/local/cuda-9.0/lib64/libcudnn.so&quot;</span><br></pre></td></tr></table></figure>
+<li>其他版本不对应的报错<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export CUDNN_INCLUDE_DIR=&quot;/usr/local/cuda-9.0/include&quot;</span><br><span class="line">export CUDNN_LIBRARY=&quot;/usr/local/cuda-9.0/lib64/libcudnn.so&quot;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<p>3.</p>
 <h3 id="setup-amp-install"><a href="#setup-amp-install" class="headerlink" title="setup &amp; install"></a>setup &amp; install</h3><p>编译、安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python setup.py bdist_wheel</span><br><span class="line">cd ./dist</span><br><span class="line">pip install spconv-1.1-cp36-cp36m-linux_x86_64.whl</span><br></pre></td></tr></table></figure></p>
 <p>pip install的时候遇到了一点问题<code>not a supported wheel on this platform</code>，不是一个常见问题，网上搜不到相关解释。<br><img src="/2019/06/26/second.pytorch/6.png" alt=""><br>但python版本没有问题，满足3.6+的要求，所以用<code>pip --version</code>看了一下pip版本，发现pip的版本是python3.5的，并且不是anaconda下的pip：<br><img src="/2019/06/26/second.pytorch/7.png" alt=""><br>用如下指令，将spconv安装到指定位置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install spconv-1.1-cp36-cp36m-linux_x86_64.whl --target=~/anaconda3/lib/python3.6/site-packages</span><br></pre></td></tr></table></figure></p>
 <p>测试一下，SpConv安装成功：<br><img src="/2019/06/26/second.pytorch/8.png" alt=""></p>
