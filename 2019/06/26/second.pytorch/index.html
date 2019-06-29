@@ -95,7 +95,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/06/26/second.pytorch/7.png">
 <meta property="og:image" content="http://yoursite.com/2019/06/26/second.pytorch/8.png">
 <meta property="og:image" content="http://yoursite.com/2019/06/26/second.pytorch/9.png">
-<meta property="og:updated_time" content="2019-06-29T17:21:38.223Z">
+<meta property="og:updated_time" content="2019-06-29T18:19:44.761Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="pointpillars复现">
 <meta name="twitter:description" content="复现pointpillars的结果，GitHub/second.pytorchREADME不是很详细，相关issue也比较少，自己第一次安装的时候也遇到了挺多问题。">
@@ -444,7 +444,8 @@
 <p><img src="/2019/06/26/second.pytorch/9.png" alt=""></p>
 <h1 id="替换路径"><a href="#替换路径" class="headerlink" title="替换路径"></a>替换路径</h1><p>将second.pytorch/second/configs所有文件中的路径<code>/media/yy/960evo/datasets/kitti</code>替换为自己的KITTI数据集路径<code>/home/yzy/second.pytorch/second/KITTI_DATASET_ROOT</code>。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd second.pytorch/second/configs</span><br><span class="line">new_path=&quot;/home/yzy/second.pytorch/second/KITTI_DATASET_ROOT&quot;</span><br><span class="line">sed -i &quot;s:/media/yy/960evo/datasets/kitti:$&#123;new_path&#125;:&quot; *.config</span><br><span class="line">sed -i &quot;s:/media/yy/960evo/datasets/kitti:$&#123;new_path&#125;:&quot; ./pointpillars/car/*.config</span><br><span class="line">sed -i &quot;s:/media/yy/960evo/datasets/kitti:$&#123;new_path&#125;:&quot; ./pointpillars/ped_cycle/*.config</span><br></pre></td></tr></table></figure>
-<h1 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CUDA_VISIBLE_DEVICES=0,1 nohup python ./pytorch/train.py train --config_path=./configs/car.fhd.config --model_dir=model --multi_gpu=True &amp;</span><br></pre></td></tr></table></figure>
+<h1 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h1><p>multi-gpu训练。如果gpu内存不够，可以将./configs/car.fhd.config下的<code>batch_size</code>改小一点。我用的TITAN Xp，2个GPU，batch-size改为4，每个GPU大概占用不到8000MiB。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CUDA_VISIBLE_DEVICES=0,1 nohup python ./pytorch/train.py train --config_path=./configs/car.fhd.config --model_dir=model --multi_gpu=True &amp;</span><br></pre></td></tr></table></figure></p>
+
       
     </div>
     
