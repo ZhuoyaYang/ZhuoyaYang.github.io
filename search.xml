@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title>车辆车轮检测</title>
+      <link href="/2019/07/13/car-detect/"/>
+      <url>/2019/07/13/car-detect/</url>
+      <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br>交通视频/图像数据，包含car，bus，rider，track，person，front（前轮），rear（后轮），7个类别。</excerpt></p><ul><li>数据集imbalance严重，car类别比较多，其余类别比较少。</li><li>目标之间尺寸差别较大（具体差别？每个类别大小分布直方图？）</li><li>鱼眼相机的畸变（是否需要矫正？）</li><li>数据集是一帧一帧的图像，如何利用帧与帧之间的关系？（确定车辆走向，区分前后轮？？）</li></ul><a id="more"></a><p><the rest="" of="" contents="" |="" 余下全文=""></the></p><h2 id="Faster-R-CNN"><a href="#Faster-R-CNN" class="headerlink" title="Faster R-CNN"></a>Faster R-CNN</h2><p>因为Faster R-CNN非常熟悉，所以先训练看看效果。</p><ul><li>backbone尝试了vgg16/res152</li><li>anchor ratio一开始用的默认参数[0.5、1、2]，后来考虑到公交车、行人类别，调整为1[0.25、0.5、1、2、4]</li><li>anchor size未改，默认参数[128、256、512]<br>目前效果未提升，在行人、前后轮上检测效果较差。猜测是faster r-cnn对于小目标检测效果不好？<br>todo:</li><li>明确anchor应该如何设置</li><li>faster r-cnn多尺度or小目标检测效果（多尺度、小目标检测如何定义，faster r-cnn是否适合，如果不适合，什么比较适合）</li><li>现有代码faster r-cnn是否真的不支持fpn???</li></ul><h2 id="Mask-R-CNN"><a href="#Mask-R-CNN" class="headerlink" title="Mask R-CNN"></a>Mask R-CNN</h2><p>考虑到原有的faster r-cnn模型不支持fpn，所以想试一下mask r-cnn。</p>]]></content>
+      
+      <categories>
+          
+          <category> 项目记录 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Object Detection </tag>
+            
+            <tag> Faster R-CNN </tag>
+            
+            <tag> Mask R-CNN </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>Pneumothorax 分割</title>
       <link href="/2019/07/08/pneumothorax:mask-rcnn/"/>
       <url>/2019/07/08/pneumothorax:mask-rcnn/</url>
@@ -17,9 +42,9 @@
       
         <tags>
             
-            <tag> Segmentation </tag>
-            
             <tag> Mask R-CNN </tag>
+            
+            <tag> Segmentation </tag>
             
         </tags>
       
@@ -40,7 +65,7 @@
       
         <tags>
             
-            <tag> 3D Object Dection </tag>
+            <tag> 3D Object Detection </tag>
             
             <tag> PointPillars </tag>
             
@@ -63,7 +88,7 @@
       
         <tags>
             
-            <tag> 3D Object Dection </tag>
+            <tag> 3D Object Detection </tag>
             
             <tag> PointPillars </tag>
             
