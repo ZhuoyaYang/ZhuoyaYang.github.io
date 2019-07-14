@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/07/13/car-detect/1.png">
 <meta property="og:image" content="http://yoursite.com/2019/07/13/car-detect/2.png">
-<meta property="og:updated_time" content="2019-07-14T15:10:38.109Z">
+<meta property="og:updated_time" content="2019-07-14T15:16:38.057Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="车辆车轮检测">
 <meta name="twitter:description" content="交通视频/图像数据，包含car，bus，rider，track，person，front（前轮），rear（后轮），7个类别。  数据集imbalance严重，car类别比较多，其余类别比较少。 Focal Loss是处理正负样本不均衡    目标之间尺寸差别较大（具体差别？每个类别大小分布直方图？） 鱼眼相机的畸变（是否需要矫正？） 数据集是一帧一帧的图像，如何利用帧与帧之间的关系？（确定车辆走">
@@ -394,7 +394,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  671
+                  765
                 </span>
               
 
@@ -466,7 +466,7 @@
 <li>修改训练集和测试集的名字，与paths_catalog.py中DATASETS的key相对应<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DATASETS:</span><br><span class="line">  TRAIN: (&quot;coco_2014_train&quot;)</span><br><span class="line">  TEST: (&quot;coco_2014_val&quot;)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>3.模型训练/测试超参数配置(<code>./maskrcnn_benchmark/config/defaults.py</code>)</p>
+<p>3.模型训练/测试超参数配置(<code>./maskrcnn_benchmark/config/defaults.py</code>)<br>这个文件是模型的默认参数文件。其中，有一些参数与backbone配置文件中重复，最终参数还是以backbone文件配置的为准。这里我主要修改了与模型输出相关的几个参数，如下2行表示，每2500个iteration保存一次模型，保存在<code>.</code>目录下。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_C.SOLVER.CHECKPOINT_PERIOD = 2500 </span><br><span class="line">_C.OUTPUT_DIR = &quot;.&quot;</span><br></pre></td></tr></table></figure></p>
 <h3 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h3><p>单gpu时，用<code>CUDA_VISIBLE_DEVICES=1</code>指定使用第二块GPU，为了防止cuda out of memory，将<code>SOLVER.IMS_PER_BATCH</code>设置为4，这个参数在<code>./maskrcnn_benchmark/config/defaults.py</code>中默认设置为16，<code>_C.SOLVER.IMS_PER_BATCH = 16</code>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CUDA_VISIBLE_DEVICES=1 nohup python tools/train_net.py --config-file configs/e2e_mask_rcnn_R_101_FPN_1x.yaml SOLVER.IMS_PER_BATCH 4 &amp;</span><br></pre></td></tr></table></figure></p>
 
       
