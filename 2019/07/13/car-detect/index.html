@@ -88,7 +88,7 @@
 <meta property="og:description" content="交通视频/图像数据，包含car，bus，rider，track，person，front（前轮），rear（后轮），7个类别。  数据集imbalance严重，car类别比较多，其余类别比较少。 目标之间尺寸差别较大（具体差别？每个类别大小分布直方图？） 鱼眼相机的畸变（是否需要矫正？） 数据集是一帧一帧的图像，如何利用帧与帧之间的关系？（确定车辆走向，区分前后轮？？） 如果直接在视频上检测，效果">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/07/13/car-detect/1.png">
-<meta property="og:updated_time" content="2019-07-14T06:32:48.432Z">
+<meta property="og:updated_time" content="2019-07-14T07:09:10.533Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="车辆车轮检测">
 <meta name="twitter:description" content="交通视频/图像数据，包含car，bus，rider，track，person，front（前轮），rear（后轮），7个类别。  数据集imbalance严重，car类别比较多，其余类别比较少。 目标之间尺寸差别较大（具体差别？每个类别大小分布直方图？） 鱼眼相机的畸变（是否需要矫正？） 数据集是一帧一帧的图像，如何利用帧与帧之间的关系？（确定车辆走向，区分前后轮？？） 如果直接在视频上检测，效果">
@@ -393,7 +393,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  467
+                  507
                 </span>
               
 
@@ -452,9 +452,10 @@
 <li>现有代码faster r-cnn是否真的不支持fpn???</li>
 </ul>
 <h2 id="Mask-R-CNN"><a href="#Mask-R-CNN" class="headerlink" title="Mask R-CNN"></a>Mask R-CNN</h2><p>考虑到原有的faster r-cnn模型不支持fpn，所以想试一下mask r-cnn做检测。</p>
-<h3 id="voc转coco"><a href="#voc转coco" class="headerlink" title="voc转coco"></a>voc转coco</h3><p>mask只支持coco格式的数据，数据格式如<a href="http://cocodataset.org/#format-data" target="_blank" rel="noopener">官网</a>。转化代码见<a href="https://github.com/CivilNet/Gemfield/blob/master/src/python/pascal_voc_xml2json/pascal_voc_xml2json.py" target="_blank" rel="noopener">这里</a>，修改代码中的xml_path（xml文件夹路径），json_file（json文件路径）即可，分别对训练集、验证集xml文件夹生成json文件。可以沿用coco数据集默认的名字：<code>instances_train2104.json</code>，<code>instances_val2104.json</code>。</p>
+<h3 id="准备数据（voc转coco）"><a href="#准备数据（voc转coco）" class="headerlink" title="准备数据（voc转coco）"></a>准备数据（voc转coco）</h3><p>mask只支持coco格式的数据，数据格式如<a href="http://cocodataset.org/#format-data" target="_blank" rel="noopener">官网</a>。转化代码见<a href="https://github.com/CivilNet/Gemfield/blob/master/src/python/pascal_voc_xml2json/pascal_voc_xml2json.py" target="_blank" rel="noopener">这里</a>，修改代码中的xml_path（xml文件夹路径），json_file（json文件路径）即可，分别对训练集、验证集xml文件夹生成json文件。可以沿用coco数据集默认的名字：<code>instances_train2104.json</code>，<code>instances_val2104.json</code>。</p>
 <p>然后在项目下建立<code>./datasets/coco</code>存放图片和json标注信息。目录的组织结构如下图所示，其中<code>train2014</code>和<code>val2014</code>分别存放训练集图片、验证集图片。<br><img src="/2019/07/13/car-detect/1.png" alt=""></p>
-
+<p>我用的是<code>e2e_mask_rcnn_R_101_FPN_1x.yaml</code>，用resnet101+FPN做backbone，在<code>./configs/</code>下打开该配置文件，因为只用来检测，所以要设置<code>MASK_ON: False</code>。</p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3>
       
     </div>
     
@@ -634,7 +635,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Faster-R-CNN"><span class="nav-number">1.</span> <span class="nav-text">Faster R-CNN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mask-R-CNN"><span class="nav-number">2.</span> <span class="nav-text">Mask R-CNN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#voc转coco"><span class="nav-number">2.1.</span> <span class="nav-text">voc转coco</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Faster-R-CNN"><span class="nav-number">1.</span> <span class="nav-text">Faster R-CNN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mask-R-CNN"><span class="nav-number">2.</span> <span class="nav-text">Mask R-CNN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#准备数据（voc转coco）"><span class="nav-number">2.1.</span> <span class="nav-text">准备数据（voc转coco）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置"><span class="nav-number">2.2.</span> <span class="nav-text">配置</span></a></li></ol></li></ol></div>
             
 
           </div>
