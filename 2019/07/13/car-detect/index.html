@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/07/13/car-detect/1.png">
 <meta property="og:image" content="http://yoursite.com/2019/07/13/car-detect/2.png">
-<meta property="og:updated_time" content="2019-07-14T15:57:31.811Z">
+<meta property="og:updated_time" content="2019-07-14T16:15:40.099Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="车辆车轮检测">
 <meta name="twitter:description" content="交通视频/图像数据，包含car，bus，rider，track，person，front（前轮），rear（后轮），7个类别。  数据集imbalance严重，car类别比较多，其余类别比较少。 Focal Loss是处理正负样本不均衡   目标之间尺寸差别较大（具体差别？每个类别大小分布直方图？） 鱼眼相机的畸变（是否需要矫正？） 数据集是一帧一帧的图像，如何利用帧与帧之间的关系？（确定车辆走向">
@@ -394,7 +394,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  863
+                  889
                 </span>
               
 
@@ -410,7 +410,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  4
                 </span>
               
             </div>
@@ -472,6 +472,10 @@
 </li>
 </ol>
 <p>在第319行插入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">for catId in coco_gt.getCatIds():</span><br><span class="line">      coco_eval = COCOeval(coco_gt, coco_dt, iou_type)</span><br><span class="line">      coco_eval.params.catIds = [catId]</span><br><span class="line">      coco_eval.evaluate()</span><br><span class="line">      coco_eval.accumulate()</span><br><span class="line">      coco_eval.summarize()</span><br></pre></td></tr></table></figure></p>
+<ol start="2">
+<li>运行测试程序<br>自动加载最新的模型<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python tools/test_net.py --config-file configs/e2e_mask_rcnn_R_101_FPN_1x.yaml</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 
       
     </div>
