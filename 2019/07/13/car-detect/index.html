@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="交通视频/图像数据，包含car，bus，rider，track，person，front（前轮），rear（后轮），7个类别。  数据集imbalance严重，car类别比较多，其余类别比较少。 目标之间尺寸差别较大（具体差别？每个类别大小分布直方图？） 鱼眼相机的畸变（是否需要矫正？） 数据集是一帧一帧的图像，如何利用帧与帧之间的关系？（确定车辆走向，区分前后轮？？） 如果直接在视频上检测，效果">
+<meta name="description" content="交通视频/图像数据，包含car，bus，rider，track，person，front（前轮），rear（后轮），7个类别。  数据集imbalance严重，car类别比较多，其余类别比较少。 Focal Loss是处理正负样本不均衡    目标之间尺寸差别较大（具体差别？每个类别大小分布直方图？） 鱼眼相机的畸变（是否需要矫正？） 数据集是一帧一帧的图像，如何利用帧与帧之间的关系？（确定车辆走">
 <meta name="keywords" content="Object Detection,Faster R-CNN,Mask R-CNN">
 <meta property="og:type" content="article">
 <meta property="og:title" content="车辆车轮检测">
 <meta property="og:url" content="http://yoursite.com/2019/07/13/car-detect/index.html">
 <meta property="og:site_name" content="Zhuoya的星球">
-<meta property="og:description" content="交通视频/图像数据，包含car，bus，rider，track，person，front（前轮），rear（后轮），7个类别。  数据集imbalance严重，car类别比较多，其余类别比较少。 目标之间尺寸差别较大（具体差别？每个类别大小分布直方图？） 鱼眼相机的畸变（是否需要矫正？） 数据集是一帧一帧的图像，如何利用帧与帧之间的关系？（确定车辆走向，区分前后轮？？） 如果直接在视频上检测，效果">
+<meta property="og:description" content="交通视频/图像数据，包含car，bus，rider，track，person，front（前轮），rear（后轮），7个类别。  数据集imbalance严重，car类别比较多，其余类别比较少。 Focal Loss是处理正负样本不均衡    目标之间尺寸差别较大（具体差别？每个类别大小分布直方图？） 鱼眼相机的畸变（是否需要矫正？） 数据集是一帧一帧的图像，如何利用帧与帧之间的关系？（确定车辆走">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/07/13/car-detect/1.png">
-<meta property="og:updated_time" content="2019-07-14T07:13:18.410Z">
+<meta property="og:updated_time" content="2019-07-14T08:05:57.737Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="车辆车轮检测">
-<meta name="twitter:description" content="交通视频/图像数据，包含car，bus，rider，track，person，front（前轮），rear（后轮），7个类别。  数据集imbalance严重，car类别比较多，其余类别比较少。 目标之间尺寸差别较大（具体差别？每个类别大小分布直方图？） 鱼眼相机的畸变（是否需要矫正？） 数据集是一帧一帧的图像，如何利用帧与帧之间的关系？（确定车辆走向，区分前后轮？？） 如果直接在视频上检测，效果">
+<meta name="twitter:description" content="交通视频/图像数据，包含car，bus，rider，track，person，front（前轮），rear（后轮），7个类别。  数据集imbalance严重，car类别比较多，其余类别比较少。 Focal Loss是处理正负样本不均衡    目标之间尺寸差别较大（具体差别？每个类别大小分布直方图？） 鱼眼相机的畸变（是否需要矫正？） 数据集是一帧一帧的图像，如何利用帧与帧之间的关系？（确定车辆走">
 <meta name="twitter:image" content="http://yoursite.com/2019/07/13/car-detect/1.png">
 
 
@@ -393,7 +393,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  519
+                  531
                 </span>
               
 
@@ -432,7 +432,11 @@
       
         <p><excerpt in="" index="" |="" 首页摘要=""><br>交通视频/图像数据，包含car，bus，rider，track，person，front（前轮），rear（后轮），7个类别。</excerpt></p>
 <ul>
-<li>数据集imbalance严重，car类别比较多，其余类别比较少。</li>
+<li>数据集imbalance严重，car类别比较多，其余类别比较少。<ul>
+<li>Focal Loss是处理正负样本不均衡</li>
+<li></li>
+</ul>
+</li>
 <li>目标之间尺寸差别较大（具体差别？每个类别大小分布直方图？）</li>
 <li>鱼眼相机的畸变（是否需要矫正？）</li>
 <li>数据集是一帧一帧的图像，如何利用帧与帧之间的关系？（确定车辆走向，区分前后轮？？）<ul>
