@@ -83,16 +83,16 @@
 <meta name="keywords" content="Mask R-CNN,Segmentation">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Pneumothorax 分割">
-<meta property="og:url" content="http://yoursite.com/2019/07/08/pneumothorax:mask-rcnn/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/07/08/pneumothorax-maskrcnn/index.html">
 <meta property="og:site_name" content="Zhuoya的星球">
 <meta property="og:description" content="Kaggle-SIIM-ACR Pneumothorax Segmentation">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/07/08/pneumothorax:mask-rcnn/1.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/08/pneumothorax-maskrcnn/pneumothorax:mask-rcnn/1.png">
 <meta property="og:updated_time" content="2019-07-19T07:32:39.884Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Pneumothorax 分割">
 <meta name="twitter:description" content="Kaggle-SIIM-ACR Pneumothorax Segmentation">
-<meta name="twitter:image" content="http://yoursite.com/2019/07/08/pneumothorax:mask-rcnn/1.png">
+<meta name="twitter:image" content="http://yoursite.com/2019/07/08/pneumothorax-maskrcnn/pneumothorax:mask-rcnn/1.png">
 
 
 
@@ -122,7 +122,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/07/08/pneumothorax:mask-rcnn/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/07/08/pneumothorax-maskrcnn/"/>
 
 
 
@@ -299,7 +299,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/08/pneumothorax:mask-rcnn/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/08/pneumothorax-maskrcnn/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yang Zhuoya">
@@ -368,7 +368,7 @@
 
           
           
-             <span id="/2019/07/08/pneumothorax:mask-rcnn/" class="leancloud_visitors" data-flag-title="Pneumothorax 分割">
+             <span id="/2019/07/08/pneumothorax-maskrcnn/" class="leancloud_visitors" data-flag-title="Pneumothorax 分割">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -441,7 +441,7 @@
 <!--用`matplotlib.pyplot`显示图像，这里要注意的是DICOM内的图像是灰度图像，用
 opencv使用的是BGR格式的，用plt显示需要转化为RGB格式:plt.imshow(cv2.cvtColor(ds.pixel_array, cv2.COLOR_BGR2RGB))-->
 <p>用<code>plt</code>查看均衡化后的对比效果:<br><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">start_id</span> = <span class="number">0</span></span><br><span class="line"><span class="attr">show_num</span> = <span class="number">5</span></span><br><span class="line"></span><br><span class="line"><span class="attr">train_path</span> = sorted(glob.glob(<span class="string">"./train/*.jpg"</span>)[start_id:start_id+show_num])</span><br><span class="line"><span class="attr">clahe_path</span> = sorted(glob.glob(<span class="string">"./train_clahe/*.jpg"</span>)[start_id:start_id+show_num])</span><br><span class="line"></span><br><span class="line">fig, <span class="attr">ax</span> = plt.subplots(<span class="attr">nrows=2,</span> <span class="attr">ncols=show_num,</span> <span class="attr">sharey=True,</span> <span class="attr">figsize=(show_num*8,8))</span></span><br><span class="line">for q, img <span class="keyword">in</span> enumerate(train_path):</span><br><span class="line">    print(q,img,clahe_path[q])</span><br><span class="line">    <span class="attr">im_train</span> = cv2.imread(img)</span><br><span class="line">    <span class="attr">im_clahe</span> = cv2.imread(clahe_path[q])</span><br><span class="line">    ax[<span class="number">0</span>,q].set_title(<span class="string">"The original image"</span>)</span><br><span class="line">    ax[<span class="number">0</span>,q].imshow(im_train)</span><br><span class="line">    ax[<span class="number">1</span>,q].set_title(<span class="string">"After CLAHE"</span>)</span><br><span class="line">    ax[<span class="number">1</span>,q].imshow(im_clahe)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></p>
-<p><img src="/2019/07/08/pneumothorax:mask-rcnn/1.png" alt=""></p>
+<p><img src="/2019/07/08/pneumothorax-maskrcnn/pneumothorax:mask-rcnn/1.png" alt=""></p>
 
       
     </div>
