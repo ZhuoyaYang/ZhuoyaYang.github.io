@@ -90,7 +90,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/07/08/pneumothorax-maskrcnn/1.png">
 <meta property="og:image" content="http://yoursite.com/2019/07/08/pneumothorax-maskrcnn/2.png">
 <meta property="og:image" content="http://yoursite.com/2019/07/08/pneumothorax-maskrcnn/3.png">
-<meta property="og:updated_time" content="2019-07-20T11:29:38.033Z">
+<meta property="og:updated_time" content="2019-07-20T11:34:44.897Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Pneumothorax 分割">
 <meta name="twitter:description" content="Kaggle-SIIM-ACR Pneumothorax Segmentation">
@@ -395,7 +395,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,128
+                  1,135
                 </span>
               
 
@@ -451,7 +451,7 @@ opencv使用的是BGR格式的，用plt显示需要转化为RGB格式:plt.imshow
 <p>用<code>pycocotools</code>计算面积(area)、bbox:<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pycocotools import mask</span><br><span class="line">mak = np.array(mak, <span class="attribute">dtype</span>=<span class="string">'uint8'</span>)</span><br><span class="line">encoded_ground_truth = mask.encode(mak)</span><br><span class="line">area = mask.area(encoded_ground_truth)   # 5232 </span><br><span class="line">bbox = mask.toBbox(encoded_ground_truth).tolist()  # [284.0, 149.0, 181.0, 104.0]</span><br></pre></td></tr></table></figure></p>
 <p>显示生成的mask、bbox，检查效果:<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">im = cv2.imread(<span class="string">"./train/"</span>+show_img)</span><br><span class="line">plt.imshow(im)</span><br><span class="line">plt.imshow(mak,<span class="attribute">alpha</span>=0.2, <span class="attribute">cmap</span>=<span class="string">"Reds"</span>)</span><br><span class="line">plt.title(<span class="string">"Mask"</span>)</span><br><span class="line"></span><br><span class="line">plt.gca().add_patch(</span><br><span class="line">    plt.Rectangle((bbox[0], bbox[1]), bbox[2],</span><br><span class="line">                   bbox[3], <span class="attribute">fill</span>=<span class="literal">False</span>, <span class="attribute">linestyle</span>=<span class="string">':'</span>,</span><br><span class="line">                   <span class="attribute">edgecolor</span>=<span class="string">'r'</span>, <span class="attribute">linewidth</span>=1)</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></p>
 <p><img src="/2019/07/08/pneumothorax-maskrcnn/3.png" alt=""></p>
-
+<h2 id="生成train-val的json文件"><a href="#生成train-val的json文件" class="headerlink" title="生成train/val的json文件"></a>生成train/val的json文件</h2>
       
     </div>
     
@@ -633,7 +633,7 @@ opencv使用的是BGR格式的，用plt显示需要转化为RGB格式:plt.imshow
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#从DICOM中获取图像"><span class="nav-number">1.</span> <span class="nav-text">从DICOM中获取图像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RLE生成mask、bbox、计算面积"><span class="nav-number">2.</span> <span class="nav-text">RLE生成mask、bbox、计算面积</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#从DICOM中获取图像"><span class="nav-number">1.</span> <span class="nav-text">从DICOM中获取图像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RLE生成mask、bbox、计算面积"><span class="nav-number">2.</span> <span class="nav-text">RLE生成mask、bbox、计算面积</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成train-val的json文件"><span class="nav-number">3.</span> <span class="nav-text">生成train/val的json文件</span></a></li></ol></div>
             
 
           </div>
