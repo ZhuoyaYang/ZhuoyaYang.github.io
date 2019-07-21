@@ -90,7 +90,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/07/08/pneumothorax-maskrcnn/1.png">
 <meta property="og:image" content="http://yoursite.com/2019/07/08/pneumothorax-maskrcnn/2.png">
 <meta property="og:image" content="http://yoursite.com/2019/07/08/pneumothorax-maskrcnn/3.png">
-<meta property="og:updated_time" content="2019-07-21T09:22:13.728Z">
+<meta property="og:updated_time" content="2019-07-21T10:03:32.501Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Pneumothorax 分割">
 <meta name="twitter:description" content="Kaggle-SIIM-ACR Pneumothorax Segmentation">
@@ -395,7 +395,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,180
+                  1,305
                 </span>
               
 
@@ -411,7 +411,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  6
+                  7
                 </span>
               
             </div>
@@ -450,14 +450,16 @@ opencv使用的是BGR格式的，用plt显示需要转化为RGB格式:plt.imshow
 <p>rle转化为mask，这里要转置一下。rle按照图像一列一列的顺序编码（先数第一列有多少个0/255，再数第二列…），因为图像列方向为x、行方向为y。而在rle2mask中，将以列编码的rle复原为mask，按行排列，导致mask的xy反置。综上，本质原是图像坐标下的xy顺序与array中xy的顺序相反:<br><figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">def rle2mask(rle, <span class="built_in">width</span>, <span class="built_in">height</span>):</span><br><span class="line">    mask= <span class="built_in">np</span>.zeros(<span class="built_in">width</span>* <span class="built_in">height</span>)</span><br><span class="line">    <span class="built_in">array</span> = <span class="built_in">np</span>.asarray([int(x) <span class="keyword">for</span> x <span class="keyword">in</span> rle.<span class="built_in">split</span>()])</span><br><span class="line">    starts = <span class="built_in">array</span>[<span class="number">0</span>::<span class="number">2</span>]</span><br><span class="line">    lengths = <span class="built_in">array</span>[<span class="number">1</span>::<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line">    current_position = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> index, start <span class="keyword">in</span> enumerate(starts):</span><br><span class="line">        current_position += start</span><br><span class="line">        mask[current_position:current_position+lengths[index]] = <span class="number">255</span></span><br><span class="line">        current_position += lengths[index]</span><br><span class="line"></span><br><span class="line">    <span class="built_in">return</span> mask.reshape(<span class="built_in">width</span>, <span class="built_in">height</span>)</span><br><span class="line"></span><br><span class="line">mak = rle2mask(rle,<span class="number">1024</span>,<span class="number">1024</span>).T</span><br></pre></td></tr></table></figure></p>
 <p>用<code>pycocotools</code>计算面积(area)、bbox，这里用了3个函数，可以<a href="https://github.com/cocodataset/cocoapi/blob/master/PythonAPI/pycocotools/mask.py" target="_blank" rel="noopener">这个参考函数说明</a>:</p>
 <ul>
-<li>mask.encode()，将bimask转化成compressed RLE</li>
+<li>mask.encode()，将mask转化成compressed RLE</li>
 <li>mask.area()，通过compressed RLE求面积</li>
 <li>mask.toBbox()，通过compressed RLE计算bbox<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pycocotools import mask</span><br><span class="line">mak = np.array(mak, <span class="attribute">dtype</span>=<span class="string">'uint8'</span>)</span><br><span class="line">encoded_ground_truth = mask.encode(mak)</span><br><span class="line">area = mask.area(encoded_ground_truth)   # 5232 </span><br><span class="line">bbox = mask.toBbox(encoded_ground_truth).tolist()  # [284.0, 149.0, 181.0, 104.0]</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>显示生成的mask、bbox，检查效果:<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">im = cv2.imread(<span class="string">"./train/"</span>+show_img)</span><br><span class="line">plt.imshow(im)</span><br><span class="line">plt.imshow(mak,<span class="attribute">alpha</span>=0.2, <span class="attribute">cmap</span>=<span class="string">"Reds"</span>)</span><br><span class="line">plt.title(<span class="string">"Mask"</span>)</span><br><span class="line"></span><br><span class="line">plt.gca().add_patch(</span><br><span class="line">    plt.Rectangle((bbox[0], bbox[1]), bbox[2],</span><br><span class="line">                   bbox[3], <span class="attribute">fill</span>=<span class="literal">False</span>, <span class="attribute">linestyle</span>=<span class="string">':'</span>,</span><br><span class="line">                   <span class="attribute">edgecolor</span>=<span class="string">'r'</span>, <span class="attribute">linewidth</span>=1)</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></p>
 <p><img src="/2019/07/08/pneumothorax-maskrcnn/3.png" alt=""></p>
-<h1 id="生成train-val的json文件">3. 生成train/val的json文件</h1>
+<h1 id="生成train-val的json文件">3. 生成train/val的json文件</h1><p>根据<a href="http://cocodataset.org/#format-data" target="_blank" rel="noopener">coco官网的格式</a>，忽略<code>info</code>和<code>license</code>部分，把<code>images</code>、<code>annotations</code>、<code>categories</code>部分即可。<code>categories</code>只有有个类别<code>pneumothorax</code>。<br><figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">coco = dict()</span><br><span class="line">coco[<span class="string">'images'</span>] = []</span><br><span class="line">coco[<span class="string">'annotations'</span>] = []</span><br><span class="line">coco[<span class="string">'categories'</span>] = [&#123;<span class="string">"name"</span>: <span class="string">"pneumothorax"</span>, <span class="string">"supercategory"</span>: <span class="string">"none"</span>, <span class="string">"id"</span>: <span class="number">1</span>&#125;]</span><br></pre></td></tr></table></figure></p>
+<p>对于coco[‘images’]，每个image对于一个dict，dict的key包括图像编号<code>id</code>，图像名称<code>file_name</code>，宽高<code>width</code>、<code>height</code>。<code>id</code>从某一数字起顺序编号即可，<code>file_name</code>形如xxx.jpg，不需要包含图像路径:<br><figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">image_item = dict()</span><br><span class="line">image_item[<span class="string">'id'</span>] = image_id</span><br><span class="line">image_item[<span class="string">'file_name'</span>] = image_name</span><br><span class="line">image_item[<span class="string">'width'</span>] = <span class="number">1024</span></span><br><span class="line">image_item[<span class="string">'height'</span>] = <span class="number">1024</span></span><br><span class="line">coco[<span class="string">'images'</span>].append(image_item)</span><br></pre></td></tr></table></figure></p>
+
       
     </div>
     
