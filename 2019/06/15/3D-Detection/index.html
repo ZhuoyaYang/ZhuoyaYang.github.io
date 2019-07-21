@@ -394,7 +394,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,667
+                  1,673
                 </span>
               
 
@@ -434,7 +434,7 @@
         <p><excerpt in="" index="" |="" 首页摘要=""><br>3D Object Dection for Point Clounds的两篇论文。<br><a id="more"></a></excerpt></p>
 <the rest="" of="" contents="" |="" 余下全文="">
 
-<h1 id="网络的整体结构"><a href="#网络的整体结构" class="headerlink" title="网络的整体结构"></a>网络的整体结构</h1><p>这两篇论文思路相似，PointPillars可以看做是VoxelNet的优化，将3D卷积变为2D，速度提升较大。此外，还有一些零零碎碎的改进，使总体准确率较VoxelNet也有一定提升。二者在以下方面一致：</p>
+<h1 id="网络的整体结构">1. 网络的整体结构</h1><p>这两篇论文思路相似，PointPillars可以看做是VoxelNet的优化，将3D卷积变为2D，速度提升较大。此外，还有一些零零碎碎的改进，使总体准确率较VoxelNet也有一定提升。二者在以下方面一致：</p>
 <ol>
 <li><strong>数据类型</strong>，只使用激光雷达(LiDAR)数据，没有image的RGB信息</li>
 <li><strong>特征提取</strong>，用可学习的encoder得到machine-learned feature，取代人为设计的特征（hand-crafted feature）。每个单位（Voxel/Pillar）都对应一个特征向量。</li>
@@ -476,8 +476,8 @@
 </li>
 </ul>
 <p>总而言之，把Voxel在Z方向上合并，即可将若干Voxel合为一个Pillar。3D空间划分为Voxels后，<strong>Voxel grid仍然是3D的</strong>，而不同Pillars在Z方向上跨度相同，<strong>Pillars grid是2D的</strong>。<strong>维度减少是PointPillars更快的关键</strong>。</p>
-<h1 id="Feature-Learning-Network"><a href="#Feature-Learning-Network" class="headerlink" title="Feature Learning Network"></a>Feature Learning Network</h1><p>对于3D目标检测网络来说，<strong>网络的第一步特征提取是关键</strong>，也是与2D目标检测的最不同之处。下面再详细介绍一下两个网络编码部分的不同。</p>
-<h2 id="VoxelNet"><a href="#VoxelNet" class="headerlink" title="VoxelNet"></a>VoxelNet</h2><p><img src="/2019/06/15/3D-Detection/2.png" alt=""> </p>
+<h1 id="Feature-Learning-Network">2. Feature Learning Network</h1><p>对于3D目标检测网络来说，<strong>网络的第一步特征提取是关键</strong>，也是与2D目标检测的最不同之处。下面再详细介绍一下两个网络编码部分的不同。</p>
+<h2 id="VoxelNet">2.1. VoxelNet</h2><p><img src="/2019/06/15/3D-Detection/2.png" alt=""> </p>
 <ol>
 <li>Voxel Partition<br>将大小为$D\times H \times W$的3D空间划分为equally spaced的voxels，如图所示。一个voxel的大小为$v_{D}\times v_{H} \times v_{W}$，得到的3D voxel grid的大小为$D’=D/v_{D}$，$H’=H/v_{H}$，$W’=W/v_{W}$。</li>
 <li>Grouping<br>将每个voxel中的点视为一组。</li>
@@ -494,7 +494,7 @@
 <ol start="5">
 <li>Sparse Tensor Representation<br>对非空的voxel处理，每个voxel有$C$维特征。对于大小为$D’ \times H’ \times W’$的3D voxel grid，可以得到$C \times D’ \times H’ \times W’$的4D tensor。</li>
 </ol>
-<h2 id="PointPillars"><a href="#PointPillars" class="headerlink" title="PointPillars"></a>PointPillars</h2><p><img src="/2019/06/15/3D-Detection/1.png" alt=""><br>VoxelNet在编码部分只有几处微小的区别，总体思路完全一样：</p>
+<h2 id="PointPillars">2.2. PointPillars</h2><p><img src="/2019/06/15/3D-Detection/1.png" alt=""><br>VoxelNet在编码部分只有几处微小的区别，总体思路完全一样：</p>
 <ol>
 <li><strong>划分单位</strong><br>voxel grid是3D，而pillar grid是    2D。</li>
 <li>对单位内points进行原始特征表示，得到<strong>原始point-wise feature</strong><br>voxel的特征是7维，pillar又加入了2维特征，即距离pillar中心点的x、y距离$x_p，y_p$，共9维。这在一定程度上可以弥补voxel在Z方向划分更细，而pillar在Z方向上的不进一步划分造成的信息损失。</li>
@@ -686,7 +686,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#网络的整体结构"><span class="nav-text">网络的整体结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Feature-Learning-Network"><span class="nav-text">Feature Learning Network</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#VoxelNet"><span class="nav-text">VoxelNet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PointPillars"><span class="nav-text">PointPillars</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#网络的整体结构"><span class="nav-text">1. 网络的整体结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Feature-Learning-Network"><span class="nav-text">2. Feature Learning Network</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#VoxelNet"><span class="nav-text">2.1. VoxelNet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PointPillars"><span class="nav-text">2.2. PointPillars</span></a></li></ol></li></ol></div>
             
 
           </div>
