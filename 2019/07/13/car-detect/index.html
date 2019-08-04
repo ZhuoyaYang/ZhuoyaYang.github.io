@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/07/13/car-detect/1.png">
 <meta property="og:image" content="http://yoursite.com/2019/07/13/car-detect/2.png">
-<meta property="og:updated_time" content="2019-08-03T12:47:51.473Z">
+<meta property="og:updated_time" content="2019-08-04T16:59:33.923Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="车辆车轮检测">
 <meta name="twitter:description" content="交通视频/图像数据&amp;lt;!–，包含car，bus，rider，track，person，front（前轮），rear（后轮），7个类别。  数据集imbalance严重，car类别比较多，其余类别比较少。 Focal Loss是处理正负样本不均衡   目标之间尺寸差别较大（具体差别？每个类别大小分布直方图？） 鱼眼相机的畸变（是否需要矫正？） 数据集是一帧一帧的图像，如何利用帧与帧之间的关系？（">
@@ -476,7 +476,7 @@
 <li>运行测试程序<br>自动加载最新的模型：<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">python</span> tools/test_net.<span class="keyword">py</span> --config-<span class="keyword">file</span> configs/e2e_mask_rcnn_R_101_FPN_1x.yaml</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<!--python tools/test_net.py --config-file configs/e2e_mask_rcnn_R_50_C4_1x.yaml-->
+<!--python tools/test_net.py --config-file configs/e2e_mask_rcnn_R_101_FPN_1x.yaml-->
 <p>也可以用–ckpt参数，指定模型路径：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python tools/test_net<span class="selector-class">.py</span> --config-file configs/e2e_mask_rcnn_R_101_FPN_1x<span class="selector-class">.yaml</span> --ckpt model_0002500.pth</span><br></pre></td></tr></table></figure></p>
 
       
