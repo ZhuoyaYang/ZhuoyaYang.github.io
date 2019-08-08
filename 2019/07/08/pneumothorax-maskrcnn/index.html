@@ -79,22 +79,23 @@
 
 
 
-<meta name="description" content="Kaggle-SIIM-ACR Pneumothorax Segmentation">
+<meta name="description" content="Kaggle-SIIM-ACR Pneumothorax Segmentation2%，纪念一下！gradient accumulation在big resolution显存不够的时候很有用。">
 <meta name="keywords" content="Mask R-CNN,Segmentation">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Pneumothorax 分割">
 <meta property="og:url" content="http://yoursite.com/2019/07/08/pneumothorax-maskrcnn/index.html">
 <meta property="og:site_name" content="Zhuoya的星球">
-<meta property="og:description" content="Kaggle-SIIM-ACR Pneumothorax Segmentation">
+<meta property="og:description" content="Kaggle-SIIM-ACR Pneumothorax Segmentation2%，纪念一下！gradient accumulation在big resolution显存不够的时候很有用。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2019/07/08/pneumothorax-maskrcnn/4.png">
 <meta property="og:image" content="http://yoursite.com/2019/07/08/pneumothorax-maskrcnn/1.png">
 <meta property="og:image" content="http://yoursite.com/2019/07/08/pneumothorax-maskrcnn/2.png">
 <meta property="og:image" content="http://yoursite.com/2019/07/08/pneumothorax-maskrcnn/3.png">
-<meta property="og:updated_time" content="2019-07-21T10:20:49.448Z">
+<meta property="og:updated_time" content="2019-08-08T03:47:46.448Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Pneumothorax 分割">
-<meta name="twitter:description" content="Kaggle-SIIM-ACR Pneumothorax Segmentation">
-<meta name="twitter:image" content="http://yoursite.com/2019/07/08/pneumothorax-maskrcnn/1.png">
+<meta name="twitter:description" content="Kaggle-SIIM-ACR Pneumothorax Segmentation2%，纪念一下！gradient accumulation在big resolution显存不够的时候很有用。">
+<meta name="twitter:image" content="http://yoursite.com/2019/07/08/pneumothorax-maskrcnn/4.png">
 
 
 
@@ -395,7 +396,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,446
+                  1,465
                 </span>
               
 
@@ -432,8 +433,7 @@
       
 
       
-        <p><excerpt in="" index="" |="" 首页摘要=""><br><a href="https://www.kaggle.com/c/siim-acr-pneumothorax-segmentation" target="_blank" rel="noopener">Kaggle-SIIM-ACR Pneumothorax Segmentation</a></excerpt></p>
-<a id="more"></a>
+        <p><excerpt in="" index="" |="" 首页摘要=""><br><a href="https://www.kaggle.com/c/siim-acr-pneumothorax-segmentation" target="_blank" rel="noopener">Kaggle-SIIM-ACR Pneumothorax Segmentation</a><br>2%，纪念一下！gradient accumulation在big resolution显存不够的时候很有用。<br><img src="/2019/07/08/pneumothorax-maskrcnn/4.png" alt=""><br><a id="more"></a></excerpt></p>
 <p><the rest="" of="" contents="" |="" 余下全文=""></the></p>
 <h1 id="从DICOM中获取图像">1. 从DICOM中获取图像</h1><h2 id="数据集结构：">1.1. 数据集结构：</h2><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">./pneumothorax/</span><br><span class="line">├── dicom-images-train  # <span class="number">10679</span>张训练集（trainval）</span><br><span class="line">│   ├── <span class="number">1.2</span><span class="number">.276</span><span class="number">.0</span><span class="number">.7230010</span><span class="number">.3</span><span class="number">.1</span><span class="number">.2</span><span class="number">.8323329</span><span class="number">.10000</span><span class="number">.1517875220</span><span class="number">.938529</span></span><br><span class="line">│   │   └── <span class="number">1.2</span><span class="number">.276</span><span class="number">.0</span><span class="number">.7230010</span><span class="number">.3</span><span class="number">.1</span><span class="number">.3</span><span class="number">.8323329</span><span class="number">.10000</span><span class="number">.1517875220</span><span class="number">.938528</span></span><br><span class="line">│   │       └── <span class="number">1.2</span><span class="number">.276</span><span class="number">.0</span><span class="number">.7230010</span><span class="number">.3</span><span class="number">.1</span><span class="number">.4</span><span class="number">.8323329</span><span class="number">.5796</span><span class="number">.1517875190</span><span class="number">.763845</span>.dcm</span><br><span class="line">│   ├── ...</span><br><span class="line">│   └── ...</span><br><span class="line">├── dicom-images-test   # <span class="number">1373</span>张测试集（test）</span><br><span class="line">│   ├── <span class="number">1.2</span><span class="number">.276</span><span class="number">.0</span><span class="number">.7230010</span><span class="number">.3</span><span class="number">.1</span><span class="number">.2</span><span class="number">.8323329</span><span class="number">.5797</span><span class="number">.1517875190</span><span class="number">.762693</span></span><br><span class="line">│   │   └── <span class="number">1.2</span><span class="number">.276</span><span class="number">.0</span><span class="number">.7230010</span><span class="number">.3</span><span class="number">.1</span><span class="number">.3</span><span class="number">.8323329</span><span class="number">.5797</span><span class="number">.1517875190</span><span class="number">.762692</span></span><br><span class="line">│   │       └── <span class="number">1.2</span><span class="number">.276</span><span class="number">.0</span><span class="number">.7230010</span><span class="number">.3</span><span class="number">.1</span><span class="number">.4</span><span class="number">.8323329</span><span class="number">.5797</span><span class="number">.1517875190</span><span class="number">.762694</span>.dcm</span><br><span class="line">│   ├── ...</span><br><span class="line">│   └── ...</span><br><span class="line">└── train-rle.csv</span><br></pre></td></tr></table></figure>
 <h2 id="划分数据集">1.2. 划分数据集</h2><p>用<code>glob</code>得到dicom-images-train下的所有<code>*.dcm</code>的路径:<br><figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import glob</span><br><span class="line"></span><br><span class="line">train_dcm = []</span><br><span class="line">for dcm <span class="keyword">in</span> glob.glob(r<span class="string">'./dicom-images-train/*/*/*.dcm'</span>):</span><br><span class="line">    train_dcm.append(dcm)</span><br><span class="line">print(len(train_dcm))  # <span class="number">10697</span></span><br><span class="line">print(train_dcm[<span class="number">0</span>]) # 位于./pneumothorax/下的相对路径 ./dicom-images-train/<span class="number">1.2</span><span class="meta">.276</span><span class="meta">.0</span><span class="meta">.7230010</span><span class="meta">.3</span><span class="meta">.1</span><span class="meta">.2</span><span class="meta">.8323329</span><span class="meta">.31684</span><span class="meta">.1517875156</span><span class="meta">.314905</span>/<span class="number">1.2</span><span class="meta">.276</span><span class="meta">.0</span><span class="meta">.7230010</span><span class="meta">.3</span><span class="meta">.1</span><span class="meta">.3</span><span class="meta">.8323329</span><span class="meta">.31684</span><span class="meta">.1517875156</span><span class="meta">.314904</span>/<span class="number">1.2</span><span class="meta">.276</span><span class="meta">.0</span><span class="meta">.7230010</span><span class="meta">.3</span><span class="meta">.1</span><span class="meta">.4</span><span class="meta">.8323329</span><span class="meta">.31684</span><span class="meta">.1517875156</span><span class="meta">.314906</span>.dcm</span><br></pre></td></tr></table></figure></p>
