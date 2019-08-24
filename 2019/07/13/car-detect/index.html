@@ -79,20 +79,20 @@
 
 
 
-<meta name="description" content="交通视频/图像数据。包含car，bus，rider，track，person，front（前轮），rear（后轮），7个类别。  数据集imbalance严重，car类别比较多，其余类别比较少。 Focal Loss是处理正负样本不均衡   目标之间尺寸差别较大（具体差别？每个类别大小分布直方图？） 鱼眼相机的畸变（是否需要矫正？） 数据集是一帧一帧的图像，如何利用帧与帧之间的关系？（确定车辆走向">
+<meta name="description" content="比赛有特等奖（1名，6w），一等奖（1名，5w），二等奖（2名，3w），三等奖（3名，1w）。共有6个题目，我们题目有10个队伍，总共大概是60个队伍。初赛每个题目LeaderBoard排名前1-2组进决赛，决赛采取现场答辩，主要看工作量、创新性。 最后我们组获得了一等奖。第一次参加这种需要现场答辩的比赛，和不认识的小伙伴组队。我们尝试了许多模型，每人选择一个认为适合的模型，负责调试。有YOLOv">
 <meta name="keywords" content="Object Detection,Faster R-CNN,Mask R-CNN">
 <meta property="og:type" content="article">
-<meta property="og:title" content="车辆车轮检测">
+<meta property="og:title" content="纵目杯-车辆车轮检测">
 <meta property="og:url" content="http://yoursite.com/2019/07/13/car-detect/index.html">
 <meta property="og:site_name" content="Zhuoya的星球">
-<meta property="og:description" content="交通视频/图像数据。包含car，bus，rider，track，person，front（前轮），rear（后轮），7个类别。  数据集imbalance严重，car类别比较多，其余类别比较少。 Focal Loss是处理正负样本不均衡   目标之间尺寸差别较大（具体差别？每个类别大小分布直方图？） 鱼眼相机的畸变（是否需要矫正？） 数据集是一帧一帧的图像，如何利用帧与帧之间的关系？（确定车辆走向">
+<meta property="og:description" content="比赛有特等奖（1名，6w），一等奖（1名，5w），二等奖（2名，3w），三等奖（3名，1w）。共有6个题目，我们题目有10个队伍，总共大概是60个队伍。初赛每个题目LeaderBoard排名前1-2组进决赛，决赛采取现场答辩，主要看工作量、创新性。 最后我们组获得了一等奖。第一次参加这种需要现场答辩的比赛，和不认识的小伙伴组队。我们尝试了许多模型，每人选择一个认为适合的模型，负责调试。有YOLOv">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/07/13/car-detect/1.png">
 <meta property="og:image" content="http://yoursite.com/2019/07/13/car-detect/2.png">
-<meta property="og:updated_time" content="2019-08-04T17:05:28.166Z">
+<meta property="og:updated_time" content="2019-08-24T18:37:04.273Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="车辆车轮检测">
-<meta name="twitter:description" content="交通视频/图像数据。包含car，bus，rider，track，person，front（前轮），rear（后轮），7个类别。  数据集imbalance严重，car类别比较多，其余类别比较少。 Focal Loss是处理正负样本不均衡   目标之间尺寸差别较大（具体差别？每个类别大小分布直方图？） 鱼眼相机的畸变（是否需要矫正？） 数据集是一帧一帧的图像，如何利用帧与帧之间的关系？（确定车辆走向">
+<meta name="twitter:title" content="纵目杯-车辆车轮检测">
+<meta name="twitter:description" content="比赛有特等奖（1名，6w），一等奖（1名，5w），二等奖（2名，3w），三等奖（3名，1w）。共有6个题目，我们题目有10个队伍，总共大概是60个队伍。初赛每个题目LeaderBoard排名前1-2组进决赛，决赛采取现场答辩，主要看工作量、创新性。 最后我们组获得了一等奖。第一次参加这种需要现场答辩的比赛，和不认识的小伙伴组队。我们尝试了许多模型，每人选择一个认为适合的模型，负责调试。有YOLOv">
 <meta name="twitter:image" content="http://yoursite.com/2019/07/13/car-detect/1.png">
 
 
@@ -129,7 +129,7 @@
 
 
 
-  <title>车辆车轮检测 | Zhuoya的星球</title>
+  <title>纵目杯-车辆车轮检测 | Zhuoya的星球</title>
   
 
 
@@ -317,7 +317,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">车辆车轮检测</h1>
+          <h1 class="post-title" itemprop="name headline">纵目杯-车辆车轮检测</h1>
         
 
         <div class="post-meta">
@@ -369,7 +369,7 @@
 
           
           
-             <span id="/2019/07/13/car-detect/" class="leancloud_visitors" data-flag-title="车辆车轮检测">
+             <span id="/2019/07/13/car-detect/" class="leancloud_visitors" data-flag-title="纵目杯-车辆车轮检测">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -394,7 +394,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  944
+                  1,193
                 </span>
               
 
@@ -410,7 +410,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  5
                 </span>
               
             </div>
@@ -431,7 +431,11 @@
       
 
       
-        <p><excerpt in="" index="" |="" 首页摘要=""><br>交通视频/图像数据。包含car，bus，rider，track，person，front（前轮），rear（后轮），7个类别。</excerpt></p>
+        <p><excerpt in="" index="" |="" 首页摘要=""><br>比赛有特等奖（1名，6w），一等奖（1名，5w），二等奖（2名，3w），三等奖（3名，1w）。共有6个题目，我们题目有10个队伍，总共大概是60个队伍。初赛每个题目LeaderBoard排名前1-2组进决赛，决赛采取现场答辩，主要看工作量、创新性。</excerpt></p>
+<p>最后我们组获得了一等奖。第一次参加这种需要现场答辩的比赛，和不认识的小伙伴组队。我们尝试了许多模型，每人选择一个认为适合的模型，负责调试。有YOLOv3、Libra R-CNN、Mask R-CNN、Cascade R-CNN。其中Mask R-CNN效果最好，是我选择并负责调的。在初赛的时候，有一种直觉，我觉得mask r-cnn的多尺度非常适合这个题目，可以达到不错的效果。果真，只用了一些技巧，就取得了不错的分数，杀入决赛。</p>
+<p>总之，很多收获、很多感谢，继续加油！</p>
+<a id="more"></a>
+<p><the rest="" of="" contents="" |="" 余下全文=""><br>交通视频/图像数据。包含car，bus，rider，track，person，front（前轮），rear（后轮），7个类别。</the></p>
 <ul>
 <li>数据集imbalance严重，car类别比较多，其余类别比较少。<ul>
 <li>Focal Loss是处理正负样本不均衡</li>
@@ -444,8 +448,6 @@
 </ul>
 </li>
 </ul>
-<a id="more"></a>
-<p><the rest="" of="" contents="" |="" 余下全文=""></the></p>
 <h1 id="Faster-R-CNN">1. Faster R-CNN</h1><p>因为Faster R-CNN非常熟悉，所以先训练看看效果。</p>
 <ul>
 <li>backbone尝试了vgg16/res152</li>
