@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/07/13/car-detect/1.png">
 <meta property="og:image" content="http://yoursite.com/2019/07/13/car-detect/2.png">
-<meta property="og:updated_time" content="2019-10-23T10:50:27.298Z">
+<meta property="og:updated_time" content="2019-10-23T12:11:56.334Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="纵目杯-车辆车轮检测">
 <meta name="twitter:description" content="比赛有特等奖（1名，6w），一等奖（1名，5w），二等奖（2名，3w），三等奖（3名，1w）。共有6个题目，每个题目有十几个队伍。初赛每个题目LeaderBoard前1-2组进决赛，决赛采取现场答辩。 获得了一等奖。第一次参加这种需要现场答辩的比赛，和不认识的小伙伴组队。我们尝试了许多模型，每人选择一个认为适合的模型，负责调试。有YOLOv3、Libra R-CNN、Mask R-CNN、Casc">
@@ -394,7 +394,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,245
+                  1,314
                 </span>
               
 
@@ -481,6 +481,11 @@
 <p>自动加载最新的模型：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CUDA_VISIBLE_DEVICES=<span class="number">2</span> <span class="keyword">python</span> tools/test_net.<span class="keyword">py</span> --config-<span class="keyword">file</span> configs/e2e_mask_rcnn_R_101_FPN_1x.yaml</span><br></pre></td></tr></table></figure></p>
 <!--python tools/test_net.py --config-file configs/e2e_mask_rcnn_R_101_FPN_1x.yaml-->
 <p>也可以用–ckpt参数，指定模型路径：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CUDA_VISIBLE_DEVICES=<span class="number">2</span> python tools/test_net<span class="selector-class">.py</span> --config-file configs/e2e_mask_rcnn_R_101_FPN_1x<span class="selector-class">.yaml</span> --ckpt model_0002500.pth</span><br></pre></td></tr></table></figure></p>
+<h2 id="多GPU">2.5. 多GPU</h2><p>训练<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export NGPUS=<span class="number">2</span></span><br><span class="line">CUDA_VISIBLE_DEVICES=<span class="number">1</span>,<span class="number">2</span> nohup python -m torch<span class="selector-class">.distributed</span><span class="selector-class">.launch</span> --nproc_per_node=<span class="variable">$NGPUS</span> tools/train_net<span class="selector-class">.py</span> --config-file configs/e2e_mask_rcnn_R_101_FPN_1x<span class="selector-class">.yaml</span> MODEL<span class="selector-class">.RPN</span><span class="selector-class">.FPN_POST_NMS_TOP_N_TRAIN</span> <span class="number">3000</span> SOLVER<span class="selector-class">.IMS_PER_BATCH</span> <span class="number">6</span> &amp;</span><br></pre></td></tr></table></figure></p>
+<p>测试<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export NGPUS=<span class="number">2</span></span><br><span class="line">CUDA_VISIBLE_DEVICES=<span class="number">0</span>,<span class="number">2</span> python -m torch<span class="selector-class">.distributed</span><span class="selector-class">.launch</span> --nproc_per_node=<span class="variable">$NGPUS</span> tools/test_net<span class="selector-class">.py</span> --config-file configs/e2e_mask_rcnn_R_101_FPN_1x<span class="selector-class">.yaml</span> <span class="comment">//MODEL.RPN.FPN_POST_NMS_TOP_N_TRAIN 16000 TEST.IMS_PER_BATCH 32</span></span><br></pre></td></tr></table></figure></p>
+<!--- MODEL.RPN.FPN_POST_NMS_TOP_N_TRAIN不设置，默认2000不影响ap
+- TEST.IMS_PER_BATCH 32和默认16，测试速度一样
+所以不包含在命令里。-->
 
       
     </div>
@@ -661,7 +666,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Faster-R-CNN"><span class="nav-text">1. Faster R-CNN</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Mask-R-CNN"><span class="nav-text">2. Mask R-CNN</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备数据（voc转coco）"><span class="nav-text">2.1. 准备数据（voc转coco）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置"><span class="nav-text">2.2. 配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#训练"><span class="nav-text">2.3. 训练</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试"><span class="nav-text">2.4. 测试</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Faster-R-CNN"><span class="nav-text">1. Faster R-CNN</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Mask-R-CNN"><span class="nav-text">2. Mask R-CNN</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备数据（voc转coco）"><span class="nav-text">2.1. 准备数据（voc转coco）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置"><span class="nav-text">2.2. 配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#训练"><span class="nav-text">2.3. 训练</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试"><span class="nav-text">2.4. 测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多GPU"><span class="nav-text">2.5. 多GPU</span></a></li></ol></li></ol></div>
             
 
           </div>
