@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/07/13/car-detect/1.png">
 <meta property="og:image" content="http://yoursite.com/2019/07/13/car-detect/2.png">
-<meta property="og:updated_time" content="2019-10-23T10:46:28.756Z">
+<meta property="og:updated_time" content="2019-10-23T10:50:27.298Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="纵目杯-车辆车轮检测">
 <meta name="twitter:description" content="比赛有特等奖（1名，6w），一等奖（1名，5w），二等奖（2名，3w），三等奖（3名，1w）。共有6个题目，每个题目有十几个队伍。初赛每个题目LeaderBoard前1-2组进决赛，决赛采取现场答辩。 获得了一等奖。第一次参加这种需要现场答辩的比赛，和不认识的小伙伴组队。我们尝试了许多模型，每人选择一个认为适合的模型，负责调试。有YOLOv3、Libra R-CNN、Mask R-CNN、Casc">
@@ -394,7 +394,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,243
+                  1,245
                 </span>
               
 
@@ -478,7 +478,7 @@
 <ol start="2">
 <li>运行测试程序</li>
 </ol>
-<p>自动加载最新的模型：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">python</span> tools/test_net.<span class="keyword">py</span> --config-<span class="keyword">file</span> configs/e2e_mask_rcnn_R_101_FPN_1x.yaml</span><br></pre></td></tr></table></figure></p>
+<p>自动加载最新的模型：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CUDA_VISIBLE_DEVICES=<span class="number">2</span> <span class="keyword">python</span> tools/test_net.<span class="keyword">py</span> --config-<span class="keyword">file</span> configs/e2e_mask_rcnn_R_101_FPN_1x.yaml</span><br></pre></td></tr></table></figure></p>
 <!--python tools/test_net.py --config-file configs/e2e_mask_rcnn_R_101_FPN_1x.yaml-->
 <p>也可以用–ckpt参数，指定模型路径：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CUDA_VISIBLE_DEVICES=<span class="number">2</span> python tools/test_net<span class="selector-class">.py</span> --config-file configs/e2e_mask_rcnn_R_101_FPN_1x<span class="selector-class">.yaml</span> --ckpt model_0002500.pth</span><br></pre></td></tr></table></figure></p>
 
