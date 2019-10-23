@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/07/13/car-detect/1.png">
 <meta property="og:image" content="http://yoursite.com/2019/07/13/car-detect/2.png">
-<meta property="og:updated_time" content="2019-09-09T12:35:41.379Z">
+<meta property="og:updated_time" content="2019-10-23T10:46:28.756Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="纵目杯-车辆车轮检测">
 <meta name="twitter:description" content="比赛有特等奖（1名，6w），一等奖（1名，5w），二等奖（2名，3w），三等奖（3名，1w）。共有6个题目，每个题目有十几个队伍。初赛每个题目LeaderBoard前1-2组进决赛，决赛采取现场答辩。 获得了一等奖。第一次参加这种需要现场答辩的比赛，和不认识的小伙伴组队。我们尝试了许多模型，每人选择一个认为适合的模型，负责调试。有YOLOv3、Libra R-CNN、Mask R-CNN、Casc">
@@ -394,7 +394,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,207
+                  1,243
                 </span>
               
 
@@ -468,7 +468,7 @@
 </li>
 </ul>
 <p>3.模型训练/测试超参数配置(<code>./maskrcnn_benchmark/config/defaults.py</code>)<br>这个文件是模型的默认参数文件。其中，有一些参数与backbone配置文件中重复，最终参数还是以backbone文件配置的为准。这里我主要修改了与模型输出相关的几个参数，结合<code>e2e_mask_rcnn_R_101_FPN_1x.yaml</code>中设置的<code>MAX_ITER: 90000</code>，训练时模型输出是从0-90000iteration，每2500个保存一次模型，存储在<code>.</code>目录下。<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">_C<span class="selector-class">.MODEL</span><span class="selector-class">.ROI_BOX_HEAD</span><span class="selector-class">.NUM_CLASSES</span> = <span class="number">8</span> #加上<span class="attribute">background</span>总共<span class="number">8</span>个类</span><br><span class="line">_C<span class="selector-class">.SOLVER</span><span class="selector-class">.CHECKPOINT_PERIOD</span> = <span class="number">2500</span> </span><br><span class="line">_C<span class="selector-class">.OUTPUT_DIR</span> = <span class="string">"."</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="训练">2.3. 训练</h2><p>单gpu时，用<code>CUDA_VISIBLE_DEVICES=1</code>指定使用第二块GPU。<br>为了防止cuda out of memory，可以减少batchsize大小。<code>SOLVER.IMS_PER_BATCH</code>表示Number of images per batch，即每个iteration选择多少张图片进行训练。由<code>./maskrcnn_benchmark/config/defaults.py</code>文件中的<code>_C.SOLVER.IMS_PER_BATCH = 16</code>命令可知该参数默认设置为16，这里减少到4。<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CUDA_VISIBLE_DEVICES=<span class="number">1</span> nohup python tools/train_net<span class="selector-class">.py</span> --config-file configs/e2e_mask_rcnn_R_101_FPN_1x<span class="selector-class">.yaml</span> SOLVER<span class="selector-class">.IMS_PER_BATCH</span> <span class="number">4</span> &amp;</span><br></pre></td></tr></table></figure></p>
+<h2 id="训练">2.3. 训练</h2><p>单gpu时，用<code>CUDA_VISIBLE_DEVICES=1</code>指定使用第二块GPU。<br>为了防止cuda out of memory，可以减少batchsize大小。<code>SOLVER.IMS_PER_BATCH</code>表示Number of images per batch，即每个iteration选择多少张图片进行训练。由<code>./maskrcnn_benchmark/config/defaults.py</code>文件中的<code>_C.SOLVER.IMS_PER_BATCH = 16</code>命令可知该参数默认设置为16，这里减少到4。同时将<code>MODEL.RPN.FPN_POST_NMS_TOP_N_TRAIN</code>修改为4000(1000 x images-per-gpu)，代表RPN选取top 4000的ROI送入网络的第二阶段，<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CUDA_VISIBLE_DEVICES=<span class="number">1</span> nohup python tools/train_net<span class="selector-class">.py</span> --config-file configs/e2e_mask_rcnn_R_101_FPN_1x<span class="selector-class">.yaml</span> SOLVER<span class="selector-class">.IMS_PER_BATCH</span> <span class="number">4</span> MODEL<span class="selector-class">.RPN</span><span class="selector-class">.FPN_POST_NMS_TOP_N_TRAIN</span> <span class="number">4000</span> &amp;</span><br></pre></td></tr></table></figure></p>
 <!--CUDA_VISIBLE_DEVICES=1 nohup python tools/train_net.py --config-file configs/e2e_mask_rcnn_R_50_C4_1x.yaml SOLVER.IMS_PER_BATCH 4 &-->
 <h2 id="测试">2.4. 测试</h2><ol>
 <li>修改eval.py，支持计算每类的AP</li>
@@ -480,7 +480,7 @@
 </ol>
 <p>自动加载最新的模型：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">python</span> tools/test_net.<span class="keyword">py</span> --config-<span class="keyword">file</span> configs/e2e_mask_rcnn_R_101_FPN_1x.yaml</span><br></pre></td></tr></table></figure></p>
 <!--python tools/test_net.py --config-file configs/e2e_mask_rcnn_R_101_FPN_1x.yaml-->
-<p>也可以用–ckpt参数，指定模型路径：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python tools/test_net<span class="selector-class">.py</span> --config-file configs/e2e_mask_rcnn_R_101_FPN_1x<span class="selector-class">.yaml</span> --ckpt model_0002500.pth</span><br></pre></td></tr></table></figure></p>
+<p>也可以用–ckpt参数，指定模型路径：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CUDA_VISIBLE_DEVICES=<span class="number">2</span> python tools/test_net<span class="selector-class">.py</span> --config-file configs/e2e_mask_rcnn_R_101_FPN_1x<span class="selector-class">.yaml</span> --ckpt model_0002500.pth</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
